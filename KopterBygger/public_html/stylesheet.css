@@ -8,8 +8,15 @@ and open the template in the editor.
     Author     : vidar
 */
 
-banner{
+div.banner{
   width: 100%;
-  height: auto;
-  
+  position:fixed;
+  left:0;
+  right:0;
+  top:0;
+  display:block;
+}
+
+img.banner{
+    width:100%;
 }
