@@ -1,14 +1,4 @@
 
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 02-Oct-2014, 13:40:00
-    Author     : vidar
-*/
-
 div.banner{
   width: 100%;
   position:fixed;
@@ -16,33 +6,30 @@ div.banner{
   right:0;
   top:0;
   display:block;
+  min-width: 800px;
 }
 
 img.banner{
     width:100%;
+   
 }
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 02-Oct-2014, 13:40:00
-    Author     : vidar
-*/
 
-banner{
-  width: 100%;
-  height: auto;
-  
-}
+
 
 div.intro 
 {
-     margin-top: 0px;
-    margin-bottom: 0px;
+    //position:relative;
+    display:block;
+     margin-top: 15%;
+    //margin-bottom: 0px;
     margin-right: 0px;
    text-align: center;
    margin-right: 0;
+   min-width: 800px;
 
+}
+
+p.intro{
+    font-size:30px;
+    
 }
