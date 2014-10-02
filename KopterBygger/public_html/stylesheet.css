@@ -39,3 +39,10 @@ div.startbutton{
     margin-right: auto;
     text-align: center;
 }
+
+div.frame{
+   margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 15%;
+}
