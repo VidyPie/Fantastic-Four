@@ -7,11 +7,12 @@ div.banner{
   top:0;
   display:block;
   min-width: 800px;
+  
 }
 
 img.banner{
     width:100%;
-   
+   min-height:30px;
 }
 
 
@@ -38,11 +39,27 @@ div.startbutton{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    min-width: 800px;
 }
 
 div.frame{
    margin-left: auto;
     margin-right: auto;
     text-align: center;
-    margin-top: 15%;
+    margin-top: 10%;
+}
+
+img.frame{
+    width:80%;
+    min-width: 600px;
+}
+
+div.inframe_text{
+    //display:block;
+    font-size: 20px;
+    position: absolute;
+    margin-left: 25%;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 10%;
 }
