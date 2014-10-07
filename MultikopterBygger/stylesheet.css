@@ -1,5 +1,5 @@
 
-div.banner{
+#banner.div{
   width: 100%;
   position:fixed;
   left:0;
@@ -10,7 +10,7 @@ div.banner{
   
 }
 
-img.banner{
+#banner.img{
     width:100%;
    min-height:30px;
 }
@@ -35,26 +35,26 @@ p.intro{
     
 }
 
-div.startbutton{
+.startbutton{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     min-width: 800px;
 }
 
-div.frame{
-   margin-left: auto;
+#frame.div{
+    margin-left: auto;
     margin-right: auto;
     text-align: center;
     margin-top: 10%;
 }
 
-img.frame{
-    width:80%;
+#frame.img{
+    width:70%;
     min-width: 600px;
 }
 
-div.inframe_text{
+.inframe_text{
     //display:block;
     font-size: 20px;
     position: absolute;
@@ -66,4 +66,6 @@ div.inframe_text{
 
 form {
     text-align: left;
+    margin-left: auto;
+    margin-right: auto;
 }
