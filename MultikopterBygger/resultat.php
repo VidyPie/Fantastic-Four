@@ -1,23 +1,25 @@
 <?php
-$host = "localhost";
-$user = "DEEBIT\nikla_000";
-$password = "nDe6aj9y";
-$dbname = "Kopterbygger";
+$host = "127.0.0.1";
+$port = 3306;
+$socket = "/tmp/mysql.sock";
+$user = "user";
+$password = "123";
+$dbname = "kopterbygger";
 
-$con=mysqli_connect($host, $user, $password, $dbname);
+$con=  mysqli_connect($host, $user, $password, $dbname, $port, $socket);
 
 if (mysqli_connect_errno()) {
     echo "Failed to connect ot MySQL: " . mysqli_connect_errno();
 }
 
-$query = "SELECT Propell_PID";
+$query = "SELECT PropellID";
 $query .= "FROM Propeller";
 $query .= "WHERE Prop_dia = 9";
 
-$result = mysqli_query($con, $query);
+$result = mysqli_query($con, "SELECT * FROM Propeller");
 
 while($row = mysqli_fetch_array($result)) {
-  echo $row['Propell_PID'] . " " . $row['Prop_dia'];
+  echo "ID: " . $row['PropellID'] . " Navn: " . $row['Navn'] . " Diameter: " . $row['Prop_dia'];
   echo "<br>";
 }
 
