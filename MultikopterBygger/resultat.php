@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $host = "127.0.0.1";
 $port = 3306;
 $socket = "/tmp/mysql.sock";
@@ -8,20 +10,35 @@ $dbname = "kopterbygger";
 
 $con=  mysqli_connect($host, $user, $password, $dbname, $port, $socket);
 
+$_SESSION['connection'] = $con;
+
 if (mysqli_connect_errno()) {
     echo "Failed to connect ot MySQL: " . mysqli_connect_errno();
 }
+?>
 
-$query = "SELECT PropellID";
-$query .= "FROM Propeller";
-$query .= "WHERE Prop_dia = 9";
+<?php
+$con = $_SESSION['connection'];
+$videoopptak = $_POST['videoopptak'];
+$airtime = $_POST['airtime'];
+$gps = $_POST['gps'];
 
-$result = mysqli_query($con, "SELECT * FROM Propeller");
+$query = "SELECT SpesifikasjonID";
+$query .= "FROM Spesifikasjoner";
+$query .= "WHERE Videoopptak=" . $videoopptak 
+        . " Rekkevidde=" . $airtime . " GPS=" . $gps . ";";
 
-while($row = mysqli_fetch_array($result)) {
-  echo "ID: " . $row['PropellID'] . " Navn: " . $row['Navn'] . " Diameter: " . $row['Prop_dia'];
-  echo "<br>";
+$result = mysqli_query($con, $query);
+
+$query2 = "SELECT * FROM oppskrift WHERE OppskriftID = " . 1;
+
+$result2 = mysqli_query($con, $query2);
+
+while($row = mysqli_fetch_array($result2)) {
+    echo "Beskrivelse: " . $row['Beskrivelse'];
+    echo "<br>";
 }
 
 mysqli_close($con);
 ?>
+
