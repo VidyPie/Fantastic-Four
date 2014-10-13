@@ -60,6 +60,10 @@ div.inframe_text{
     position: absolute;
     margin-left: 25%;
     margin-right: auto;
-    text-align: center;
+    //text-align: center;
     margin-top: 10%;
+}
+
+div.cat{
+    
 }
