@@ -16,6 +16,7 @@ Fantastic Four
 
         <div class="banner">
             <img class="banner" src="main_styling/banner.png" alt ="Kopterbygger">
+            <img class="frame" src="main_styling/frame.png" alt="frame">
         </div>
 
         <div class="frame">
@@ -29,7 +30,7 @@ Fantastic Four
                 echo "For gps på kontrollbrett har du valgt: " . $gps;
                 ?>
             </div>
-            <img class="frame" src="main_styling/frame.png" alt="frame">
+            
 
         </div>
 
