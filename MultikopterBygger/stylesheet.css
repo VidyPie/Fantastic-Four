@@ -81,13 +81,46 @@ form {
     margin-left: auto;
     margin-right: auto;
     z-index: 1;
-    margin-top: 140px;
+    margin-top: 170px;
 }
+
+
+
 
 img.frametest{
   width:100%;
   min-width: 400px;
   min-height: 500px;
   z-index:2;
+
+}
+
+div.frame2{
+     position:relative;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+    margin-top: 170px;
+}
+
+div.left_box{
+  display: inline-block;
+  //float:left;
+  border: solid;
+  border-width: 5px;
+  border-color: #E8C6B6;
+  //width: 20%;
+  min-width: 100px;
+}
+
+div.right_box{
+  display: inline-block;
+  //float:right;
+  border:solid;
+  border-width: 5px;
+  border-color: #E8C6B6;
+    //width: 20%;
+    min-width: 100px;
 
 }
