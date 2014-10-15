@@ -1,7 +1,7 @@
 
-div.banner{
+#banner{
     width: 100%;
-    position:fixed;
+    position: fixed;
     left:0;
     right:0;
     top:0;
@@ -9,11 +9,23 @@ div.banner{
     z-index: 0;
 }
 
-img.banner{
+#banner img{
     width:100%;
     min-height:30px;
     z-index: 0;
     max-height: 100px;
+}
+
+#wrapper{
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    box-shadow: 1px 1px 1px 1px #1f1f1f;
+}
+
+#content{
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 div.intro 
