@@ -105,6 +105,8 @@ div.left_box{
     min-height: 300px;
     padding-top: 10px;
     padding-bottom: 10px;
+    margin-left: 600px;
+   
 }
 
 div.right_box{
@@ -114,7 +116,7 @@ div.right_box{
     border-color: #E8C6B6;
     width: 400px;
     min-height: 300px;
-    margin-left: 20px;
+    margin-left: 600px;
     padding-top: 10px;
     padding-bottom: 10px;
 }

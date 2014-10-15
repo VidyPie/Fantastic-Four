@@ -34,12 +34,10 @@ Fantastic Four
         <link rel="stylesheet" type="text/css" href="stylesheet.css">
     </head>
     <body>
-        <div class="banner">
-            <img class="banner" src="main_styling/banner.png" alt ="Kopterbygger">
-            <img class="frametest" src="main_styling/frame.png" alt="frame">
-        </div>
-          
-        <div class="frame2">
+        <div id="banner">
+            <img src="main_styling/banner.png" alt ="Kopterbygger">
+              
+        <div id="wrapper">
         
             <div class="left_box"><b>Forslag 1</b>
                 <br><br>
@@ -90,6 +88,6 @@ Fantastic Four
                 <br><br><br>
             <a href="http://smp.no"><img class="right_velg" src="main_styling/velg.png"></a>
             <a href="http://reddit.com"><img class="right_config" src="main_styling/config.png"></a>
-        </div>
+            </div></div></div>
     </body>
 </html>                 
