@@ -51,6 +51,12 @@ Fantastic Four
                 $beskrivelseResult = $row['Beskrivelse'];
                 echo $beskrivelseResult;
             }
+            $query = "SELECT * FROM oppskrift";
+            $result = mysqli_query($con, $query);
+            while($row = mysqli_fetch_array($result)) {
+                $kompResult = $row['KomponenterID'];
+                echo $kompResult;
+            }
              ?>
                  <br><br>motor<br>
              
