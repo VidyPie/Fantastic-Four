@@ -41,7 +41,7 @@ Fantastic Four
             <div class="inframe_text">
 
                 <form name="myform" action="" method="POST">
-                    <div align="center">
+                    <div>
                             <?php
                             $con = $_SESSION['connection'];
 
@@ -62,6 +62,42 @@ Fantastic Four
                                 $nameResult = $row['Navn'];
                                 $idResult = $row['ESCID'];
                                 echo '<option value="' . $idResult . '">' . $nameResult . '</option>';
+                            }
+                            echo '</select><br>';
+                            
+                            echo '<select name="propdropdown">';
+                            $query = "SELECT * FROM propeller";
+                            $result = mysqli_query($con, $query);
+                            while ($row = mysqli_fetch_array($result)) {
+                                $nameResult = $row['Navn'];
+                                $idResult = $row['PropellID'];
+                                $diaResult = $row['Prop_dia'];
+                                $vinResult = $row['Prop_vin'];
+                                echo '<option value="' . $idResult . '">' . $nameResult 
+                                        . ' ' . $diaResult . '"x' . $vinResult . '</option>';
+                            }
+                            echo '</select><br>';
+                            
+                            echo '<select name="kontrollbrettdropdown">';
+                            $query = "SELECT * FROM kontrollbrett";
+                            $result = mysqli_query($con, $query);
+                            while ($row = mysqli_fetch_array($result)) {
+                                $nameResult = $row['Navn'];
+                                $idResult = $row['KontrollbrettID'];
+                                echo '<option value="' . $idResult . '">' . $nameResult . '</option>';
+                            }
+                            echo '</select><br>';
+                            
+                            echo '<select name="batteridropdown">';
+                            $query = "SELECT * FROM batteri";
+                            $result = mysqli_query($con, $query);
+                            while ($row = mysqli_fetch_array($result)) {
+                                $mahResult = $row['mah'];
+                                $cResult = $row['C_max'];
+                                $sResult = $row['Celler'];
+                                $idResult = $row['BatteriID'];
+                                echo '<option value="' . $idResult . '">' . $sResult 
+                                        . 'S ' . $mahResult . 'mah ' . $cResult . 'C' . '</option>';
                             }
                             echo '</select><br>';
                             ?>
