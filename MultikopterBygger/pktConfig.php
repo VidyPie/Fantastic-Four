@@ -42,20 +42,29 @@ Fantastic Four
 
                 <form name="myform" action="" method="POST">
                     <div align="center">
-                        <select name="mydropdown">
                             <?php
                             $con = $_SESSION['connection'];
 
+                            echo '<select name="motordropdown">';
                             $query = "SELECT * FROM motor";
-
                             $result = mysqli_query($con, $query);
                             while ($row = mysqli_fetch_array($result)) {
                                 $nameResult = $row['Navn'];
                                 $idResult = $row['MotorID'];
                                 echo '<option value="' . $idResult . '">' . $nameResult . '</option>';
                             }
+                            echo '</select><br>';
+                            
+                            echo '<select name="escdropdown">';
+                            $query = "SELECT * FROM esc";
+                            $result = mysqli_query($con, $query);
+                            while ($row = mysqli_fetch_array($result)) {
+                                $nameResult = $row['Navn'];
+                                $idResult = $row['ESCID'];
+                                echo '<option value="' . $idResult . '">' . $nameResult . '</option>';
+                            }
+                            echo '</select><br>';
                             ?>
-                        </select>
                     </div>
                 </form>
             </div>
