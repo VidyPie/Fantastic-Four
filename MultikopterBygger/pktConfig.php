@@ -34,80 +34,80 @@ Fantastic Four
 
         <div id="banner">
             <img src="main_styling/banner.png" alt ="Kopterbygger">
+        </div>
+
+        <div id='wrapper'>
+            <div id='content'>
+                <form name="components" method="POST">
+                    <?php
+                    $con = $_SESSION['connection'];
+
+                    echo 'Velg komponenter for pakke:<br>';
+                    echo '<select name="motordropdown">';
+                    echo '<option value="0">----Velg Motor----</option>';
+                    $query = "SELECT * FROM motor";
+                    $result = mysqli_query($con, $query);
+                    while ($row = mysqli_fetch_array($result)) {
+                        $nameResult = $row['Navn'];
+                        $idResult = $row['MotorID'];
+                        echo '<option value="' . $idResult . '">' . $nameResult . '</option>';
+                    }
+                    echo '</select><br>';
+
+                    echo '<select name="escdropdown">';
+                    echo '<option value="0">----Velg ESC----</option>';
+                    $query = "SELECT * FROM esc";
+                    $result = mysqli_query($con, $query);
+                    while ($row = mysqli_fetch_array($result)) {
+                        $nameResult = $row['Navn'];
+                        $idResult = $row['ESCID'];
+                        echo '<option value="' . $idResult . '">' . $nameResult . '</option>';
+                    }
+                    echo '</select><br>';
+
+                    echo '<select name="propdropdown">';
+                    echo '<option value="0">----Velg Propell----</option>';
+                    $query = "SELECT * FROM propeller";
+                    $result = mysqli_query($con, $query);
+                    while ($row = mysqli_fetch_array($result)) {
+                        $nameResult = $row['Navn'];
+                        $idResult = $row['PropellID'];
+                        $diaResult = $row['Prop_dia'];
+                        $vinResult = $row['Prop_vin'];
+                        echo '<option value="' . $idResult . '">' . $nameResult
+                        . ' ' . $diaResult . '"x' . $vinResult . '</option>';
+                    }
+                    echo '</select><br>';
+
+                    echo '<select name="kontrollbrettdropdown">';
+                    echo '<option value="0">----Velg Kontrollbrett----</option>';
+                    $query = "SELECT * FROM kontrollbrett";
+                    $result = mysqli_query($con, $query);
+                    while ($row = mysqli_fetch_array($result)) {
+                        $nameResult = $row['Navn'];
+                        $idResult = $row['KontrollbrettID'];
+                        echo '<option value="' . $idResult . '">' . $nameResult . '</option>';
+                    }
+                    echo '</select><br>';
+
+                    echo '<select name="batteridropdown">';
+                    echo '<option value="0">----Velg Batteri----</option>';
+                    $query = "SELECT * FROM batteri";
+                    $result = mysqli_query($con, $query);
+                    while ($row = mysqli_fetch_array($result)) {
+                        $mahResult = $row['mah'];
+                        $cResult = $row['C_max'];
+                        $sResult = $row['Celler'];
+                        $idResult = $row['BatteriID'];
+                        echo '<option value="' . $idResult . '">' . $sResult
+                        . 'S ' . $mahResult . 'mah ' . $cResult . 'C' . '</option>';
+                    }
+                    echo '</select><br>';
+                    ?>
+                    <p>Gi en kort beskrivelse av pakken:</p>
+                    <textarea required="yes" id="beskr" name="beskrfelt" rows="8"></textarea>
 
 
-            <div id='wrapper'>
-                <div id='content'>
-                    <form name="components" method="POST">
-                        <?php
-                        $con = $_SESSION['connection'];
-
-                        echo 'Velg komponenter for pakke:<br>';
-                        echo '<select name="motordropdown">';
-                        echo '<option value="0">----Velg Motor----</option>';
-                        $query = "SELECT * FROM motor";
-                        $result = mysqli_query($con, $query);
-                        while ($row = mysqli_fetch_array($result)) {
-                            $nameResult = $row['Navn'];
-                            $idResult = $row['MotorID'];
-                            echo '<option value="' . $idResult . '">' . $nameResult . '</option>';
-                        }
-                        echo '</select><br>';
-
-                        echo '<select name="escdropdown">';
-                        echo '<option value="0">----Velg ESC----</option>';
-                        $query = "SELECT * FROM esc";
-                        $result = mysqli_query($con, $query);
-                        while ($row = mysqli_fetch_array($result)) {
-                            $nameResult = $row['Navn'];
-                            $idResult = $row['ESCID'];
-                            echo '<option value="' . $idResult . '">' . $nameResult . '</option>';
-                        }
-                        echo '</select><br>';
-
-                        echo '<select name="propdropdown">';
-                        echo '<option value="0">----Velg Propell----</option>';
-                        $query = "SELECT * FROM propeller";
-                        $result = mysqli_query($con, $query);
-                        while ($row = mysqli_fetch_array($result)) {
-                            $nameResult = $row['Navn'];
-                            $idResult = $row['PropellID'];
-                            $diaResult = $row['Prop_dia'];
-                            $vinResult = $row['Prop_vin'];
-                            echo '<option value="' . $idResult . '">' . $nameResult
-                            . ' ' . $diaResult . '"x' . $vinResult . '</option>';
-                        }
-                        echo '</select><br>';
-
-                        echo '<select name="kontrollbrettdropdown">';
-                        echo '<option value="0">----Velg Kontrollbrett----</option>';
-                        $query = "SELECT * FROM kontrollbrett";
-                        $result = mysqli_query($con, $query);
-                        while ($row = mysqli_fetch_array($result)) {
-                            $nameResult = $row['Navn'];
-                            $idResult = $row['KontrollbrettID'];
-                            echo '<option value="' . $idResult . '">' . $nameResult . '</option>';
-                        }
-                        echo '</select><br>';
-
-                        echo '<select name="batteridropdown">';
-                        echo '<option value="0">----Velg Batteri----</option>';
-                        $query = "SELECT * FROM batteri";
-                        $result = mysqli_query($con, $query);
-                        while ($row = mysqli_fetch_array($result)) {
-                            $mahResult = $row['mah'];
-                            $cResult = $row['C_max'];
-                            $sResult = $row['Celler'];
-                            $idResult = $row['BatteriID'];
-                            echo '<option value="' . $idResult . '">' . $sResult
-                            . 'S ' . $mahResult . 'mah ' . $cResult . 'C' . '</option>';
-                        }
-                        echo '</select><br>';
-                        ?>
-                        <p>Gi en kort beskrivelse av pakken:</p>
-                        <textarea required="yes" id="beskr" name="beskrfelt" rows="8"></textarea>
-                        
-                    
                     Velg hvilke kategorier pakken skal ligge under:
                     <table border="1">
                         <tr>
@@ -179,9 +179,9 @@ Fantastic Four
                         }
                     }
                     ?>
-                </div>
             </div>
         </div>
+
     </body>
 </html>
 

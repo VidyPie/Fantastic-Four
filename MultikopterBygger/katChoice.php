@@ -34,11 +34,10 @@ Fantastic Four
 
         <div id="banner">
             <img src="main_styling/banner.png" alt ="Kopterbygger">
-
-            <div id="wrapper">
-                <div id="content">
-                    Motor
-                </div>
+        </div>
+        <div id="wrapper">
+            <div id="content">
+                Motor
             </div>
         </div>
     </body>
