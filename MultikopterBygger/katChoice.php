@@ -33,11 +33,22 @@ Fantastic Four
     <body>
 
         <div id="banner">
-            <img src="main_styling/banner.png" alt ="Kopterbygger">
+            <img class="banner" src="main_styling/banner.png" alt ="Kopterbygger">
+            <img class="extension" src="main_styling/bannerext.png" alt="graybox">
         </div>
         <div id="wrapper">
             <div id="content">
                 Motor
+            <div id="wrapper">
+                <div id="content">
+                    <form name="IhaveNoIdea" method="POST">
+                        <select name="komponenter">
+                        <option value="motor.php">Motor</option>
+                        <option value="propell.php">Propell</option>
+                        </select>
+                        <input type="submit" name="submit" value="Yes">
+                    </form>
+                </div>
             </div>
         </div>
     </body>

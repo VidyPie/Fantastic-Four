@@ -33,7 +33,8 @@ Fantastic Four
     </head>
     <body>
         <div id="banner">
-            <img src="main_styling/banner.png" alt ="Kopterbygger">
+            <img class="banner" src="main_styling/banner.png" alt ="Kopterbygger">
+            <img class="extension" src="main_styling/bannerext.png" alt="graybox">
         </div>
         <div id="wrapper">
             <div id="content">
@@ -52,6 +53,7 @@ Fantastic Four
                         $specID = $row['SpesifikasjonID'];
                         echo $specID;
                     }
+
 
                     $query = "SELECT KomponenterID FROM `oppskrift` WHERE `SpesifikasjonID` = '" . $specID . "';";
                     $result = mysqli_query($con, $query);
@@ -106,26 +108,6 @@ Fantastic Four
                             
                     ?>
 
-                    <div id="right_box"><b>Forslag 2</b>
-                        <br><br>
-                        <?php
-                        $con = $_SESSION['connection'];
-                        $query = "SELECT * FROM oppskrift";
-                        $result = mysqli_query($con, $query);
-                        while ($row = mysqli_fetch_array($result)) {
-                            $beskrivelseResult = $row['Beskrivelse'];
-                            echo $beskrivelseResult;
-                        }
-                        ?>
-                        <br>
-                        <br>motor
-                        <br>propell
-                        <br>kontrollbrett
-                        <br>esc
-                        <br>batteri<br>
-                        <br><br><br>
-                        <a href="http://smp.no"><img src="main_styling/velg.png"></a>
-                        <a href="http://reddit.com"><img src="main_styling/config.png"></a>
-                    </div></div></div>
+   
     </body>
 </html>                 
