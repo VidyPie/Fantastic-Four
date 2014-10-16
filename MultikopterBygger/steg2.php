@@ -33,7 +33,8 @@ Fantastic Four
     </head>
     <body>
         <div id="banner">
-            <img src="main_styling/banner.png" alt ="Kopterbygger">
+            <img class="extension" src="main_styling/bannerext.png" alt="graybox">
+            <img class="banner" src="main_styling/banner.png" alt ="Kopterbygger">
         </div>
         <div id="wrapper">
             <div id="content">
@@ -65,7 +66,7 @@ while ($row = mysqli_fetch_array($result)) {
                     <a href="http://vg.no"><img src="main_styling/velg.png"></a>
                     <a href="http://db.no"><img src="main_styling/config.png"></a>
                 </div>
-                <br><br><br>
+
                 <div id="right_box"><b>Forslag 2</b>
                     <br><br>
 <?php

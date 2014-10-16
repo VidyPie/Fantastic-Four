@@ -33,7 +33,8 @@ Fantastic Four
     <body>
 
         <div id="banner">
-            <img src="main_styling/banner.png" alt ="Kopterbygger">
+            <img class="extension" src="main_styling/bannerext.png" alt="graybox">
+            <img class="banner" src="main_styling/banner.png" alt ="Kopterbygger">
         </div>
         <div id="wrapper">
             <div id="content">
