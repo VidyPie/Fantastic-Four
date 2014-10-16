@@ -34,13 +34,10 @@ Fantastic Four
 
         <div id="banner">
             <img src="main_styling/banner.png" alt ="Kopterbygger">
-<<<<<<< HEAD
         </div>
         <div id="wrapper">
             <div id="content">
                 Motor
-=======
-
             <div id="wrapper">
                 <div id="content">
                     <form name="IhaveNoIdea" method="POST">
@@ -51,7 +48,6 @@ Fantastic Four
                         <input type="submit" name="submit" value="Yes">
                     </form>
                 </div>
->>>>>>> origin/master
             </div>
         </div>
     </body>

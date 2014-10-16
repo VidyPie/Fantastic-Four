@@ -106,10 +106,6 @@ Fantastic Four
                     ?>
                     <p>Gi en kort beskrivelse av pakken:</p>
                     <textarea required="yes" id="beskr" name="beskrfelt" rows="8"></textarea>
-
-<<<<<<< HEAD
-
-=======
             <div id='wrapper'>
                 <div id='content'>
                     <form name="components" method="POST">
@@ -181,8 +177,6 @@ Fantastic Four
                         <p>Gi en kort beskrivelse av pakken:</p>
                         <textarea required="yes" id="beskr" name="beskrfelt" rows="8"></textarea>
                 </div>
-                    
->>>>>>> origin/master
                     Velg hvilke kategorier pakken skal ligge under:
                     <table border="1">
                         <tr>
