@@ -103,7 +103,7 @@ Fantastic Four
                         }
                         echo '</select><br>';
                         ?>
-                        <p>Gi en kort beskrivelse av pakken:</p>
+                        <p>Gi en kort beskrivelse av pakken (maks 250 tegn):</p>
                         <textarea required="yes" id="beskr" name="beskrfelt" rows="8"></textarea>
                 </div>
                     Velg hvilke kategorier pakken skal ligge under:
