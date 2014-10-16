@@ -27,6 +27,19 @@
     padding-left: 10px;
     padding-right: 10px;
 }
+#dropdown {
+    width:20%;
+    float: left;
+    margin-left: 10%;
+    margin-right: 7%; 
+}
+#dropdown select {
+    width: 100%;
+}
+#beskr {
+    resize: none;
+    width: 100%;
+}
 
 #intro
 {

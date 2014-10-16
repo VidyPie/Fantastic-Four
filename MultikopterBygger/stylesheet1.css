@@ -30,23 +30,18 @@
     margin-top: 50px;
     min-height: 700px;
 }
-select {
+#dropdown {
     width:20%;
-    
-}
-table {
-    float:right;
-}
-form {
     float: left;
     margin-left: 10%;
     margin-right: 7%; 
 }
+#dropdown select {
+    width: 100%;
+}
 #beskr {
-    width: 20%;
-    float: left;
-    overflow: scroll;
     resize: none;
+    width: 100%;
 }
 div.intro 
 {
