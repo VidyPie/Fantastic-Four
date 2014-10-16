@@ -62,9 +62,17 @@ Fantastic Four
                     $CE_min = $_POST['CE_minInput'];
                     $navn = $_POST['navnInput'];
                     
-                    echo $kvInput . '<br>' . $ampInput . '<br>' . $prisInput . '<br>' . $prop_dia . '<br>' . $prop_vin . '<br>' . $CE_max . '<br>' . $CE_min . '<br>' . $navn;
+                    $Query = "SELECT MotorID FROM motor ORDER BY MotorID DESC LIMIT 1";
+                    $result = myscli_query($con, $Query);
+                    while ($row = mysqli_fetch_array($result)) {
+                        $lMotorID = $row['MotorID'];
+                    }
+                    $nMotorID = $lMotorID + 1;
                     
-                    $query = "INSERT INTO `motor`(`MotorID`, `kV`, `Amps`, `Pris`, `Prop_dia`, `Prop_vin`, `CE_MAX`, `CE_MIN`, `Navn`) VALUES (,,,,,,,,)";
+                    echo $nMotorID . '<br>' . $kvInput . '<br>' . $ampInput . '<br>' . $prisInput . '<br>' . $prop_dia . '<br>' . $prop_vin . '<br>' . $CE_max . '<br>' . $CE_min . '<br>' . $navn;
+                    
+                    
+//                    $query = "INSERT INTO `motor`(`MotorID`, `kV`, `Amps`, `Pris`, `Prop_dia`, `Prop_vin`, `CE_MAX`, `CE_MIN`, `Navn`) VALUES (,$kvInput,$ampInput,$prisInput,$prop_dia,$prop_vin,$CE_max,$CE_min,$navn)";
                 }
                 ?>
             </div>
