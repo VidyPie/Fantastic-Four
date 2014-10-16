@@ -134,7 +134,6 @@ Fantastic Four
 
                     <?php
                     if (isset($_POST['submit'])) {
-                        echo 'submitted';
                         $con = $_SESSION['connection'];
 
                         $row = mysqli_fetch_array(mysqli_query($con, "SELECT MAX(KomponenterID) AS lastID FROM komponenter"));
@@ -142,7 +141,7 @@ Fantastic Four
 
 
                         $query = "INSERT INTO `komponenter` (`KomponenterID`, `BatteriID`, "
-                                . "`KontrollbrettID`, `PropellID`, `MotorID`, `ESCID`) VALUES(" . $partsid . ", ";
+                                . "`KontrollbrettID`, `PropellID`, `MotorID`, `ESCID`) VALUES (" . $partsid . ", ";
 
                         $vals = 0;
                         $check_array = array('motordropdown', 'escdropdown', 'propdropdown', 'kontrollbrettdropdown', 'batteridropdown');
@@ -159,18 +158,19 @@ Fantastic Four
                             } else {
                                 $query .= ", ";
                             }
+                            mysqli_query($con, $query);
                         }
 
                         if (!empty($_POST['specs']) && $vals == 5) {
                             $row2 = mysqli_fetch_array(mysqli_query($con, "SELECT MAX(OppskriftID) AS lastOID FROM oppskrift"));
                             $oid = $row2['lastOID'] + 1;
                             foreach ($_POST['specs'] as $spec) {
-                                $query .= "INSERT INTO `oppskrift`(`OppskriftID`, `SpesifikasjonID`, "
-                                        . "`KomponenterID`, `Beskrivelse`) VALUES (" . $oid . $spec . $partsid . $_POST['beskrfelt'];
-                            }
-                            echo $query;
-                            mysqli_query($con, $query);
-                            mysqli_close($con);
+                                $query = "INSERT INTO `oppskrift`(`OppskriftID`, `SpesifikasjonID`, "
+                                        . "`KomponenterID`, `Beskrivelse`) VALUES (" . $oid . ', ' . $spec 
+                                        . ", " . $partsid . ", '" . $_POST['beskrfelt'] . "');";
+                                $oid++;
+                                mysqli_query($con, $query);
+                            }    
                             echo 'Suksess!';
                         } elseif ($vals > 0) {
                             echo 'Alle verdier må velges';
@@ -178,6 +178,7 @@ Fantastic Four
                             echo 'Velg en eller flere kategorier';
                         }
                     }
+                    mysqli_close($con);
                     ?>
             </div>
         </div>
