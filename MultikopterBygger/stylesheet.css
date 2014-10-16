@@ -13,15 +13,17 @@ form {
     left:0;
     right:0;
     top:0;
-    min-width: 850px;
-    z-index: 0;
+    //min-width: 850px;
+    z-index: 1;
 }
 
-#banner img{
+img.banner{
     width:100%;
     min-height:30px;
     z-index: 0;
-    max-height: 100px;
+    max-height: 80px;
+    max-width: 1000px;
+    z-index:0;
 }
 
 #wrapper{
@@ -80,8 +82,8 @@ form {
     min-height: 300px;
     padding-top: 10px;
     padding-bottom: 10px;
-    margin-left: 600px;
-   
+    //margin-left: 600px;
+    float:left;
 }
 
 #right_box{
@@ -91,8 +93,17 @@ form {
     border-color: #E8C6B6;
     width: 400px;
     min-height: 300px;
-    margin-left: 600px;
+    margin-left: 100px;
     padding-top: 10px;
     padding-bottom: 10px;
+
 }
 
+img.extension{
+    width:100%;
+    max-height: 80px;
+    position:absolute;
+    display:block;
+    top:0;
+    z-index:1;
+}
