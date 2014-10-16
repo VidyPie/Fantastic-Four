@@ -38,76 +38,68 @@ Fantastic Four
         </div>
         <div id="wrapper">
             <div id="content">
-               
 
-                    <?php
-                    $con = $_SESSION['connection'];
-                    $videoopptak = $_POST['videoopptak'];
-                    $airtime = $_POST['airtime'];
-                    $gps = $_POST['gps'];
-                    $query = "SELECT * FROM oppskrift";
-                    $query = "SELECT `SpesifikasjonID` FROM `spesifikasjoner` WHERE `Rekkevidde` = '" . $airtime . "' AND `Videoopptak` = '" . $videoopptak . "' AND `GPS` = '" . $gps . "';";
+
+                <?php
+                $con = $_SESSION['connection'];
+                $videoopptak = $_POST['videoopptak'];
+                $airtime = $_POST['airtime'];
+                $gps = $_POST['gps'];
+                $query = "SELECT * FROM oppskrift";
+                $query = "SELECT `SpesifikasjonID` FROM `spesifikasjoner` WHERE `Rekkevidde` = '" . $airtime . "' AND `Videoopptak` = '" . $videoopptak . "' AND `GPS` = '" . $gps . "';";
+                $result = mysqli_query($con, $query);
+
+
+                while ($row = mysqli_fetch_array($result)) {
+                    $specID = $row['SpesifikasjonID'];
+                }
+
+
+                $query = "SELECT KomponenterID FROM `oppskrift` WHERE `SpesifikasjonID` = '" . $specID . "';";
+                $result = mysqli_query($con, $query);
+                while ($row = mysqli_fetch_array($result)) {
+                    $komponentID = $row['KomponenterID'];
+                    $query = "SELECT * FROM `Komponenter` WHERE `KomponenterID` = '" . $komponentID . "';";
                     $result = mysqli_query($con, $query);
-                    echo $query;
                     while ($row = mysqli_fetch_array($result)) {
-                        $specID = $row['SpesifikasjonID'];
-                        echo $specID;
+                        $motorID = $row['MotorID'];
+                        $escID = $row['ESCID'];
+                        $batteriID = $row['BatteriID'];
+                        $kontrollBrettID = $row['KontrollbrettID'];
+                        $proppellID = $row['PropellID'];
+                    }
+                    echo ' <div id="left_box"><b>Forslag 1</b> <br><br>';
+                    $query = "SELECT * FROM oppskrift";
+                    $result = mysqli_query($con, $query);
+                    while ($row = mysqli_fetch_array($result)) {
+                        $beskrivelseResult = $row['Beskrivelse'];
+                        echo $beskrivelseResult;
+                    }
+                    $motorquery = "SELECT `Navn` FROM `Motor` WHERE motorID=" . $motorID;
+                    $escquery = "SELECT `Navn` FROM `ESC` WHERE ESCID=" . $escID;
+                    $batteriquery = "SELECT * FROM `Batteri` WHERE BatteriID=" . $batteriID;
+                    $kontrollbrettquery = "SELECT `Navn` FROM `Kontrollbrett` WHERE KontrollbrettID=" . $kontrollBrettID;
+                    $propellquery = "SELECT * FROM `Propeller` WHERE PropellID=" . $proppellID;
+                    $array = [$motorquery, $escquery, $batteriquery, $kontrollbrettquery, $propellquery];
+                    foreach ($array as $selected) {
+                        $result = mysqli_query($con, $selected);
+                        while ($row = mysqli_fetch_array($result)) {
+                            if ($selected == $propellquery) {
+                                echo $row ['Prop_dia'] . '"x' . $row ['Prop_vin'];
+                            } elseif ($selected == $batteriquery) {
+                                echo $row ['Celler'] . 'S ' . $row ['mah'] . 'mah ' . $row ['C_max'] . 'C';
+                            } else {
+                                echo $row ['Navn'];
+                            }
+                        }
                     }
 
-
-                    $query = "SELECT KomponenterID FROM `oppskrift` WHERE `SpesifikasjonID` = '" . $specID . "';";
-                    $result = mysqli_query($con, $query);
-                    while ($row = mysqli_fetch_array($result)) {
-                        $komponentID = $row['KomponenterID'];
-                        $query = "SELECT * FROM `Komponenter` WHERE `KomponenterID` = '" . $komponentID . "';";
-                        $result = mysqli_query($con, $query);
-                        while ($row = mysqli_fetch_array($result)) {
-                            $motorID = $row['motorID'];
-                            $escID = $row['ESCID'];
-                            $batteriID = $row['BatteriID'];
-                            $kontrollBrettID = $row['KontrollbrettID'];
-                            $proppellID = $row['PropellID'];
-                        }
-                        echo ' <div id="left_box"><b>Forslag 1</b> <br><br>';                      
-                        $query = "SELECT * FROM oppskrift";
-                        $result = mysqli_query($con, $query);
-                        while ($row = mysqli_fetch_array($result)) {
-                            $beskrivelseResult = $row['Beskrivelse'];
-                            echo $beskrivelseResult;
-                        }
-                            $motorquery = "SELECT `Navn` FROM `Motor` WHERE motorID=" . $motorID;
-                            $escquery = "SELECT `Navn` FROM `ESC` WHERE ESCID=" . $escID;
-                            $batteriquery = "SELECT * FROM `Batteri` WHERE BatteriID=" . $batteriID;
-                            $kontrollbrettquery = "SELECT `Navn` FROM `Kontrollbrett` WHERE KontrollbrettID=" . $KontrollBrettID;
-                            $propellquery = "SELECT * FROM `Propeller` WHERE PropellID=" . $proppellID;
-                            $array = [$motorquery, $escquery, $batteriquery, $kontrollbrettquery, $propellquery];
-                         foreach($array as $selected) {
-                            $result = mysqli_query($con, $selected);
-                            while ($row = mysqli_fetch_array($result)) {
-                                if($selected == $propellquery)
-                                {
-                                    echo $row ['Prop_dia'] . '"x' .$row ['Prop_vin'];
-                                }
-                                elseif($selected == $batteriqueryt)
-                                {
-                                    echo $row ['Celler'] .'S ' . $row ['mah'] . 'mah ' . $row ['C_max'] . 'C';  
-                                }
-                                else {
-                                    echo $row ['Navn'];
-                                }
-                     
-                            }
-                         
-                         }
-                        
-                        echo'  <a href="http://smp.no"><img src="main_styling/velg.png"></a>
+                    echo'  <a href="http://smp.no"><img src="main_styling/velg.png"></a>
                         <a href="http://reddit.com"><img src="main_styling/config.png"></a>
                     </div></div></div>';
-                    }
-                   
-                            
-                    ?>
+                }
+                ?>
 
-   
-    </body>
-</html>                 
+
+                </body>
+                </html>                 
