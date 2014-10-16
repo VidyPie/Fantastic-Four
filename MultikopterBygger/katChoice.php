@@ -37,7 +37,13 @@ Fantastic Four
 
             <div id="wrapper">
                 <div id="content">
-                    Motor
+                    <form name="IhaveNoIdea" method="POST">
+                        <select name="komponenter">
+                        <option value="motor.php">Motor</option>
+                        <option value="propell.php">Propell</option>
+                        </select>
+                        <input type="submit" name="submit" value="Yes">
+                    </form>
                 </div>
             </div>
         </div>

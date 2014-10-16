@@ -1,3 +1,10 @@
+form {
+    position:relative;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+}
 
 #banner{
     width: 100%;
@@ -17,6 +24,7 @@
 }
 
 #wrapper{
+    margin-top: 110px;
     margin-left: auto;
     margin-right: auto;
     width: 90%;
@@ -41,72 +49,23 @@
     width: 100%;
 }
 
-div.intro 
+#intro 
 {
-    margin-top: 15%;
     margin-right: 0px;
     text-align: center;
     margin-right: 0;
     min-width: 800px;
 }
 
-p.intro{
+intro p{
     font-size:30px;
 }
 
-div.startbutton{
+#startbutton{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     min-width: 800px;
-}
-
-div.frame{
-    display: block;
-    position:relative;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    min-width: 500px;
-}
-
-div.inframe_text{
-    display:block;
-    font-size: 20px;
-    left: 33%;
-    width:33%;
-    margin-right: auto;
-    margin-left: auto;
-    text-align: center;
-    min-width: 500px;
-}
-
-form {
-    position:relative;
-    text-align: left;
-    margin-left: auto;
-    margin-right: auto;
-    z-index: 1;
-    margin-top: 170px;
-}
-
-img.frametest{
-    width:100%;
-    min-width: 400px;
-    min-height: 500px;
-    z-index:2;
-
-}
-
-div.frame2{
-    position:relative;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    z-index: 1;
-    margin-top: 170px;
-    font-size:20px;
-    min-width: 850px;
 }
 
 div.left_box{
