@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+=======
+form {
+    position:relative;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+}
+
+>>>>>>> origin/master
 #banner{
     width: 100%;
     position: fixed;
@@ -16,6 +27,7 @@
 }
 
 #wrapper{
+    margin-top: 110px;
     margin-left: auto;
     margin-right: auto;
     width: 90%;
@@ -41,7 +53,11 @@
     width: 100%;
 }
 
+<<<<<<< HEAD
 #intro
+=======
+#intro 
+>>>>>>> origin/master
 {
     margin-right: 0px;
     text-align: center;
@@ -49,7 +65,11 @@
     min-width: 800px;
 }
 
+<<<<<<< HEAD
 #intro p{
+=======
+intro p{
+>>>>>>> origin/master
     font-size:30px;
 }
 
@@ -57,9 +77,16 @@
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+<<<<<<< HEAD
 }
 
 #left_box{
+=======
+    min-width: 800px;
+}
+
+div.left_box{
+>>>>>>> origin/master
     display: inline-block;
     border: solid;
     border-width: 5px;
