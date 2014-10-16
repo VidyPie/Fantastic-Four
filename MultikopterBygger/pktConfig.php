@@ -42,7 +42,7 @@ Fantastic Four
                         <?php
                         $con = $_SESSION['connection'];
 
-                        echo 'Velg komponenter for pakke:<br>';
+                        echo '<div id="dropdown"><p>Velg komponenter for pakke:</p>';
                         echo '<select name="motordropdown">';
                         echo '<option value="0">----Velg Motor----</option>';
                         $query = "SELECT * FROM motor";
@@ -106,7 +106,7 @@ Fantastic Four
                         ?>
                         <p>Gi en kort beskrivelse av pakken:</p>
                         <textarea required="yes" id="beskr" name="beskrfelt" rows="8"></textarea>
-                        
+                </div>
                     
                     Velg hvilke kategorier pakken skal ligge under:
                     <table border="1">
