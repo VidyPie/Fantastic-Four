@@ -77,6 +77,10 @@ form {
     //float:left;
 }
 
+#left_box img{
+    width:100px;
+}
+
 #right_box{
     display: inline-block;
     border:solid;
