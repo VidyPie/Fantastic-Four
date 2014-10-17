@@ -67,11 +67,18 @@ Fantastic Four
                     $result = mysqli_query($con, $query);
                     while ($row = mysqli_fetch_array($result)) {
                         $motorID = $row['MotorID'];
-                        $_SESSION['motorSelected'] = $motorID;
                         $escID = $row['ESCID'];
                         $batteriID = $row['BatteriID'];
                         $kontrollBrettID = $row['KontrollbrettID'];
                         $proppellID = $row['PropellID'];
+
+
+                        //sender videre til config side...
+                        $_SESSION['motorSelected'] = $motorID;
+                        $_SESSION['propellSelected'] = $proppellID;
+                        $_SESSION['batteriSelected'] = $batteriID;
+                        $_SESSION['kontrollBrettSelected'] = $kontrollBrettID;
+                        $_SESSION['ESCSelected'] = $escID;
                     }
                     echo ' <div id="left_box"><b>Forslag 1</b> <br><br>';
                     $query = "SELECT * FROM `oppskrift` WHERE `KomponenterID` = '" . $komponentID . "';";

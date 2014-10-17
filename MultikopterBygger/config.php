@@ -46,8 +46,19 @@ Fantastic Four
                 <form name="components2" method="POST">
                     <?php
                     $con = $_SESSION['connection'];
-                    echo '<div id="dropdown"><p>Komponenter</p>';
+                    echo '<div id="configMagic"><p>Komponenter</p>';
+
                     $motorID = $_SESSION['motorSelected'];
+                    $propellID = $_SESSION['propellSelected'];
+                    $batteriID = $_SESSION['batteriSelected'];
+                    $kontrollBrettID = $_SESSION['kontrollBrettSelected'];
+                    $ESCID = $_SESSION['ESCSelected'];
+
+                    $tableInsertQuery = "INSERT INTO `nyttkopter` ( `nyID`, `MotorID`, `BatteriID`, `KontrollbrettID`, `PropellID`, `ESCID` ) VALUES ( 1," 
+                        . $motorID . "," . $batteriID . "," . $kontrollBrettID . "," . $propellID . "," . $ESCID . ");";
+                    
+                    mysqli_query($con, $tableInsertQuery);
+
                     $motorquery = "SELECT `Navn` FROM motor WHERE MotorID=" . $motorID;
                     $chosenMotor = mysqli_query($con, $motorquery);
                         echo '<select name="motordropdown">';
@@ -63,7 +74,20 @@ Fantastic Four
                             echo '<option value="' . $idResult . '">' . $nameResult . '</option>';
                         }
                         echo '</select><br>';
+
+                       if (isset($_POST['button1'])) 
+                        { 
+                            $con = $_SESSION['connection'];
+                            $extSequence = "DELETE FROM nyttkopter WHERE nyID = 1;";
+                            mysqli_query($con, $extSequence);
+                            echo '<div id="exterminate">TABLE nyttkopter in DB kopterbygger is cleared!</div>'; 
+                        }
+
+                     mysqli_close($con);   
                 ?>
+                </form>
+                <form id="eButton" method="POST" action=''>
+                    <input type="submit" name="button1"  value="Exterminate">
                 </form>
             </div>
         </div>

@@ -91,7 +91,19 @@ form {
     margin-left: 100px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
 
+#configMagic{
+
+}
+
+#eButton{
+    text-align: center;
+}
+
+#exterminate {
+    text-align: center;
+    color: red;
 }
 
 img.banner{
@@ -116,3 +128,4 @@ img.extension{
     border-style: solid; border-width: 2px;
     border-color: ButtonHighlight ButtonShadow ButtonShadow ButtonHighlight;
 }
+
