@@ -124,8 +124,8 @@ Fantastic Four
                         while ($row = mysqli_fetch_array($result)) {
                             echo '<tr>';
                             echo "\n" . '<td><input type="checkbox" name="specs[]" value="' . $row['SpesifikasjonID'] . '"></td>';
-                            echo "\n" . '<td>' . $row['Rekkevidde'] . '</td>';
                             echo "\n" . '<td>' . $row['Videoopptak'] . '</td>';
+                            echo "\n" . '<td>' . $row['Rekkevidde'] . '</td>';
                             echo "\n" . '<td>' . $row['GPS'] . '</td>';
                             echo "\n" . '</tr>' . "\n";
                         }
