@@ -102,7 +102,7 @@ Fantastic Four
                             $cResult = $row['C_max'];
                             $sResult = $row['Celler'];
                             $idResult = $row['BatteriID'];
-                            echo '<option value="' . $idResult . '">' . $sResult
+                            echo '<option revalue="' . $idResult . '">' . $sResult
                             . 'S ' . $mahResult . 'mah ' . $cResult . 'C' . '</option>';
                         }
                         echo '</select><br>';
