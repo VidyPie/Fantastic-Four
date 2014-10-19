@@ -47,26 +47,40 @@ Fantastic Four
                     <input type="submit" name="Login">
                 </form>
                 <?php
+                //lolSkittenKode - xXxYOLOSWAGNOSCOPE#420#xXx /s
                 if (isset($_POST['Login'])) {
                     $con = $_SESSION['connection'];
 
                     $usrName = $_POST['usr'];
                     $passwd = $_POST['passwd'];
 
-                    $Query = "SELECT `username`,`password` FROM `users` WHERE username ='" . $usrName . "'";
-                    $result = mysqli_query($con, $Query);
-                    while ($row = mysqli_fetch_array($result)) {
-                        $dbUsername = $row['username'];
-                        $dbPasswd = $row['password'];
-                    }
-                    if ($passwd == $dbPasswd) {
-                        echo $dbUsername . ' you glorious motherfucker! WELCOME!';
-                        header('Location: administrasjon.html');
-                    } elseif ($passwd != $dbPasswd) {
+                    if ($usrName == NULL) {
                         echo '<h1>STOP RIGHT THERE CRIMINAL SCUM!</h1><br>';
                         echo '<img src="main_styling/wowSuchPassword.jpg" alt="LOLNICETRY!">';
+                        exit();
                     }
-                } else {
+                    $Query = "SELECT `username`,`password` FROM `users` WHERE username ='" . $usrName . "'";
+                    $result = mysqli_query($con, $Query);
+
+                    $row = mysqli_fetch_array($result);
+                    $dbUsername = $row['username'];
+                    $dbPasswd = $row['password'];
+
+                    if (empty($row)) {
+                        echo '<h1>STOP RIGHT THERE CRIMINAL SCUM! YOU ARE NOT A USER!</h1><br>';
+                        echo '<img src="main_styling/wowSuchPassword.jpg" alt="LOLNICETRY!">';
+                        exit();
+                    } else {
+                        if ($passwd == $dbPasswd) {
+                            header('Location: administrasjon.html');
+                        } elseif ($passwd != $dbPasswd) {
+                            echo '<h1>STOP RIGHT THERE CRIMINAL SCUM!</h1><br>';
+                            echo '<img src="main_styling/wowSuchPassword.jpg" alt="LOLNICETRY!">';
+                        }
+                    }
+                }
+                //if usrname not in db exit()
+                else {
                     echo '<br>Login motherfucker! I dare you! I double dare you!!';
                 }
                 ?>
