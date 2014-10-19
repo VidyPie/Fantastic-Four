@@ -36,7 +36,7 @@ Fantastic Four
             <img class="extension" src="main_styling/bannerext.png" alt="graybox">
         </div>
         <div id="wrapper">
-            <div id="content">
+            <div id="leftcontent">
 
                 <?php
                 if (isset($_POST['part'])) {

@@ -49,10 +49,11 @@ Fantastic Four
                     <input type="text" name="navnInput" placeholder="Navn" size="50"><br>
                     <input type="submit" name="submit">
                 </form>
+                <h1>Redundant! Not in operation!</h1>
                 <?php
                 if (isset($_POST['submit'])) {
                     $con = $_SESSION['connection'];
-                    
+
                     $kvInput = $_POST['kVInput'];
                     $ampInput = $_POST['ampInput'];
                     $prisInput = $_POST['prisInput'];
@@ -61,17 +62,17 @@ Fantastic Four
                     $CE_max = $_POST['CE_maxInput'];
                     $CE_min = $_POST['CE_minInput'];
                     $navn = $_POST['navnInput'];
-                    
+
                     $Query = "SELECT MotorID FROM motor ORDER BY MotorID DESC LIMIT 1";
                     $result = mysqli_query($con, $Query);
                     while ($row = mysqli_fetch_array($result)) {
                         $lMotorID = $row['MotorID'];
                     }
                     $nMotorID = $lMotorID + 1;
-                    
+
                     echo $nMotorID . '<br>' . $kvInput . '<br>' . $ampInput . '<br>' . $prisInput . '<br>' . $prop_dia . '<br>' . $prop_vin . '<br>' . $CE_max . '<br>' . $CE_min . '<br>' . $navn;
-                    
-                    
+
+
 //                    $query = "INSERT INTO `motor`(`MotorID`, `kV`, `Amps`, `Pris`, `Prop_dia`, `Prop_vin`, `CE_MAX`, `CE_MIN`, `Navn`) VALUES (,$kvInput,$ampInput,$prisInput,$prop_dia,$prop_vin,$CE_max,$CE_min,$navn)";
                 }
                 ?>

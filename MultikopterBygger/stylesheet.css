@@ -20,7 +20,6 @@ form {
     margin-right: auto;
     width: 90%;
     box-shadow: 1px 1px 1px 1px #1f1f1f;
-    text-align: center;
     min-width: 1000px;
 }
 
@@ -29,6 +28,14 @@ form {
     padding-right: 10px;
     padding-top: 20px;
     padding-bottom: 20px;
+    text-align: center;
+}
+
+#leftContent {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;    
 }
 
 #dropdown {
