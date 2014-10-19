@@ -57,6 +57,7 @@ Fantastic Four
                     if ($usrName == NULL) {
                         echo '<h1>STOP RIGHT THERE CRIMINAL SCUM!</h1><br>';
                         echo '<img src="main_styling/wowSuchPassword.jpg" alt="LOLNICETRY!">';
+                        echo '<br>Hint: Det kan hjelpe om du skriver inn brukernavn..........';
                         exit();
                     }
                     $Query = "SELECT `username`,`password` FROM `users` WHERE username ='" . $usrName . "'";
