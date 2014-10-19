@@ -1,3 +1,21 @@
+<?php
+session_start();
+
+$host = "127.0.0.1";
+$port = 3306;
+$socket = "/tmp/mysql.sock";
+$user = "user";
+$password = "123";
+$dbname = "kopterbygger";
+
+$con = mysqli_connect($host, $user, $password, $dbname, $port, $socket);
+
+$_SESSION['connection'] = $con;
+
+if (mysqli_connect_errno()) {
+    echo "Failed to connect ot MySQL: " . mysqli_connect_errno();
+}
+?>
 <!DOCTYPE html>
 <!--
 Fantastic Four
@@ -19,15 +37,14 @@ Fantastic Four
         </div>
         <div id="wrapper">
             <div id="content">
-                
+
                 <?php
-                if(isset($_POST['part'])) {
+                if (isset($_POST['part'])) {
                     $part = $_POST['part'];
-                }
-                else{
+                } else {
                     $part = '';
                 }
-                
+
                 echo'
                 <form>
                     <select name="part" onchange="document.location.href=this.value">
@@ -39,7 +56,7 @@ Fantastic Four
                         <option value="addParts.php?f=addbat">Batteri</option>
                     </select>
                 </form><br>';
-                
+
                 if (function_exists($_GET['f'])) {
                     $_GET['f']();
                 }
@@ -58,6 +75,34 @@ Fantastic Four
                         <input type="text" name="navnInput" placeholder="Navn" size="50"><br>
                         <input type="submit" name="submit">
                     </form>';
+
+                    if (isset($_POST['submit'])) {
+                        $con = $_SESSION['connection'];
+
+                        $kvInput = $_POST['kVInput'];
+                        $ampInput = $_POST['ampInput'];
+                        $prisInput = $_POST['prisInput'];
+                        $prop_dia = $_POST['prop_diaInput'];
+                        $prop_vin = $_POST['prop_vinInput'];
+                        $CE_max = $_POST['CE_maxInput'];
+                        $CE_min = $_POST['CE_minInput'];
+                        $navn = $_POST['navnInput'];
+
+                        $Query = "SELECT MotorID FROM motor ORDER BY MotorID DESC LIMIT 1";
+                        $result = mysqli_query($con, $Query);
+                        while ($row = mysqli_fetch_array($result)) {
+                            $lMotorID = $row['MotorID'];
+                        }
+                        $nMotorID = $lMotorID + 1;
+                        echo $nMotorID . $lMotorID;
+
+                        //echo $nMotorID . '<br>' . $kvInput . '<br>' . $ampInput . '<br>' . $prisInput . '<br>' . $prop_dia . '<br>' . $prop_vin . '<br>' . $CE_max . '<br>' . $CE_min . '<br>' . $navn;
+                        $Query = "INSERT INTO `motor`(`MotorID`, `kV`, `Amps`, `Pris`, `Prop_dia`, `Prop_vin`, `CE_MAX`, `CE_MIN`, `Navn`) VALUES ("
+                                . $nMotorID . "," . $kvInput . "," . $ampInput . "," . $prisInput . "," . $prop_dia . "," . $prop_vin . "," . $CE_max
+                                . "," . $CE_min . "," . $navn . ")";
+                        mysqli_query($con, $Query);
+                        mysqli_close($con);
+                    }
                 }
                 ?>
             </div>

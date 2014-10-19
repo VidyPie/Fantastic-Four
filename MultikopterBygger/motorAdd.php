@@ -63,7 +63,7 @@ Fantastic Four
                     $navn = $_POST['navnInput'];
                     
                     $Query = "SELECT MotorID FROM motor ORDER BY MotorID DESC LIMIT 1";
-                    $result = myscli_query($con, $Query);
+                    $result = mysqli_query($con, $Query);
                     while ($row = mysqli_fetch_array($result)) {
                         $lMotorID = $row['MotorID'];
                     }
