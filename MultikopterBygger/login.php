@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+
+if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == TRUE) {
+    header('Location: administrasjon.php');
+}
+
 $host = "127.0.0.1";
 $port = 3306;
 $socket = "/tmp/mysql.sock";
@@ -73,7 +78,8 @@ Fantastic Four
                         exit();
                     } else {
                         if ($passwd == $dbPasswd) {
-                            header('Location: administrasjon.html');
+                            header('Location: administrasjon.php');
+                            $_SESSION['loggedin'] = TRUE;
                         } elseif ($passwd != $dbPasswd) {
                             echo '<h1>STOP RIGHT THERE CRIMINAL SCUM!</h1><br>';
                             echo '<img src="main_styling/wowSuchPassword.jpg" alt="LOLNICETRY!">';
