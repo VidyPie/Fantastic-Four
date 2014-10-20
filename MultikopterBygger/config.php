@@ -1,11 +1,6 @@
 <?php
 session_start();
 
-
-if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == FALSE) {
-    header('Location: login.php');
-}
-
 $host = "127.0.0.1";
 $port = 3306;
 $socket = "/tmp/mysql.sock";
@@ -49,16 +44,18 @@ Fantastic Four
 
                  <script type="text/javascript" language="javascript">
                         function openMotorTable() {
-                        var motorTable = document.getElementById("motorTable");
+                            var motorTable = document.getElementById("motorTable");
+                            if (motorTable.style.display == "none"){
+                                motorTable.style.display = "block";
+                            }
+                            else{
+                                motorTable.style.display = "none";
+                            }
+                        }
 
-                        if (motorTable.style.display == "none"){
-                            motorTable.style.display = "block";
-                        }else{
-                        motorTable.style.display = "none";
-
-        }
-    }
-  
+                        function pageRefresh() {
+                            location.reload(true);
+                        }
                 </script>
 
                 <form name="components2" method="POST">
@@ -96,8 +93,8 @@ Fantastic Four
                         $motorKVQuery = "SELECT `kV` FROM motor WHERE MotorID=" . $motorID;
                         $motorKV = mysqli_query($con, $motorKVQuery);
 
-                        $chosenMotor = mysqli_query($con, $motorquery);
-                        echo '<div id="mainComponent">' . $chosenMotor->fetch_object()->Navn . '</div>';    
+                        $chosenMotor2 = mysqli_query($con, $motorquery);
+                        echo '<div id="mainComponent">' . $chosenMotor2->fetch_object()->Navn . '</div>';    
                         echo '<div id="configstats">kV <div id="pureStat">&nbsp' . $motorKV->fetch_object()->kV . '&nbsp</div></div>';
                         
 
@@ -112,29 +109,26 @@ Fantastic Four
                             echo '<div id="exterminate">TABLE nyttkopter in DB kopterbygger is cleared!</div>'; 
                         }
 
-                     mysqli_close($con);   
+                        mysqli_close($con);
                 ?>
                 </form>
                 <p onclick="openMotorTable()">CLICK</p>
                 <table id="motorTable" style="display:none;">
                     <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
-                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
-                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
-                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
-                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
-                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
-                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
-                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
-                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
-                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
-                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
-                    
+                    <?php
+                        $con = $_SESSION['connection'];
+                        $Query = "SELECT * FROM motor WHERE MotorID != " . $motorID;
+                        $result = mysqli_query($con, $Query);
+                        while ($row = mysqli_fetch_array($result)) {
+                            echo '<tr><td>' . $row['Navn'] . "</td><td>" . $row['kV'] . "</td><td>" . $row['Pris'] . "</td>";
+                            
+                            }  
+                            mysqli_close($con);
+                    ?>
                 </table>
                 <form id="eButton" method="POST" action=''>
                     <input type="submit" name="button1"  value="Exterminate">
                 </form>
-
-
             </div>
         </div>
     </body>
