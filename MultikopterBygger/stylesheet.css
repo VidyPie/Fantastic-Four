@@ -136,3 +136,22 @@ img.extension{
     border-color: ButtonHighlight ButtonShadow ButtonShadow ButtonHighlight;
 }
 
+#configstats{
+    margin-top: 5px;
+    display: block;
+
+    margin-right: 10px;
+}
+
+#pureStat{
+    display: inline-block;
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+    color:red;
+}
+
+#mainComponent{
+    font-weight: bold;
+}
+

@@ -43,6 +43,20 @@ Fantastic Four
         <div id="wrapper">
             <div id="content">
 
+                 <script type="text/javascript" language="javascript">
+                        function openMotorTable() {
+                        var motorTable = document.getElementById("motorTable");
+
+                        if (motorTable.style.display == "none"){
+                            motorTable.style.display = "block";
+                        }else{
+                        motorTable.style.display = "none";
+
+        }
+    }
+  
+                </script>
+
                 <form name="components2" method="POST">
                     <?php
                     $con = $_SESSION['connection'];
@@ -54,7 +68,7 @@ Fantastic Four
                     $kontrollBrettID = $_SESSION['kontrollBrettSelected'];
                     $ESCID = $_SESSION['ESCSelected'];
 
-                    $tableInsertQuery = "INSERT INTO `nyttkopter` ( `nyID`, `MotorID`, `BatteriID`, `KontrollbrettID`, `PropellID`, `ESCID` ) VALUES ( 1," 
+                    $tableInsertQuery =   "INSERT INTO nyttkopter ( `nyID`, `MotorID`, `BatteriID`, `KontrollbrettID`, `PropellID`, `ESCID` ) VALUES ( 1," 
                         . $motorID . "," . $batteriID . "," . $kontrollBrettID . "," . $propellID . "," . $ESCID . ");";
                     
                     mysqli_query($con, $tableInsertQuery);
@@ -75,6 +89,17 @@ Fantastic Four
                         }
                         echo '</select><br>';
 
+                        $motorKVQuery = "SELECT `kV` FROM motor WHERE MotorID=" . $motorID;
+                        $motorKV = mysqli_query($con, $motorKVQuery);
+
+                        $chosenMotor = mysqli_query($con, $motorquery);
+                        echo '<div id="mainComponent">' . $chosenMotor->fetch_object()->Navn . '</div>';    
+                        echo '<div id="configstats">kV <div id="pureStat">&nbsp' . $motorKV->fetch_object()->kV . '&nbsp</div></div>';
+                        
+
+
+  
+                   
                        if (isset($_POST['button1'])) 
                         { 
                             $con = $_SESSION['connection'];
@@ -86,9 +111,26 @@ Fantastic Four
                      mysqli_close($con);   
                 ?>
                 </form>
+                <p onclick="openMotorTable()">CLICK</p>
+                <table id="motorTable" style="display:none;">
+                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
+                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
+                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
+                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
+                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
+                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
+                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
+                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
+                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
+                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
+                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
+                    
+                </table>
                 <form id="eButton" method="POST" action=''>
                     <input type="submit" name="button1"  value="Exterminate">
                 </form>
+
+
             </div>
         </div>
     </body>
