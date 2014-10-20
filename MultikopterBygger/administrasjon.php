@@ -1,3 +1,8 @@
+<?PHP 
+if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == FALSE) {
+    header('Location: login.php');
+}
+?>
 <!DOCTYPE html>
 <!--
 Fantastic Four
