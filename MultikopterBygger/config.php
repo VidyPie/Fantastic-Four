@@ -1,6 +1,10 @@
-
 <?php
 session_start();
+
+
+if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == FALSE) {
+    header('Location: login.php');
+}
 
 $host = "127.0.0.1";
 $port = 3306;

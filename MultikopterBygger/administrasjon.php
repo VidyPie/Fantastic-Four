@@ -1,3 +1,6 @@
+<?PHP
+include 'checklogin.php';
+?>
 <!DOCTYPE html>
 <!--
 Fantastic Four

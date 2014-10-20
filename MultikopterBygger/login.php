@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == TRUE) {
+    header('Location: administrasjon.php');
+}
+
 $host = "127.0.0.1";
 $port = 3306;
 $socket = "/tmp/mysql.sock";
@@ -41,6 +45,13 @@ Fantastic Four
         </div>
         <div id="wrapper">
             <div id="leftContent">
+                <?PHP
+                if(isset($_GET['r'])) {
+                    if($_GET['r'] == 'timeout'){
+                    echo 'Session timed out, please log in again:';
+                    }
+                }
+                ?>
                 <form name="Login" method="POST">
                     <input type="text" name="usr" placeholder="username"><br>
                     <input type="password" name="passwd" placeholder="Passord"><br>
@@ -73,7 +84,9 @@ Fantastic Four
                         exit();
                     } else {
                         if ($passwd == $dbPasswd) {
-                            header('Location: administrasjon.html');
+                            $_SESSION['loggedin'] = TRUE;
+                            $_SESSION['timeout'] = time();
+                            header('Location: administrasjon.php');
                         } elseif ($passwd != $dbPasswd) {
                             echo '<h1>STOP RIGHT THERE CRIMINAL SCUM!</h1><br>';
                             echo '<img src="main_styling/wowSuchPassword.jpg" alt="LOLNICETRY!">';
