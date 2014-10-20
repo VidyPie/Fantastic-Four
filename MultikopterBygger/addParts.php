@@ -2,7 +2,7 @@
 session_start();
 
 
-if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == FALSE) {
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == FALSE) {
     header('Location: login.php');
 }
 
@@ -101,13 +101,25 @@ Fantastic Four
                         $nMotorID = $lMotorID + 1;
                         echo $nMotorID . $lMotorID;
 
-                        //echo $nMotorID . '<br>' . $kvInput . '<br>' . $ampInput . '<br>' . $prisInput . '<br>' . $prop_dia . '<br>' . $prop_vin . '<br>' . $CE_max . '<br>' . $CE_min . '<br>' . $navn;
                         $Query = "INSERT INTO `motor`(`MotorID`, `kV`, `Amps`, `Pris`, `Prop_dia`, `Prop_vin`, `CE_MAX`, `CE_MIN`, `Navn`) VALUES ("
                                 . $nMotorID . "," . $kvInput . "," . $ampInput . "," . $prisInput . "," . $prop_dia . "," . $prop_vin . "," . $CE_max
                                 . "," . $CE_min . "," . $navn . ")";
                         mysqli_query($con, $Query);
                         mysqli_close($con);
                     }
+                }
+
+                function addEsc() {
+                    echo '
+                    Angi verdier som skal legges inn for ESC-en<br>
+                    <form name="escAddForm" method="POST">
+                        <input min="0" type="number" name="ampInput" placeholder="Ampere"><br>
+                        <input min="0" type="number" name="ce_maxInput" placeholder="Lipocell max"><br>
+                        <input min="0" type="number" name="ce_minInput" placeholder="Lipocell min"><br>
+                        <input min="0" type="number" name="prisInput" placeholder="Pris"><br>
+                        <input size="50" type="text" name="navnInput" placeholder="Navn"><br>
+                        <input type="submit" name="submit">
+                    </form>';
                 }
                 ?>
             </div>
