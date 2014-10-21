@@ -1,4 +1,3 @@
-
 <?php
 
 session_start();
@@ -13,9 +12,7 @@ $dbname = "kopterbygger";
 $con=  mysqli_connect($host, $user, $password, $dbname, $port, $socket);
 
 $_SESSION['connection'] = $con;
-	
 	$q=$_REQUEST["q"];
-	$_SESSION['motorSelected'] = $q;
-
+	$_SESSION['ESCSelected'] = $q;
  mysqli_close($con);
 ?>
