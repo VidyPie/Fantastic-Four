@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 $host = "127.0.0.1";
@@ -42,26 +43,17 @@ Fantastic Four
         <div id="wrapper">
             <div id="content">
 
-                 <script type="text/javascript" language="javascript">
-                        function openMotorTable() {
-                            var motorTable = document.getElementById("motorTable");
-                            if (motorTable.style.display == "none"){
-                                motorTable.style.display = "block";
-                            }
-                            else{
-                                motorTable.style.display = "none";
-                            }
-                        }
-
-                        function pageRefresh() {
-                            location.reload(true);
-                        }
-                </script>
+                 
 
                 <form name="components2" method="POST">
                     <?php
+
+                    
+
                     $con = $_SESSION['connection'];
                     echo '<div id="configMagic"><p>Komponenter</p>';
+                    $testVar = $_SESSION['motorSelected'];
+                    echo $testVar;
 
                     $motorID = $_SESSION['motorSelected'];
                     $propellID = $_SESSION['propellSelected'];
@@ -109,19 +101,21 @@ Fantastic Four
                             echo '<div id="exterminate">TABLE nyttkopter in DB kopterbygger is cleared!</div>'; 
                         }
 
-                        mysqli_close($con);
-                ?>
-                </form>
-                <p onclick="openMotorTable()">CLICK</p>
-                <table id="motorTable" style="display:none;">
-                    <tr><td>Navn</td><td>kV</td><td>Pris</td></tr>
-                    <?php
-                        $con = $_SESSION['connection'];
-                        $Query = "SELECT * FROM motor WHERE MotorID != " . $motorID;
-                        $result = mysqli_query($con, $Query);
+                
+                echo '</form>';
+                echo '<p id="dynamicTable" onclick="openMotorTable()">CLICK</p>';
+                echo '<table id="motorTable" style="display:none;">';
+                echo '<tr><td>Navn</td><td>kV</td><td>Pris</td><td></td></tr>';
+                        $compMotorQuery = "SELECT * FROM motor WHERE MotorID != " . $motorID;  
+                        $result = mysqli_query($con, $compMotorQuery);
                         while ($row = mysqli_fetch_array($result)) {
-                            echo '<tr><td>' . $row['Navn'] . "</td><td>" . $row['kV'] . "</td><td>" . $row['Pris'] . "</td>";
-                            
+                            $thisMotor = $row['MotorID'];
+                            echo print($thisMotor); 
+                            echo '<br>';
+
+                            echo '<tr><td>' . $row['Navn'] . '</td><td>' . $row['kV'] . '</td><td>' . $row['Pris'] . '</td><td><button onclick="motorSelected(';
+                            echo print($thisMotor);
+                            echo ')">Velg</button></td>';
                             }  
                             mysqli_close($con);
                     ?>
@@ -131,5 +125,44 @@ Fantastic Four
                 </form>
             </div>
         </div>
+
+<script type="text/javascript" language="javascript">
+                        function openMotorTable() {
+                            var motorTable = document.getElementById("motorTable");
+                            if (motorTable.style.display == "none"){
+                                motorTable.style.display = "block";
+                            }
+                            else{
+                                motorTable.style.display = "none";
+                            }
+                        }
+
+                        function pageRefresh() {
+                            location.reload(true);
+                        }
+
+                        function motorSelected(thisMotor2) {
+                            var thisMotorJS = ((thisMotor2 - 1) / 10);
+                            var xmlhttp=new XMLHttpRequest();
+                            xmlhttp.open("GET","data.php?q="+thisMotorJS,true);
+                            xmlhttp.send();
+                            //<?php 
+                                //$con = $_SESSION['connection'];
+                                //$thisMotorPHP = 10;
+                                //$thisMotorPHP = $get['thisMotorJS'];
+                                //$getNewMotorQuery = "SELECT * FROM motor WHERE MotorID = " . $_GET['thisMotorJS'];
+                                //$getNewMotorQuery = "SELECT * FROM motor WHERE MotorID = " . $thisMotorPHP;
+                                //$_SESSION['motorSelected'] = $_GET['thisMotorJS'];
+                                //$_SESSION['motorSelected'] = mysqli_query($con, $getNewMotorQuery);
+                                //mysqli_close($con);
+                            //?>
+                                pageRefresh();
+                            }
+                        
+
+                </script>
+
     </body>
 </html>
+
+
