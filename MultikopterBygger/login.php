@@ -45,7 +45,7 @@ Fantastic Four
         </div>
         <div id="wrapper">
             <div id="leftContent">
-                <?PHP
+                <?php
                 if(isset($_GET['r'])) {
                     if($_GET['r'] == 'timeout'){
                     echo 'Session timed out, please log in again:';

@@ -36,8 +36,8 @@ Fantastic Four
             <img class="extension" src="main_styling/bannerext.png" alt="graybox">
         </div>
         <div id="wrapper">
-            <div id="leftcontent">
-
+            <div id="leftContent">
+                <br><h2>Velg hvilken del du ønsker å legge til i databasen:</h2>
                 <?php
                 if (isset($_POST['part'])) {
                     $part = $_POST['part'];
@@ -73,7 +73,7 @@ Fantastic Four
                         <input min="0" type="number" name="CE_maxInput" placeholder="Lipocell max"><br>
                         <input min="0" type="number" name="CE_minInput" placeholder="Lipocell min"><br>
                         <input type="text" name="navnInput" placeholder="Navn" size="50"><br>
-                        <input type="submit" name="submit">
+                        <input type="submit" name="submit" value="Legg til">
                     </form>';
 
                     if (isset($_POST['submit'])) {
@@ -110,7 +110,7 @@ Fantastic Four
                         <input min="0" type="number" name="ce_minInput" placeholder="Lipocell min"><br>
                         <input min="0" type="number" name="prisInput" placeholder="Pris"><br>
                         <input size="50" type="text" name="navnInput" placeholder="Navn"><br>
-                        <input type="submit" name="submit">
+                        <input type="submit" name="submit" value="Legg til">
                     </form>';
 
                     if (isset($_POST['submit'])) {
@@ -144,7 +144,7 @@ Fantastic Four
                         <input min="0" type="number" name="prisInput" placeholder="Pris"><br>
                         <input size="50" type="text" name="navnInput" placeholder="Navn"><br>
                         GPS <input type="checkbox" name="gpsInput"><br>
-                        <input type="submit" name="submit">
+                        <input type="submit" name="submit" value="Legg til">
                     </form>';
 
                     if (isset($_POST['submit'])) {
@@ -183,7 +183,7 @@ Fantastic Four
                         <input min="0" type="number" name="prop_vinInput" placeholder="Propell vinklel"><br>
                         <input min="0" type="number" name="prisInput" placeholder="Pris"><br>
                         <input size="50" type="text" name="navnInput" placeholder="Navn"><br>
-                        <input type="submit" name="submit">
+                        <input type="submit" name="submit" value="Legg til">
                     </form>';
                     if (isset($_POST['submit'])) {
                         $con = $_SESSION['connection'];
@@ -211,21 +211,21 @@ Fantastic Four
                         <input min="0" type="number" name="mah" placeholder="mah"><br>
                         <input min="0" type="number" name="celler" placeholder="Antall celler"><br>
                         <input min="0" type="number" name="pris" placeholder="Pris"><br>
-                        <input type="submit" name="submit">
+                        <input type="submit" name="submit" value="Legg til">
                     </form>';
                     if (isset($_POST['submit'])) {
                         $con = $_SESSION['connection'];
-                        
+
                         $cMax = $_POST['cMax'];
                         $mah = $_POST['mah'];
                         $celler = $_POST['celler'];
                         $pris = $_POST['pris'];
-                        
+
                         $Query = "SELECT `BatteriID` FROM batteri ORDER BY `BatteriID` DESC LIMIT 1";
                         $result = mysqli_query($con, $Query);
                         $row = mysqli_fetch_array($result);
                         $lBatId = $row['BatteriID'] + 1;
-                        
+
                         $Query = "INSERT INTO `batteri`(`BatteriID`, `C_max`, `mah`, `Celler`, `Pris`) "
                                 . "VALUES (" . $lBatId . ',' . $cMax . ',' . $mah . ',' . $celler . ',' . $pris . ")";
                         mysqli_query($con, $Query);
