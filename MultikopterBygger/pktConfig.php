@@ -174,14 +174,13 @@ Fantastic Four
                         
                             mysqli_query($con, $query);
                            
-                            if(mysqli_sqlstate($con) == 23000){
-                            echo 'ESC is not compatible with the engine';
-                                
-                            }
+                            
                             
                     
                         
-                    }
+                    } if(mysqli_sqlstate($con) == 23000){
+                            echo 'ESC is not compatible with the engine';                             
+                            }
                 } elseif ($vals > 0) {
                     echo 'Alle verdier må velges';
                 } elseif (empty($_POST['specs'])) {
