@@ -42,8 +42,6 @@ Fantastic Four
         </div>
         <div id="wrapper">
             <div id="content">
-
-
                 <?php
                 $con = $_SESSION['connection'];
                 $videoopptak = $_POST['videoopptak'];
