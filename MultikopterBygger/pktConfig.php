@@ -172,7 +172,12 @@ Fantastic Four
                                         . "`KomponenterID`, `Beskrivelse`) VALUES (" . $oid . ', ' . $spec 
                                         . ", " . $partsid . ", '" . $_POST['beskrfelt'] . "');";
                                 $oid++;
-                                mysqli_query($con, $query);
+                                try {
+                                    mysqli_query($con, $query);
+                                } catch (mysqli_sql_exception $ex) {
+                                    echo $ex;
+                                }
+                                
                             }    
                             echo 'Suksess!';
                         } elseif ($vals > 0) {

@@ -22,8 +22,8 @@ Fantastic Four
         </div>
         <div id="wrapper">
             <div id="content">
-                <a class="abutton" href="addParts.php?f=">Legge til deler: forslag fra Niklas</a><br>
-                <a class="abutton" href="motorAdd.php">Legge til motor: Erik sin</a><br>
+                <h2>Administrasjon</h2>
+                <a class="abutton" href="addParts.php?f=">Legg til deler</a><br><br>
                 <a class="abutton" href="pktConfig.php">Sette sammen pakker</a>
             </div>
         </div>
