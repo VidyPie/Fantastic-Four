@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$host = "127.0.0.1";
+$host = "localhost";
 $port = 3306;
 $socket = "/tmp/mysql.sock";
 $user = "user";
@@ -43,78 +43,44 @@ Fantastic Four
         <div id="wrapper">
             <div id="content">
                 <?php
-                $con = $_SESSION['connection'];
                 $videoopptak = $_POST['videoopptak'];
                 $airtime = $_POST['airtime'];
                 $gps = $_POST['gps'];
-                //$query = "SELECT * FROM oppskrift";
-                $query = "SELECT `SpesifikasjonID` FROM `spesifikasjoner` WHERE `Rekkevidde` = '" . $airtime . "' AND `Videoopptak` = '" . $videoopptak . "' AND `GPS` = '" . $gps . "';";
+                $specquery = "SELECT `SpesifikasjonID` FROM `spesifikasjoner` WHERE `Rekkevidde` = '"
+                        . $airtime . "' AND `Videoopptak` = '" . $videoopptak . "' AND `GPS` = '" . $gps . "';";
+                $specresult = mysqli_query($con, $specquery);
+                $srow = mysqli_fetch_array($specresult);
+                $specID = $srow['SpesifikasjonID'];
+
+                echo ' <div id="left_box"><b>Forslag 1</b> <br><br>';
+
+                $query = 'SELECT o.Beskrivelse, m.Navn AS motor, b.*, esc.Navn AS esc, kon.Navn AS kbrett, p.*  '
+                        . 'FROM spesifikasjoner AS s, oppskrift AS o, komponenter AS kom, motor AS m, batteri AS b, esc, kontrollbrett AS kon, propeller AS p'
+                        . 'WHERE s.SpesifikasjonID = o.SpesifikasjonID AND o.KomponenterID = kom.KomponenterID '
+                        . 'AND kom.MotorID = m.MotorID AND kom.BatteriID = b.BatteriID AND kom.ESCID = esc.ESCID '
+                        . 'AND kom.KontrollbrettID = kon.KontrollbrettID AND kom.PropellID = p.PropellID AND s.SpesifikasjonID = ' . $specID;
                 $result = mysqli_query($con, $query);
-
-
+                
                 while ($row = mysqli_fetch_array($result)) {
-                    $specID = $row['SpesifikasjonID'];
+                    echo $row ['motor'];
+                    echo "<br>";
+                    echo $row ['esc'];
+                    echo "<br>";
+                    echo $row ['kbrett'];
+                    echo "<br>";
+                    echo "<b>";
+                    echo $row['Beskrivelse'];
+                    echo "</b><br>";
+                    echo $row ['Prop_dia'] . '"x' . $row ['Prop_vin'];
+                    echo "<br>";
+                    echo $row ['Celler'] . 'S ' . $row ['mah'] . 'mah ' . $row ['C_max'] . 'C';
+                    echo "<br>";
                 }
 
 
-                $query = "SELECT KomponenterID FROM `oppskrift` WHERE `SpesifikasjonID` = '" . $specID . "';";
-                $result = mysqli_query($con, $query);
-                while ($row = mysqli_fetch_array($result)) {
-                    $komponentID = $row['KomponenterID'];
-                    $query = "SELECT * FROM `Komponenter` WHERE `KomponenterID` = '" . $komponentID . "';";
-                    $result = mysqli_query($con, $query);
-                    while ($row = mysqli_fetch_array($result)) {
-                        $motorID = $row['MotorID'];
-                        $escID = $row['ESCID'];
-                        $batteriID = $row['BatteriID'];
-                        $kontrollBrettID = $row['KontrollbrettID'];
-                        $proppellID = $row['PropellID'];
-
-
-                        //sender videre til config side...
-                        $_SESSION['motorSelected'] = $motorID;
-                        $_SESSION['propellSelected'] = $proppellID;
-                        $_SESSION['batteriSelected'] = $batteriID;
-                        $_SESSION['kontrollBrettSelected'] = $kontrollBrettID;
-                        $_SESSION['ESCSelected'] = $escID;
-                    }
-                    echo ' <div id="left_box"><b>Forslag 1</b> <br><br>';
-                    $query = "SELECT * FROM `oppskrift` WHERE `KomponenterID` = '" . $komponentID . "';";
-                    $result = mysqli_query($con, $query);
-                    while ($row = mysqli_fetch_array($result)) {
-                        $beskrivelseResult = $row['Beskrivelse'];
-                        echo "<b>";
-                        echo $beskrivelseResult;
-                        echo "</b><br>";
-                    }
-                    $motorquery = "SELECT `Navn` FROM `Motor` WHERE motorID=" . $motorID;
-                    $escquery = "SELECT `Navn` FROM `ESC` WHERE ESCID=" . $escID;
-                    $batteriquery = "SELECT * FROM `Batteri` WHERE BatteriID=" . $batteriID;
-                    $kontrollbrettquery = "SELECT `Navn` FROM `Kontrollbrett` WHERE KontrollbrettID=" . $kontrollBrettID;
-                    $propellquery = "SELECT * FROM `Propeller` WHERE PropellID=" . $proppellID;
-                    $array = [$motorquery, $escquery, $batteriquery, $kontrollbrettquery, $propellquery];
-                    foreach ($array as $selected) {
-                        $result = mysqli_query($con, $selected);
-                        while ($row = mysqli_fetch_array($result)) {
-                            if ($selected == $propellquery) {
-                                echo $row ['Prop_dia'] . '"x' . $row ['Prop_vin'];
-                                echo "<br>";
-                            } elseif ($selected == $batteriquery) {
-                                echo $row ['Celler'] . 'S ' . $row ['mah'] . 'mah ' . $row ['C_max'] . 'C';
-                                echo "<br>";
-                            } else {
-                                echo $row ['Navn'];
-                                echo "<br>";
-                            }
-                        }
-                    }
-
-                    echo' <br> <a href="http://smp.no"><img src="main_styling/velg.png"></a>
+                echo' <br> <a href="http://smp.no"><img src="main_styling/velg.png"></a>
                         <a href="config.php"><img src="main_styling/config.png"></a>
                     </div></div></div>';
-                }
                 ?>
-
-
-                </body>
-                </html>                 
+    </body>
+</html>                 
