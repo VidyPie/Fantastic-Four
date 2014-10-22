@@ -37,6 +37,7 @@ Fantastic Four
         </div>
         <div id="wrapper">
             <div id="leftContent">
+                <a href="administrasjon.php">Tilbake</a>
                 <br><h2>Velg hvilken del du ønsker å legge til i databasen:</h2>
                 <?php
                 if (isset($_POST['part'])) {

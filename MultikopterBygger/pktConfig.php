@@ -40,7 +40,8 @@ Fantastic Four
             </a>
         </div>
         <div id='wrapper'>
-            <div id='content'>
+            <div id='leftContent'>
+                <a href="administrasjon.php">Tilbake</a><br>
                 <form name="components" method="POST">
                     <?php
                     $con = $_SESSION['connection'];
