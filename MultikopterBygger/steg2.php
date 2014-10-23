@@ -65,11 +65,11 @@ Fantastic Four
                     echo '<img class="copterimg" src="main_styling/fl_hex.jpg" width="500" alt="quad"><br>';
                     echo $row['Beskrivelse'];
                     echo '<ul style="list-style-type:none">';
-                    echo '<li>' . $row['motor'] . '</li>';
-                    echo '<li>' . $row['esc'] . '</li>';
-                    echo '<li>' . $row['kbrett'] . '</li>';
-                    echo '<li>' . $row['Prop_dia'] . '"x' . $row['Prop_vin'] . ' propeller</li>';
-                    echo '<li>' . $row['Celler'] . 'S ' . $row['mah'] . 'mah ' . $row['C_max'] . 'C' . '</li>';
+                    echo '<li>Motor: ' . $row['motor'] . '</li>';
+                    echo '<li>ESC: ' . $row['esc'] . '</li>';
+                    echo '<li>Kontrollbrett: ' . $row['kbrett'] . '</li>';
+                    echo '<li>Propell: ' . $row['Prop_dia'] . '"x' . $row['Prop_vin'] . ' propeller</li>';
+                    echo '<li>Batteri: ' . $row['Celler'] . 'S ' . $row['mah'] . 'mah ' . $row['C_max'] . 'C' . '</li>';
                     echo '</ul>';
                     
                 }

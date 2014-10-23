@@ -45,6 +45,10 @@ Fantastic Four
                 } else {
                     $part = '';
                 }
+                
+                if(isset($_GET['f'])) {
+                    $val = $_GET['f'];
+                }
 
                 echo'
                 <form>
