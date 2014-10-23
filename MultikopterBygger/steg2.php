@@ -62,24 +62,20 @@ Fantastic Four
                 $result = mysqli_query($con, $query);
                 
                 while ($row = mysqli_fetch_array($result)) {
-                    echo "<b>";
+                    echo '<img class="copterimg" src="main_styling/fl_hex.jpg" width="500" alt="quad"><br>';
                     echo $row['Beskrivelse'];
-                    echo "</b><br>";
-                    echo $row ['motor'];
-                    echo "<br>";
-                    echo $row ['esc'];
-                    echo "<br>";
-                    echo $row ['kbrett'];
-                    echo "<br>";
-                    echo $row ['Prop_dia'] . '"x' . $row ['Prop_vin'];
-                    echo "<br>";
-                    echo $row ['Celler'] . 'S ' . $row ['mah'] . 'mah ' . $row ['C_max'] . 'C';
-                    echo "<br>";
+                    echo '<ul style="list-style-type:none">';
+                    echo '<li>' . $row['motor'] . '</li>';
+                    echo '<li>' . $row['esc'] . '</li>';
+                    echo '<li>' . $row['kbrett'] . '</li>';
+                    echo '<li>' . $row['Prop_dia'] . '"x' . $row['Prop_vin'] . ' propeller</li>';
+                    echo '<li>' . $row['Celler'] . 'S ' . $row['mah'] . 'mah ' . $row['C_max'] . 'C' . '</li>';
+                    echo '</ul>';
+                    
                 }
 
 
-                echo' <br> <a href="http://smp.no"><img src="main_styling/velg.png"></a>
-                        <a href="config.php"><img src="main_styling/config.png"></a>
+                echo' <br> <a id="chbutton" href="http://smp.no">Velg</a><a class="cobutton" href="config.php">Konfig</a>
                     </div></div></div>';
                 ?>
     </body>

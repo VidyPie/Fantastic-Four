@@ -80,12 +80,30 @@ form {
     width: 400px;
     min-height: 300px;
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
     //float:left;
 }
 
 #left_box img{
-    width:100px;
+    width:200px;
+}
+
+#left_box a {
+    padding: 20px;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 100px;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+#chbutton {
+    background: green;
+}
+.cobutton {
+    background: grey;
 }
 
 #right_box{
@@ -163,5 +181,9 @@ img.extension{
     display:block;
     position: relative;
     
+}
+
+li {
+    text-align: left;
 }
 
