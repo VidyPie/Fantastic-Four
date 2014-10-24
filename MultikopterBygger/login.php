@@ -1,24 +1,5 @@
 <?php
-session_start();
-
-if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == TRUE) {
-    header('Location: administrasjon.php');
-}
-
-$host = "127.0.0.1";
-$port = 3306;
-$socket = "/tmp/mysql.sock";
-$user = "user";
-$password = "123";
-$dbname = "kopterbygger";
-
-$con = mysqli_connect($host, $user, $password, $dbname, $port, $socket);
-
-$_SESSION['connection'] = $con;
-
-if (mysqli_connect_errno()) {
-    echo "Failed to connect ot MySQL: " . mysqli_connect_errno();
-}
+include 'dbConnect.php';
 ?>
 <!DOCTYPE html>
 <!--
@@ -45,7 +26,7 @@ Fantastic Four
         </div>
         <div id="wrapper">
             <div id="leftContent">
-                <?PHP
+                <?php
                 if(isset($_GET['r'])) {
                     if($_GET['r'] == 'timeout'){
                     echo 'Session timed out, please log in again:';
@@ -95,7 +76,8 @@ Fantastic Four
                 }
                 //if usrname not in db exit()
                 else {
-                    echo '<br>Login motherfucker! I dare you! I double dare you!!';
+                    echo '<br>Login motherfucker! I dare you! I double dare you!!'
+                    . '<br><img src="main_styling/REALSHIT.jpg" alt="BELIEVE IT!">';
                 }
                 ?>
             </div>
