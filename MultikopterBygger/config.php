@@ -60,7 +60,10 @@ Fantastic Four
                     $kontrollBrettID = $_SESSION['kontrollBrettSelected'];
                     $ESCID = $_SESSION['ESCSelected'];
 
-                    echo $motorID;
+                    echo print($propellID);
+                    echo '<br>';
+                    echo print($motorID);
+                    echo '<br>';
 
                     $tableInsertQuery =   "INSERT INTO nyttkopter ( `nyID`, `MotorID`, `BatteriID`, `KontrollbrettID`, `PropellID`, `ESCID` ) VALUES ( 1," 
                         . $motorID . "," . $batteriID . "," . $kontrollBrettID . "," . $propellID . "," . $ESCID . ");";
@@ -215,7 +218,7 @@ mysqli_close($con);
                         function ESCSelected(thisESC2) {
                             var thisESCJS = ((thisESC2 - 1) / 10);
                             var xmlhttp=new XMLHttpRequest();
-                            xmlhttp.open("GET","configESC.php?r="+thisESCJS,true);
+                            xmlhttp.open("GET","configESC.php?q="+thisESCJS,true);
                             xmlhttp.send();
                             pageRefresh();
                         }
@@ -223,14 +226,16 @@ mysqli_close($con);
                         function propellSelected(thisPropell2) {
                             var thisPropellJS = ((thisPropell2 - 1) / 10);
                             var xmlhttp=new XMLHttpRequest();
-                            xmlhttp.open("GET","data.php?s="+thisPropellJS,true);
+                            xmlhttp.open("GET","configPropell.php?q="+thisPropellJS,true);
                             xmlhttp.send();
-                            pageRefresh();
+                            //pageRefresh();
                         }
 
 
                         function pageRefresh() {
-                            location.reload(true);
+                            setTimeout(function(){
+                                location.reload(true);
+                            }, 5000);
                         }
                 </script>
 
