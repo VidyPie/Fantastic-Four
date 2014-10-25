@@ -47,6 +47,7 @@ Fantastic Four
                 $result = mysqli_query($con, $query);
                 
                 while ($row = mysqli_fetch_array($result)) {
+
                     echo '<img class="copterimg" src="main_styling/fl_hex.jpg" width="500" alt="quad"><br>';
                     echo $row['Beskrivelse'];
                     echo '<ul style="list-style-type:none">';
@@ -62,6 +63,30 @@ Fantastic Four
 
                 echo' <br> <a id="chbutton" href="http://smp.no">Velg</a><a class="cobutton" href="config.php">Konfig</a>
                     </div></div></div>';
+
+                            //DONOTDELETEDONOTDELETEDONOTDELETEDONOTDELETEDONOTDELETEDONOTDELETE
+                $doNotDeleteQuery = "SELECT * FROM komponenter WHERE KomponenterID = " . $specID;
+                $komponent = mysqli_query($con, $doNotDeleteQuery);
+                $krow = mysqli_fetch_array($komponent);
+                $thisMotor = $krow['MotorID'];
+                $komponent = mysqli_query($con, $doNotDeleteQuery);
+                $krow = mysqli_fetch_array($komponent);
+                $thisESC = $krow['ESCID'];
+                $komponent = mysqli_query($con, $doNotDeleteQuery);
+                $krow = mysqli_fetch_array($komponent);
+                $thisKontrollbrett = $krow['KontrollbrettID'];
+                $komponent = mysqli_query($con, $doNotDeleteQuery);
+                $krow = mysqli_fetch_array($komponent);
+                $thisPropell = $krow['PropellID'];
+                $komponent = mysqli_query($con, $doNotDeleteQuery);
+                $krow = mysqli_fetch_array($komponent);
+                $thisBatteri = $krow['BatteriID'];
+                $_SESSION['motorSelected'] = $thisMotor;
+                $_SESSION['propellSelected'] = $thisPropell;
+                $_SESSION['batteriSelected'] = $thisBatteri;
+                $_SESSION['kontrollBrettSelected'] = $thisKontrollbrett;
+                $_SESSION['ESCSelected'] = $thisESC;
+                            //DONOTDELETEDONOTDELETEDONOTDELETEDONOTDELETEDONOTDELETEDONOTDELETE
                 ?>
     </body>
 </html>                 

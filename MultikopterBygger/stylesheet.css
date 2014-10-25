@@ -3,7 +3,6 @@ form {
     text-align: left;
     /*margin-left: auto;*/
     /*margin-right: auto;*/
-    z-index: 1;
 }
 
 #banner{
@@ -120,10 +119,7 @@ form {
 
 #configMagic{
     width: 500px;
-}
-
-#eButton{
-    text-align: center;
+    display: inline-block;
 }
 
 #exterminate {
@@ -175,15 +171,30 @@ img.extension{
 
 #dynamicTable 
 {
-    border-width: 1px;
     border:solid;
+    border-width: 1px;
     border-color: black;
     display:block;
     position: relative;
-    
+    width: 200px;
+    text-align: center;
+    background-color: lightgray;
+    margin-top: 10px;
 }
 
 li {
     text-align: left;
 }
 
+#buildimage{
+    float:right;
+    position: absolute;
+    margin-left: 400px;
+    margin-top: 30px;
+}
+
+#buildimage img{
+    width:500px;
+    position: fixed;
+   
+}
