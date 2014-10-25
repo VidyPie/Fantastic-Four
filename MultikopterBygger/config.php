@@ -24,7 +24,7 @@ Fantastic Four
                 <img class="extension" src="main_styling/bannerext.png" alt="graybox">
             </a>
         </div>
-        <div id=buildimage>
+        <div id="buildimage">
             <img src="main_styling/base.png">
             <img src="main_styling/propellselected.png" id="propellselected" style="display:none;">
             <img src="main_styling/motorselected.png" id="motorselected" style="display:none;">
@@ -174,19 +174,6 @@ Fantastic Four
                             echo ')">Velg</button></td>';
                             }  
                         echo '</table>';
-
-
-                        
-
-
-
-                       if (isset($_POST['button1'])) 
-                        { 
-                            $con = $_SESSION['connection'];
-                            $extSequence = "DELETE FROM nyttkopter WHERE nyID = 1;";
-                            mysqli_query($con, $extSequence);
-                            echo '<div id="exterminate">TABLE nyttkopter in DB kopterbygger is cleared!</div>'; 
-                        }
 
 mysqli_close($con);
 
