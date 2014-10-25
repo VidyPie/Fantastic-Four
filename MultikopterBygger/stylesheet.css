@@ -11,6 +11,7 @@ form {
     left:0;
     right:0;
     top:0;
+    z-index:1;
 }
 
 #wrapper{
@@ -120,6 +121,7 @@ form {
 #configMagic{
     width: 500px;
     display: inline-block;
+    z-index: 0;
 }
 
 #exterminate {
@@ -180,6 +182,11 @@ img.extension{
     text-align: center;
     background-color: lightgray;
     margin-top: 10px;
+    cursor:pointer;
+}
+
+#dynamicTable:hover{
+    color: #5AE861;
 }
 
 li {
@@ -189,7 +196,7 @@ li {
 #buildimage{
     float:right;
     position: absolute;
-    margin-left: 400px;
+    margin-left: 500px;
     margin-top: 30px;
 }
 

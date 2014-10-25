@@ -65,12 +65,12 @@ Fantastic Four
                         echo '</form>';
                         echo '<p id="dynamicTable" onclick="openMotorTable()">BYTT MOTOR</p>';
                         echo '<table id="motorTable" style="display:none;">';
-                        echo '<tr><td>Navn</td><td>kV</td><td>Pris</td><td></td></tr>';
+                        echo '<tr><td>Navn</td><td>kV</td><td>Amps</td><td>Pris</td><td></td></tr>';
                         $motorAdvInvQuery = "SELECT * FROM motor WHERE MotorID != " . $motorID;  
                         $motorAdvInv = mysqli_query($con, $motorAdvInvQuery);
                         while ($row = mysqli_fetch_array($motorAdvInv)) {
                             $thisMotor = $row['MotorID'];
-                            echo '<tr><td>' . $row['Navn'] . '</td><td>' . $row['kV'] . '</td><td>' . $row['Pris'] . '</td><td><button onclick="motorSelected(';
+                            echo '<tr><td>' . $row['Navn'] . '</td><td>' . $row['kV'] . '</td><td>' . $row['Amps'] . '</td><td>' . $row['Pris'] . '</td><td><button onclick="motorSelected(';
                             echo print($thisMotor);
                             echo ')">Velg</button></td>';
                             }  
@@ -87,7 +87,7 @@ Fantastic Four
                         echo '</form>';
                         echo '<p id="dynamicTable" onclick="openESCTable()">BYTT ESC</p>';
                         echo '<table id="ESCTable" style="display:none;">';
-                        echo '<tr><td>Navn</td><td>kV</td><td>Pris</td><td></td></tr>';
+                        echo '<tr><td>Navn</td><td>Ampere</td><td>Pris</td><td></td></tr>';
                         $ESCAdvInvQuery = "SELECT * FROM esc WHERE ESCID != " . $ESCID;  
                         $ESCAdvInv = mysqli_query($con, $ESCAdvInvQuery);
                         while ($row = mysqli_fetch_array($ESCAdvInv)) {
@@ -113,7 +113,7 @@ Fantastic Four
                         echo '</form>';
                         echo '<p id="dynamicTable" onclick="openKontrollbrettTable()">BYTT KONTROLLBRETT</p>';
                         echo '<table id="kontrollbrettTable" style="display:none;">';
-                        echo '<tr><td>Navn</td><td>kV</td><td>Pris</td><td></td></tr>';
+                        echo '<tr><td>Navn</td><td>Min. Rotor</td><td>Max. Rotor</td><td>GPS</td><td>Pris</td><td></td></tr>';
                         $kontrollbrettAdvInvQuery = "SELECT * FROM kontrollbrett WHERE KontrollbrettID != " . $kontrollbrettID;  
                         $kontrollbrettAdvInv = mysqli_query($con, $kontrollbrettAdvInvQuery);
                         while ($row = mysqli_fetch_array($kontrollbrettAdvInv)) {
