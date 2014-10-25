@@ -119,7 +119,7 @@ Fantastic Four
                         while ($row = mysqli_fetch_array($kontrollbrettAdvInv)) {
                             $thisKontrollbrett = $row['KontrollbrettID']; 
                             //echo '<br>';
-                            echo '<tr><td>' . $row['Navn'] . '</td><td>' . $row['Rotor_min'] . '</td><td>' . $row['Rotor_max'] . '</td><td>' . $row['GPS'] .'</td><td>' . $row['Pris'] . '</td><td><button onclick="propellSelected(';
+                            echo '<tr><td>' . $row['Navn'] . '</td><td>' . $row['Rotor_min'] . '</td><td>' . $row['Rotor_max'] . '</td><td>' . $row['GPS'] .'</td><td>' . $row['Pris'] . '</td><td><button onclick="kontrollbrettSelected(';
                             echo print($thisKontrollbrett);
                             echo ')">Velg</button></td>';
                             }
