@@ -33,11 +33,13 @@ Fantastic Four
         </div>
         <div id="wrapper">
             <div id="content">
-                <form name="components2" method="POST">
+                <form name="components2">
                     <?php
                     $con = $_SESSION['connection'];
                     echo '<div id="configMagic">';
                     //echo '<div id="configMagic"><p>Komponenter</p>';
+
+                   // $oID = $_GET['c'];
 
                     $motorID = $_SESSION['motorSelected'];
                     $propellID = $_SESSION['propellSelected'];
@@ -48,15 +50,12 @@ Fantastic Four
 
                         //MOTORMOTORMOTOR
                         $motorAdvQuery = "SELECT * FROM motor WHERE MotorID=" . $motorID;
-                        $motorAdv = mysqli_query($con, $motorAdvQuery);
-                        echo '<div id="mainComponent">' . $motorAdv->fetch_object()->Navn . '</div>'; 
-                        $motorAdv = mysqli_query($con, $motorAdvQuery);   
-                        echo '<div id="configstats">kV <div id="pureStat">&nbsp' . $motorAdv->fetch_object()->kV . '&nbsp</div></div>';
-                        $motorAdv = mysqli_query($con, $motorAdvQuery);
-                        echo '<div id="configstats">Amps <div id="pureStat">&nbsp' . $motorAdv->fetch_object()->Amps . '&nbsp</div></div>';
-                        $motorAdv = mysqli_query($con, $motorAdvQuery);
-                        echo '<div id="configstats">Pris <div id="pureStat">&nbsp' . $motorAdv->fetch_object()->Pris . '&nbsp</div></div>';
-                        echo '</form>';
+                        $motorAdvResult = mysqli_query($con, $motorAdvQuery);
+                        $motorRow = mysqli_fetch_array($motorAdvResult);
+                        echo '<div id="mainComponent">' . $motorRow['Navn'] . '</div>';  
+                        echo '<div id="configstats">kV <div id="pureStat">&nbsp' . $motorRow['kV'] . '&nbsp</div></div>';
+                        echo '<div id="configstats">Amps <div id="pureStat">&nbsp' . $motorRow['Amps'] . '&nbsp</div></div>';
+                        echo '<div id="configstats">Pris <div id="pureStat">&nbsp' . $motorRow['Pris'] . '&nbsp</div></div>';
                         echo '<p id="dynamicTable" onclick="openMotorTable()">BYTT MOTOR</p>';
                         echo '<table id="motorTable" style="display:none;">';
                         echo '<tr><td>Navn</td><td>kV</td><td>Amps</td><td>Pris</td><td></td></tr>';
@@ -72,13 +71,11 @@ Fantastic Four
 
                         //ESCESCESC
                         $ESCAdvQuery = 'SELECT * FROM esc WHERE ESCID= ' . $ESCID;
-                        $ESCAdv = mysqli_query($con, $ESCAdvQuery);
-                        echo '<div id="mainComponent">' . $ESCAdv->fetch_object()->Navn . '</div>';
-                        $ESCAdv = mysqli_query($con, $ESCAdvQuery);
-                        echo '<div id="configstats">Ampere <div id="pureStat">&nbsp' . $ESCAdv->fetch_object()->Ampere . '&nbsp</div></div>';
-                        $ESCAdv = mysqli_query($con, $ESCAdvQuery);
-                        echo '<div id="configstats">Pris <div id="pureStat">&nbsp' . $ESCAdv->fetch_object()->Pris . '&nbsp</div></div>'; 
-                        echo '</form>';
+                        $ESCAdvResult = mysqli_query($con, $ESCAdvQuery);
+                        $ESCRow = mysqli_fetch_array($ESCAdvResult);
+                        echo '<div id="mainComponent">' . $ESCRow['Navn'] . '</div>';
+                        echo '<div id="configstats">Ampere <div id="pureStat">&nbsp' . $ESCRow['Ampere'] . '&nbsp</div></div>';
+                        echo '<div id="configstats">Pris <div id="pureStat">&nbsp' . $ESCRow['Pris'] . '&nbsp</div></div>'; 
                         echo '<p id="dynamicTable" onclick="openESCTable()">BYTT ESC</p>';
                         echo '<table id="ESCTable" style="display:none;">';
                         echo '<tr><td>Navn</td><td>Ampere</td><td>Pris</td><td></td></tr>';
@@ -94,17 +91,13 @@ Fantastic Four
 
                         //KONTROLLBRETTKONTROLLBRETTKONTROLLBRETT
                         $kontrollbrettAdvQuery = 'SELECT * FROM kontrollbrett WHERE KontrollbrettID= ' . $kontrollbrettID;
-                        $kontrollbrettAdv = mysqli_query($con, $kontrollbrettAdvQuery);
-                        echo '<div id="mainComponent">' . $kontrollbrettAdv->fetch_object()->Navn . '</div>';
-                        $kontrollbrettAdv = mysqli_query($con, $kontrollbrettAdvQuery);   
-                        echo '<div id="configstats">Min. Rotor <div id="pureStat">&nbsp' . $kontrollbrettAdv->fetch_object()->Rotor_min . '&nbsp</div></div>';
-                        $kontrollbrettAdv = mysqli_query($con, $kontrollbrettAdvQuery);
-                        echo '<div id="configstats">Max. Rotor <div id="pureStat">&nbsp' . $kontrollbrettAdv->fetch_object()->Rotor_max . '&nbsp</div></div><br>';
-                        $kontrollbrettAdv = mysqli_query($con, $kontrollbrettAdvQuery);
-                        echo '<div id="configstats">GPS <div id="pureStat">&nbsp' . $kontrollbrettAdv->fetch_object()->GPS . '&nbsp</div></div>'; 
-                        $kontrollbrettAdv = mysqli_query($con, $kontrollbrettAdvQuery);
-                        echo '<div id="configstats">Pris <div id="pureStat">&nbsp' . $kontrollbrettAdv->fetch_object()->Pris . '&nbsp</div></div>'; 
-                        echo '</form>';
+                        $kontrollbrettAdvResult = mysqli_query($con, $kontrollbrettAdvQuery);
+                        $kontrollbrettRow = mysqli_fetch_array($kontrollbrettAdvResult);
+                        echo '<div id="mainComponent">' . $kontrollbrettRow['Navn'] . '</div>';  
+                        echo '<div id="configstats">Min. Rotor <div id="pureStat">&nbsp' . $kontrollbrettRow['Rotor_min'] . '&nbsp</div></div>';
+                        echo '<div id="configstats">Max. Rotor <div id="pureStat">&nbsp' . $kontrollbrettRow['Rotor_max'] . '&nbsp</div></div><br>';
+                        echo '<div id="configstats">GPS <div id="pureStat">&nbsp' . $kontrollbrettRow['GPS'] . '&nbsp</div></div>'; 
+                        echo '<div id="configstats">Pris <div id="pureStat">&nbsp' . $kontrollbrettRow['Pris'] . '&nbsp</div></div>'; 
                         echo '<p id="dynamicTable" onclick="openKontrollbrettTable()">BYTT KONTROLLBRETT</p>';
                         echo '<table id="kontrollbrettTable" style="display:none;">';
                         echo '<tr><td>Navn</td><td>Min. Rotor</td><td>Max. Rotor</td><td>GPS</td><td>Pris</td><td></td></tr>';
@@ -129,7 +122,6 @@ Fantastic Four
                         echo '<div id="configstats">Diameter <div id="pureStat">&nbsp' . $propellAdv->fetch_object()->Prop_dia . '&nbsp</div></div>';
                         $propellAdv = mysqli_query($con, $propellAdvQuery);
                         echo '<div id="configstats">Vinkling <div id="pureStat">&nbsp' . $propellAdv->fetch_object()->Prop_vin . '&nbsp</div></div>'; 
-                        echo '</form>';
                         echo '<p id="dynamicTable" onclick="openPropellTable()">BYTT PROPELLER</p>';
                         echo '<table id="propellTable" style="display:none;">';
                         echo '<tr><td>Diameter</td><td>Vinkling</td><td></td></tr>';

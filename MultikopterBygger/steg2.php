@@ -39,7 +39,7 @@ Fantastic Four
 
                 echo ' <div id="left_box"><b>Forslag 1</b> <br><br>';
 
-                $query = 'SELECT o.Beskrivelse, m.Navn AS motor, b.*, esc.Navn AS esc, kon.Navn AS kbrett, p.*  '
+                $query = 'SELECT o.Beskrivelse, o.OppskriftID, m.Navn AS motor, b.*, esc.Navn AS esc, kon.Navn AS kbrett, p.*  '
                         . 'FROM spesifikasjoner AS s, oppskrift AS o, komponenter AS kom, motor AS m, batteri AS b, esc, kontrollbrett AS kon, propeller AS p '
                         . 'WHERE s.SpesifikasjonID = o.SpesifikasjonID AND o.KomponenterID = kom.KomponenterID '
                         . 'AND kom.MotorID = m.MotorID AND kom.BatteriID = b.BatteriID AND kom.ESCID = esc.ESCID '
@@ -47,7 +47,7 @@ Fantastic Four
                 $result = mysqli_query($con, $query);
                 
                 while ($row = mysqli_fetch_array($result)) {
-
+                    $oID = $row['OppskriftID']; 
                     echo '<img class="copterimg" src="main_styling/fl_hex.jpg" width="500" alt="quad"><br>';
                     echo $row['Beskrivelse'];
                     echo '<ul style="list-style-type:none">';
@@ -61,7 +61,7 @@ Fantastic Four
                 }
 
 
-                echo' <br> <a id="chbutton" href="http://smp.no">Velg</a><a class="cobutton" href="config.php">Konfig</a>
+                echo' <br> <a id="chbutton" href="http://smp.no">Velg</a><a class="cobutton" href="config.php?c=' . $oID . '">Konfig</a>
                     </div></div></div>';
 
                             //DONOTDELETEDONOTDELETEDONOTDELETEDONOTDELETEDONOTDELETEDONOTDELETE
