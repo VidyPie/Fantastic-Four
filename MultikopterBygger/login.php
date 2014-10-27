@@ -76,7 +76,7 @@ Fantastic Four
                 }
                 //if usrname not in db exit()
                 else {
-                    echo '<br>Login motherfucker! I dare you! I double dare you!!'
+                    echo '<br>Login! I dare you! I double dare you motherfucker!!'
                     . '<br><img src="main_styling/REALSHIT.jpg" alt="BELIEVE IT!">';
                 }
                 ?>

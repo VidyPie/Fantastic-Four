@@ -45,6 +45,7 @@ Fantastic Four
                     $kontrollbrettID = $_SESSION['kontrollBrettSelected'];
                     $ESCID = $_SESSION['ESCSelected'];
 
+
                         //MOTORMOTORMOTOR
                         $motorAdvQuery = "SELECT * FROM motor WHERE MotorID=" . $motorID;
                         $motorAdv = mysqli_query($con, $motorAdvQuery);
