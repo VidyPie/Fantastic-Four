@@ -1,6 +1,6 @@
 <?php
-include 'checklogin.php';
 include 'dbConnect.php';
+include 'checklogin.php';
 ?>
 <!DOCTYPE html>
 <!--
