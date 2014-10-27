@@ -205,3 +205,8 @@ li {
     position: fixed;
    
 }
+
+#lol {
+    position:relative;
+    text-align: left;
+}

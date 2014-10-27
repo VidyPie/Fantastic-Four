@@ -47,7 +47,23 @@ Fantastic Four
                     $kontrollbrettID = $_SESSION['kontrollBrettSelected'];
                     $ESCID = $_SESSION['ESCSelected'];
 
+                    if(isset($_GET['motorSelected'])) {
+                        $motorID = $_GET['motorSelected'];
+                    }
+                    if(isset($_GET['ESCSelected'])) {
+                        $ESCID = $_GET['ESCSelected'];
+                    }
+                    if(isset($_GET['kontrollbrettSelected'])) {
+                        $kontrollbrettID = $_GET['kontrollbrettSelected'];
+                    }
+                    if(isset($_GET['propellSelected'])) {
+                        $propellID = $_GET['propellSelected'];
+                    }
+                    if(isset($_GET['batteriSelected'])) {
+                        $batteriID = $_GET['batteriSelected'];
+                    }
 
+                    echo print($motorID);
                         //MOTORMOTORMOTOR
                         $motorAdvQuery = "SELECT * FROM motor WHERE MotorID=" . $motorID;
                         $motorAdvResult = mysqli_query($con, $motorAdvQuery);
@@ -57,17 +73,15 @@ Fantastic Four
                         echo '<div id="configstats">Amps <div id="pureStat">&nbsp' . $motorRow['Amps'] . '&nbsp</div></div>';
                         echo '<div id="configstats">Pris <div id="pureStat">&nbsp' . $motorRow['Pris'] . '&nbsp</div></div>';
                         echo '<p id="dynamicTable" onclick="openMotorTable()">BYTT MOTOR</p>';
-                        echo '<table id="motorTable" style="display:none;">';
+                        echo '<div id="motorTable" style="display:none;"><table>';
                         echo '<tr><td>Navn</td><td>kV</td><td>Amps</td><td>Pris</td><td></td></tr>';
                         $motorAdvInvQuery = "SELECT * FROM motor WHERE MotorID != " . $motorID;  
                         $motorAdvInv = mysqli_query($con, $motorAdvInvQuery);
                         while ($row = mysqli_fetch_array($motorAdvInv)) {
                             $thisMotor = $row['MotorID'];
-                            echo '<tr><td>' . $row['Navn'] . '</td><td>' . $row['kV'] . '</td><td>' . $row['Amps'] . '</td><td>' . $row['Pris'] . '</td><td><button onclick="motorSelected(';
-                            echo print($thisMotor);
-                            echo ')">Velg</button></td>';
+                            echo '<tr><td>' . $row['Navn'] . '</td><td>' . $row['kV'] . '</td><td>' . $row['Amps'] . '</td><td>' . $row['Pris'] . '</td><td><input type="radio" name="motorSelected" value="' . $thisMotor . '"></td>';
                             }  
-                        echo '</table><br>';
+                        echo '</form></table><input type="submit" value="Velg"></div><br>';
 
                         //ESCESCESC
                         $ESCAdvQuery = 'SELECT * FROM esc WHERE ESCID= ' . $ESCID;
@@ -77,17 +91,15 @@ Fantastic Four
                         echo '<div id="configstats">Ampere <div id="pureStat">&nbsp' . $ESCRow['Ampere'] . '&nbsp</div></div>';
                         echo '<div id="configstats">Pris <div id="pureStat">&nbsp' . $ESCRow['Pris'] . '&nbsp</div></div>'; 
                         echo '<p id="dynamicTable" onclick="openESCTable()">BYTT ESC</p>';
-                        echo '<table id="ESCTable" style="display:none;">';
+                        echo '<div id="ESCTable" style="display:none;"><table>';
                         echo '<tr><td>Navn</td><td>Ampere</td><td>Pris</td><td></td></tr>';
                         $ESCAdvInvQuery = "SELECT * FROM esc WHERE ESCID != " . $ESCID;  
                         $ESCAdvInv = mysqli_query($con, $ESCAdvInvQuery);
                         while ($row = mysqli_fetch_array($ESCAdvInv)) {
                             $thisESC = $row['ESCID'];
-                            echo '<tr><td>' . $row['Navn'] . '</td><td>' . $row['Ampere'] . '</td><td>' . $row['Pris'] . '</td><td><button onclick="ESCSelected(';
-                            echo print($thisESC);
-                            echo ')">Velg</button></td>';
+                            echo '<tr><td>' . $row['Navn'] . '</td><td>' . $row['Ampere'] . '</td><td>' . $row['Pris'] . '</td><td><input type="radio" name="ESCSelected" value="' . $thisESC . '"></td>';
                             }
-                        echo '</table><br>';
+                        echo '</form></table><input type="submit" value="Velg"></div><br>';
 
                         //KONTROLLBRETTKONTROLLBRETTKONTROLLBRETT
                         $kontrollbrettAdvQuery = 'SELECT * FROM kontrollbrett WHERE KontrollbrettID= ' . $kontrollbrettID;
@@ -99,18 +111,15 @@ Fantastic Four
                         echo '<div id="configstats">GPS <div id="pureStat">&nbsp' . $kontrollbrettRow['GPS'] . '&nbsp</div></div>'; 
                         echo '<div id="configstats">Pris <div id="pureStat">&nbsp' . $kontrollbrettRow['Pris'] . '&nbsp</div></div>'; 
                         echo '<p id="dynamicTable" onclick="openKontrollbrettTable()">BYTT KONTROLLBRETT</p>';
-                        echo '<table id="kontrollbrettTable" style="display:none;">';
+                        echo '<div id="kontrollbrettTable" style="display:none;"><table>';
                         echo '<tr><td>Navn</td><td>Min. Rotor</td><td>Max. Rotor</td><td>GPS</td><td>Pris</td><td></td></tr>';
                         $kontrollbrettAdvInvQuery = "SELECT * FROM kontrollbrett WHERE KontrollbrettID != " . $kontrollbrettID;  
                         $kontrollbrettAdvInv = mysqli_query($con, $kontrollbrettAdvInvQuery);
                         while ($row = mysqli_fetch_array($kontrollbrettAdvInv)) {
                             $thisKontrollbrett = $row['KontrollbrettID']; 
-                            //echo '<br>';
-                            echo '<tr><td>' . $row['Navn'] . '</td><td>' . $row['Rotor_min'] . '</td><td>' . $row['Rotor_max'] . '</td><td>' . $row['GPS'] .'</td><td>' . $row['Pris'] . '</td><td><button onclick="kontrollbrettSelected(';
-                            echo print($thisKontrollbrett);
-                            echo ')">Velg</button></td>';
+                            echo '<tr><td>' . $row['Navn'] . '</td><td>' . $row['Rotor_min'] . '</td><td>' . $row['Rotor_max'] . '</td><td>' . $row['GPS'] .'</td><td>' . $row['Pris'] . '</td><td><input type="radio" name="kontrollbrettSelected" value="' . $thisKontrollbrett . '"></td>';
                             }
-                        echo '</table><br>';
+                        echo '</form></table><input type="submit" value="Velg"></div><br>';
 
                         //PROPELLPROPELLPROPELL
                         $propellAdvQuery = 'SELECT * FROM propeller WHERE propellID= ' . $propellID;
@@ -121,17 +130,15 @@ Fantastic Four
                         echo '<div id="configstats">Diameter <div id="pureStat">&nbsp' . $propellRow['Prop_dia'] . '&nbsp</div></div>';
                         echo '<div id="configstats">Vinkling <div id="pureStat">&nbsp' . $propellRow['Prop_vin'] . '&nbsp</div></div>'; 
                         echo '<p id="dynamicTable" onclick="openPropellTable()">BYTT PROPELLER</p>';
-                        echo '<table id="propellTable" style="display:none;">';
+                        echo '<div id="propellTable" style="display:none;"><table>';
                         echo '<tr><td>Diameter</td><td>Vinkling</td><td></td></tr>';
                         $propellAdvInvQuery = "SELECT * FROM propeller WHERE propellID != " . $propellID;  
                         $propellAdvInv = mysqli_query($con, $propellAdvInvQuery);
                         while ($row = mysqli_fetch_array($propellAdvInv)) {
                             $thisPropell = $row['PropellID']; 
-                            echo '<tr><td>' . $row['Prop_dia'] . '</td><td>' . $row['Prop_vin'] . '</td><td><button onclick="propellSelected(';
-                            echo print($thisPropell);
-                            echo ')">Velg</button></td>';
+                            echo '<tr><td>' . $row['Prop_dia'] . '</td><td>' . $row['Prop_vin'] . '</td><td><input type="radio" name="propellSelected" value="' . $thisPropell . '"></td>';
                             }
-                        echo '</table><br>';
+                        echo '</form></table><input type="submit" value="Velg"></div><br>';
 
                         //BATTERIBATTERIBATTERI
                         $batteriAdvQuery = "SELECT * FROM batteri WHERE BatteriID=" . $batteriID;
@@ -144,17 +151,17 @@ Fantastic Four
                         echo '<div id="configstats">Pris <div id="pureStat">&nbsp' . $batteriRow['Pris'] . '&nbsp</div></div>';
                         echo '</form>';
                         echo '<p id="dynamicTable" onclick="openBatteriTable()">BYTT BATTERI</p>';
-                        echo '<table id="batteriTable" style="display:none;">';
+                        echo '<div id="batteriTable" style="display:none;"><table>';
                         echo '<tr><td>Celler</td><td>C_max</td><td>mah</td><td>Pris</td><td></td></tr>';
                         $batteriAdvInvQuery = "SELECT * FROM batteri WHERE BatteriID != " . $batteriID;  
                         $batteriAdvInv = mysqli_query($con, $batteriAdvInvQuery);
                         while ($row = mysqli_fetch_array($batteriAdvInv)) {
                             $thisBatteri = $row['BatteriID'];
-                            echo '<tr><td>' . $row['Celler'] . '</td><td>' . $row['C_max'] . '</td><td>' . $row['mah'] . '</td><td>' . $row['Pris'] . '</td><td><button onclick="batteriSelected(';
-                            echo print($thisBatteri);
-                            echo ')">Velg</button></td>';
+                            echo '<tr><td>' . $row['Celler'] . '</td><td>' . $row['C_max'] . '</td><td>' . $row['mah'] . '</td><td>' . $row['Pris'] . '</td><td><input type="radio" name="batteriSelected" value="' . $thisBatteri . '"></td>';
                             }  
-                        echo '</table>';
+                        echo '</form></table><input type="submit" value="Velg"></div><br>';
+
+
                         mysqli_close($con);
                         ?>
                         </div>  
@@ -270,60 +277,7 @@ Fantastic Four
                             }
                         }
 
-                        function motorSelected(thisMotor2) {
-                            var thisMotorJS = ((thisMotor2 - 1) / 10);
-                            var xmlhttp=new XMLHttpRequest();
-                            xmlhttp.open("GET","configMotor.php?q="+thisMotorJS,true);
-                            xmlhttp.send();
-                            pageRefresh();
-                        }
-
-                        function ESCSelected(thisESC2) {
-                            var thisESCJS = ((thisESC2 - 1) / 10);
-                            var xmlhttp=new XMLHttpRequest();
-                            xmlhttp.open("GET","configESC.php?q="+thisESCJS,true);
-                            xmlhttp.send();
-                            pageRefresh();
-                        }
-
-                        function kontrollbrettSelected(thisKontrollbrett2) {
-                            var thisKontrollbrettJS = ((thisKontrollbrett2 - 1) / 10);
-                            var xmlhttp=new XMLHttpRequest();
-                            xmlhttp.open("GET","configKontrollbrett.php?q="+thisKontrollbrettJS,true);
-                            xmlhttp.send();
-                            pageRefresh();
-                        }
-
-                        function propellSelected(thisPropell2) {
-                            var thisPropellJS = ((thisPropell2 - 1) / 10);
-                            var xmlhttp=new XMLHttpRequest();
-                            xmlhttp.open("GET","configPropell.php?q="+thisPropellJS,true);
-                            xmlhttp.send();
-                            pageRefresh();
-                        }
-
-                        function batteriSelected(thisBatteri2) {
-                            var thisBatteriJS = ((thisBatteri2 - 1) / 10);
-                            var xmlhttp=new XMLHttpRequest();
-                            xmlhttp.open("GET","configBatteri.php?q="+thisBatteriJS,true);
-                            xmlhttp.send();
-                            pageRefresh();
-                        }
-
-
-                        function pageRefresh() {
-                                sleep(100);
-                                location.reload(true);
-                        }
-
-                        function sleep(milliseconds) {
-                            var start = new Date().getTime();
-                            for (var i = 0; i < 1e7; i++) {
-                                if ((new Date().getTime() - start) > milliseconds){
-                                    break;
-                                }
-                            }
-                        }
+                        
 
                 </script>
 
