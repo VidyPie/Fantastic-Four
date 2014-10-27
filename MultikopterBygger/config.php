@@ -13,7 +13,6 @@ Fantastic Four
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" type="text/css" href="stylesheet.css">
-
     </head>
     <body>
         <div id="banner">
@@ -34,14 +33,8 @@ Fantastic Four
         </div>
         <div id="wrapper">
             <div id="content">
-                
-                 
-
                 <form name="components2" method="POST">
                     <?php
-
-                    
-
                     $con = $_SESSION['connection'];
                     echo '<div id="configMagic">';
                     //echo '<div id="configMagic"><p>Komponenter</p>';
@@ -174,16 +167,11 @@ Fantastic Four
                             echo ')">Velg</button></td>';
                             }  
                         echo '</table>';
-
-mysqli_close($con);
-
-                    ?>
-            </div>
-            
-        </div>
-        
-
-<script type="text/javascript" language="javascript">
+                        mysqli_close($con);
+                        ?>
+                        </div>  
+                </div>
+                    <script type="text/javascript" language="javascript">
                         function openMotorTable() {
                             var motorTable = document.getElementById("motorTable");
                             var motorselected = document.getElementById("motorselected");
