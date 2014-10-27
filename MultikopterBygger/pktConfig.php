@@ -89,7 +89,7 @@ Fantastic Four
                         $cResult = $row['C_max'];
                         $sResult = $row['Celler'];
                         $idResult = $row['BatteriID'];
-                        echo '<option revalue="' . $idResult . '">' . $sResult
+                        echo '<option value="' . $idResult . '">' . $sResult
                         . 'S ' . $mahResult . 'mah ' . $cResult . 'C' . '</option>';
                     }
                     echo '</select><br>';
@@ -129,26 +129,26 @@ Fantastic Four
                 $partsid = $row['lastID'] + 1;
 
 
-                $query = "INSERT INTO `komponenter` (`KomponenterID`, `BatteriID`, "
+                $kompquery = "INSERT INTO `komponenter` (`KomponenterID`, `BatteriID`, "
                         . "`KontrollbrettID`, `PropellID`, `MotorID`, `ESCID`) VALUES (" . $partsid . ", ";
 
                 $vals = 0;
-                $check_array = array('motordropdown', 'escdropdown', 'propdropdown', 'kontrollbrettdropdown', 'batteridropdown');
+                $check_array = array('batteridropdown', 'kontrollbrettdropdown', 'propdropdown', 'motordropdown', 'escdropdown');
                 foreach ($check_array as $variable_name) {
                     if (isset($_POST[$variable_name])) {
                         $listvalue = $_POST[$variable_name];
                         if ($listvalue != 0) {
-                            $query .= $_POST[$variable_name];
+                            $kompquery .= $_POST[$variable_name];
                             $vals ++;
                         }
                     }
-                    if ($variable_name == 'batteridropdown') {
-                        $query .= ");\n";
+                    if ($variable_name == 'escdropdown') {
+                        $kompquery .= ");\n";
                     } else {
-                        $query .= ", ";
+                        $kompquery .= ", ";
                     }
-                    mysqli_query($con, $query);
                 }
+                mysqli_query($con, $kompquery);
 
                 if (!empty($_POST['specs']) && $vals == 5) {
                     $row2 = mysqli_fetch_array(mysqli_query($con, "SELECT MAX(OppskriftID) AS lastOID FROM oppskrift"));
@@ -158,16 +158,11 @@ Fantastic Four
                                 . "`KomponenterID`, `Beskrivelse`) VALUES (" . $oid . ', ' . $spec
                                 . ", " . $partsid . ", '" . $_POST['beskrfelt'] . "');";
                         $oid++;
-                        
-                            mysqli_query($con, $query);
-                           
-                            
-                            
+                        mysqli_query($con, $query);
+                    } if (mysqli_sqlstate($con) == 23000) {
+                        echo 'ESC is not compatible with the engine';
+                    }
                     
-                        
-                    } if(mysqli_sqlstate($con) == 23000){
-                            echo 'ESC is not compatible with the engine';                             
-                            }
                 } elseif ($vals > 0) {
                     echo 'Alle verdier må velges';
                 } elseif (empty($_POST['specs'])) {
