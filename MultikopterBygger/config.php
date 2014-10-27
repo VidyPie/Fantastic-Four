@@ -114,14 +114,12 @@ Fantastic Four
 
                         //PROPELLPROPELLPROPELL
                         $propellAdvQuery = 'SELECT * FROM propeller WHERE propellID= ' . $propellID;
-                        $propellAdv = mysqli_query($con, $propellAdvQuery);
-                        echo '<div id="mainComponent">' . $propellAdv->fetch_object()->Prop_dia . '"x';
-                        $propellAdv = mysqli_query($con, $propellAdvQuery); 
-                        echo $propellAdv->fetch_object()->Prop_vin . ' propeller</div>';
-                        $propellAdv = mysqli_query($con, $propellAdvQuery);   
-                        echo '<div id="configstats">Diameter <div id="pureStat">&nbsp' . $propellAdv->fetch_object()->Prop_dia . '&nbsp</div></div>';
-                        $propellAdv = mysqli_query($con, $propellAdvQuery);
-                        echo '<div id="configstats">Vinkling <div id="pureStat">&nbsp' . $propellAdv->fetch_object()->Prop_vin . '&nbsp</div></div>'; 
+                        $propellAdvResult = mysqli_query($con, $propellAdvQuery);
+                        $propellRow = mysqli_fetch_array($propellAdvResult);
+                        echo '<div id="mainComponent">' . $propellRow['Prop_dia'] . '"x';
+                        echo $propellRow['Prop_vin'] . ' propeller</div>';   
+                        echo '<div id="configstats">Diameter <div id="pureStat">&nbsp' . $propellRow['Prop_dia'] . '&nbsp</div></div>';
+                        echo '<div id="configstats">Vinkling <div id="pureStat">&nbsp' . $propellRow['Prop_vin'] . '&nbsp</div></div>'; 
                         echo '<p id="dynamicTable" onclick="openPropellTable()">BYTT PROPELLER</p>';
                         echo '<table id="propellTable" style="display:none;">';
                         echo '<tr><td>Diameter</td><td>Vinkling</td><td></td></tr>';
@@ -137,16 +135,13 @@ Fantastic Four
 
                         //BATTERIBATTERIBATTERI
                         $batteriAdvQuery = "SELECT * FROM batteri WHERE BatteriID=" . $batteriID;
-                        $batteriAdv = mysqli_query($con, $batteriAdvQuery);
-                        echo '<div id="mainComponent">' . $batteriAdv->fetch_object()->Celler . 'S ';
-                        $batteriAdv = mysqli_query($con, $batteriAdvQuery);
-                        echo $batteriAdv->fetch_object()->mah . 'mah ';
-                        $batteriAdv = mysqli_query($con, $batteriAdvQuery);
-                        echo $batteriAdv->fetch_object()->C_max . 'C</div>';  
-                        $batteriAdv = mysqli_query($con, $batteriAdvQuery);   
-                        echo '<div id="configstats">mah <div id="pureStat">&nbsp' . $batteriAdv->fetch_object()->mah . '&nbsp</div></div>';
-                        $batteriAdv = mysqli_query($con, $batteriAdvQuery);
-                        echo '<div id="configstats">Pris <div id="pureStat">&nbsp' . $batteriAdv->fetch_object()->Pris . '&nbsp</div></div>';
+                        $batteriAdvResult = mysqli_query($con, $batteriAdvQuery);
+                        $batteriRow = mysqli_fetch_array($batteriAdvResult);
+                        echo '<div id="mainComponent">' . $batteriRow['Celler'] . 'S ';
+                        echo $batteriRow['mah'] . 'mah ';
+                        echo $batteriRow['C_max'] . 'C</div>';    
+                        echo '<div id="configstats">mah <div id="pureStat">&nbsp' . $batteriRow['mah'] . '&nbsp</div></div>';
+                        echo '<div id="configstats">Pris <div id="pureStat">&nbsp' . $batteriRow['Pris'] . '&nbsp</div></div>';
                         echo '</form>';
                         echo '<p id="dynamicTable" onclick="openBatteriTable()">BYTT BATTERI</p>';
                         echo '<table id="batteriTable" style="display:none;">';
