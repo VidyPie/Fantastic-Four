@@ -27,9 +27,9 @@ Fantastic Four
         <div id="wrapper">
             <div id="leftContent">
                 <?php
-                if(isset($_GET['r'])) {
-                    if($_GET['r'] == 'timeout'){
-                    echo 'Session timed out, please log in again:';
+                if (isset($_GET['r'])) {
+                    if ($_GET['r'] == 'timeout') {
+                        echo 'Session timed out, please log in again:';
                     }
                 }
                 ?>
