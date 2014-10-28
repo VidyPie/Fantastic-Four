@@ -47,9 +47,7 @@ Fantastic Four
                     $passwd = $_POST['passwd'];
 
                     if ($usrName == NULL) {
-                        echo '<h1>STOP RIGHT THERE CRIMINAL SCUM!</h1><br>';
-                        echo '<img src="main_styling/wowSuchPassword.jpg" alt="LOLNICETRY!">';
-                        echo '<br>Hint: Det kan hjelpe om du skriver inn brukernavn..........';
+                        echo 'Feil brukernavn eller passord';
                         exit();
                     }
                     $Query = "SELECT `username`,`password` FROM `users` WHERE username ='" . $usrName . "'";
@@ -60,8 +58,7 @@ Fantastic Four
                     $dbPasswd = $row['password'];
 
                     if (empty($row)) {
-                        echo '<h1>STOP RIGHT THERE CRIMINAL SCUM! YOU ARE NOT A USER!</h1><br>';
-                        echo '<img src="main_styling/wowSuchPassword.jpg" alt="LOLNICETRY!">';
+                        echo 'Feil brukernavn eller passord';
                         exit();
                     } else {
                         if ($passwd == $dbPasswd) {
@@ -69,15 +66,13 @@ Fantastic Four
                             $_SESSION['timeout'] = time();
                             header('Location: administrasjon.php');
                         } elseif ($passwd != $dbPasswd) {
-                            echo '<h1>STOP RIGHT THERE CRIMINAL SCUM!</h1><br>';
-                            echo '<img src="main_styling/wowSuchPassword.jpg" alt="LOLNICETRY!">';
+                            echo 'Feil brukernavn eller passord';
                         }
                     }
                 }
                 //if usrname not in db exit()
                 else {
-                    echo '<br>Login! I dare you! I double dare you motherfucker!!'
-                    . '<br><img src="main_styling/REALSHIT.jpg" alt="BELIEVE IT!">';
+                    echo 'Det kreves brukernavn og passord for å kunne administrere basen.';
                 }
                 ?>
             </div>
