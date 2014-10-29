@@ -55,7 +55,7 @@ Fantastic Four
                     echo '<li>Propell: ' . $row['Prop_dia'] . '"x' . $row['Prop_vin'] . ' propeller</li>';
                     echo '<li>Batteri: ' . $row['Celler'] . 'S ' . $row['mah'] . 'mah ' . $row['C_max'] . 'C' . '</li>';
                     echo '</ul>';
-                    echo' <br> <a id="chbutton" href="http://smp.no">Velg</a><a class="cobutton" href="config.php?c=' . $oID . '">Konfig</a>
+                    echo' <br> <a id="chbutton" href="resultat.php">Velg</a><a class="cobutton" href="config.php?c=' . $oID . '">Konfig</a>
                     </div>';
                 }
                 echo '</div></div>';
