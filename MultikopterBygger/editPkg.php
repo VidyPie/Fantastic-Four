@@ -27,7 +27,10 @@ Fantastic Four
         </div>
         <div id="wrapper">
             <div id="Content">
-                
+                <?php
+                //Dropdown for å velge hvilken type del som skal redigeres, deretter et vindu med scroppbar der den spesifikke delen velges.
+                //For å redigere pakker, blir det kun det vinduet, med radial buttons elns. kjører form og submitknapp. Good times.
+                ?>
             </div>
         </div>
     </body>
