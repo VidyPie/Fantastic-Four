@@ -30,11 +30,11 @@ Fantastic Four
                 <?php
                 $con = $_SESSION['connection'];
 
-                $motorID = $_SESSION['motorSelected'];
-                $propellID = $_SESSION['propellSelected'];
-                $batteriID = $_SESSION['batteriSelected'];
-                $kontrollbrettID = $_SESSION['kontrollBrettSelected'];
-                $ESCID = $_SESSION['ESCSelected'];
+                $motorID = $_SESSION['MotorID'];
+                $propellID = $_SESSION['PropellID'];
+                $batteriID = $_SESSION['BatteriID'];
+                $kontrollbrettID = $_SESSION['KontrollbrettID'];
+                $ESCID = $_SESSION['ESCID'];
 
                 $Query = 'SELECT b.*, p.*, e.Navn AS esc, m.Navn AS motor, k.Navn AS kontrollbrett '
                         . 'FROM ESC AS e, Batteri AS b, Motor AS m, Propeller AS p, Kontrollbrett AS k '

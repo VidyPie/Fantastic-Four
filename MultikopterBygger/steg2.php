@@ -37,11 +37,7 @@ Fantastic Four
                     $specresult = mysqli_query($con, $specquery);
                     $srow = mysqli_fetch_array($specresult);
                     $specID = $srow['SpesifikasjonID'];
-                    $query = 'SELECT o.Beskrivelse, o.OppskriftID, m.Navn AS motor, b.*, esc.Navn AS esc, kon.Navn AS kbrett, p.*  '
-                            . 'FROM spesifikasjoner AS s, oppskrift AS o, komponenter AS kom, motor AS m, batteri AS b, esc, kontrollbrett AS kon, propeller AS p '
-                            . 'WHERE s.SpesifikasjonID = o.SpesifikasjonID AND o.KomponenterID = kom.KomponenterID '
-                            . 'AND kom.MotorID = m.MotorID AND kom.BatteriID = b.BatteriID AND kom.ESCID = esc.ESCID '
-                            . 'AND kom.KontrollbrettID = kon.KontrollbrettID AND kom.PropellID = p.PropellID AND s.SpesifikasjonID = ' . $specID;
+                    $query = 'CALL getPacket(' . $specID . ')';
                     $result = mysqli_query($con, $query);
 
                     while ($row = mysqli_fetch_array($result)) {
