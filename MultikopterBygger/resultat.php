@@ -55,6 +55,18 @@ Fantastic Four
                 . '</ul>'
                 . '</div>'
                 ?>
+                <br><br>
+                <p>
+                    Neste steg? Bestill delene selvfølgelig! <i>Merk at du i tillegg til dette må ha radiostyring, mottaker og batterilader.</i>
+                </p>
+                <p>
+                    Gode steder å bestille deler kan være:
+                <ul style="list-style-type:none">
+                    <li><a href="www.modellers.com">Modellers</a></li>
+                    <li><a href="www.elefun.com">Elefun</a></li>
+                    <li><a href="www.hobbyking.com">Hobbyking</a></li>
+                </ul>
+                </p>
             </div>
         </div>
     </body>
