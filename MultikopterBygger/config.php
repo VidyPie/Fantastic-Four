@@ -34,6 +34,7 @@ Fantastic Four
         <div id="wrapper">
             <div id="content">
                 <form name="components2">
+
                     <?php
                     $con = $_SESSION['connection'];
                     echo '<div id="configMagic">';
@@ -41,15 +42,14 @@ Fantastic Four
                     $IDval = array("MotorID" => 1, "ESCID" => 1, "KontrollbrettID" => 1, "PropellID" => 1, "BatteriID" => 1);
                     $IDnam = array("MotorID", "ESCID", "KontrollbrettID", "PropellID", "BatteriID");
 
+                    foreach ($IDnam as $namsel) {
+                        if (isset($_SESSION[$namsel]))
+                            $IDval[$namsel] = $_SESSION[$namsel];
+                    }
+
                     $sel_array = array("motorSelected", "ESCSelected", "kontrollbrettSelected", "propellSelected", "batteriSelected");
-                    $sel_array_link = array("motorSelected" => "motorID", "ESCSelected" => "motorID",
-                        "kontrollbrettSelected" => "kontrollbrettID", "propellSelected" => "propellID", "batteriSelected" => "batteriSelected");
-//
-//                    $motorID = $_SESSION['motorID'] = "";
-//                    $ESCID = $_SESSION['escID'] = "";
-//                    $kontrollbrettID = $_SESSION['kontrollbrettID'] = "";
-//                    $propellID = $_SESSION['propellID'] = "";
-//                    $batteriID = $_SESSION['batteriID'] = "";
+                    $sel_array_link = array("motorSelected" => "MotorID", "ESCSelected" => "ESCID",
+                        "kontrollbrettSelected" => "KontrollbrettID", "propellSelected" => "PropellID", "batteriSelected" => "BatteriID");
 
                     if (isset($_GET['c'])) {
                         $IDquery = 'SELECT m.MotorID, p.PropellID, b.BatteriID, kon.KontrollbrettID, esc.ESCID '
@@ -66,51 +66,11 @@ Fantastic Four
                         foreach ($sel_array as $selected) {
                             if (isset($_GET[$selected])) {
                                 $_SESSION[$sel_array_link[$selected]] = $IDval[$sel_array_link[$selected]] = $_GET[$selected];
+                                echo 'Session name: ' . $sel_array_link[$selected];
                             }
                         }
                     }
-//
-//                    $motorID = $_SESSION['motorSelected'];
-//                    $propellID = $_SESSION['propellSelected'];
-//                    $batteriID = $_SESSION['batteriSelected'];
-//                    $kontrollbrettID = $_SESSION['kontrollBrettSelected'];
-//                    $ESCID = $_SESSION['ESCSelected'];
-//                    if (isset($_GET['motorSelected'])) {
-//                        $motorID = $_GET['motorSelected'];
-//                    }
-//                    if (isset($_GET['ESCSelected'])) {
-//                        $ESCID = $_GET['ESCSelected'];
-//                    }
-//                    if (isset($_GET['kontrollbrettSelected'])) {
-//                        $kontrollbrettID = $_GET['kontrollbrettSelected'];
-//                    }
-//                    if (isset($_GET['propellSelected'])) {
-//                        $propellID = $_GET['propellSelected'];
-//                    }
-//                    if (isset($_GET['batteriSelected'])) {
-//                        $batteriID = $_GET['batteriSelected'];
-//                    }
-                    //MOTORMOTORMOTOR
-                    $motorAdvQuery = "SELECT * FROM motor WHERE MotorID=" . $IDval['MotorID'];
-                    $motorAdvResult = mysqli_query($con, $motorAdvQuery);
-                    $motorRow = mysqli_fetch_array($motorAdvResult);
-                    echo '<div id="mainComponent">' . $motorRow['Navn'] . '</div>';
-                    echo '<div id="configstats">kV <div id="pureStat">&nbsp' . $motorRow['kV'] . '&nbsp</div></div>';
-                    echo '<div id="configstats">Amps <div id="pureStat">&nbsp' . $motorRow['Amps'] . '&nbsp</div></div>';
-                    echo '<div id="configstats">Pris <div id="pureStat">&nbsp' . $motorRow['Pris'] . '&nbsp</div></div>';
-                    echo '<p id="dynamicTable" onclick="openMotorTable()">BYTT MOTOR</p>';
-                    echo '<div id="motorTable" style="display:none;"><table>';
-                    echo '<tr><td>Navn</td><td>kV</td><td>Amps</td><td>Pris</td><td></td></tr>';
-                    $motorAdvInvQuery = "SELECT * FROM motor WHERE MotorID != " . $IDval['MotorID'];
-                    $motorAdvInv = mysqli_query($con, $motorAdvInvQuery);
-                    echo '<form method="GET">';
-                    while ($row = mysqli_fetch_array($motorAdvInv)) {
-                        $thisMotor = $row['MotorID'];
-                        echo '<tr><td>' . $row['Navn'] . '</td><td>' . $row['kV'] . '</td><td>' . $row['Amps'] . '</td><td>' . $row['Pris'] . '</td><td><input type="radio" name="motorSelected" value="' . $thisMotor . '"></td>';
-                    }
-                    echo '</form></table><input type="submit" value="Velg"></div><br>';
-
-
+                    
                     //MOTORMOTORMOTOR
                     $motorAdvQuery = "SELECT * FROM motor WHERE MotorID=" . $IDval['MotorID'];
                     $motorAdvResult = mysqli_query($con, $motorAdvQuery);
@@ -152,7 +112,7 @@ Fantastic Four
                         $thisESC = $row['ESCID'];
                         echo '<tr><td>' . $row['Navn'] . '</td><td>' . $row['Ampere'] . '</td><td>' . $row['Pris'] . '</td><td><input type="radio" name="ESCSelected" value="' . $thisESC . '"></td>';
                     }
-                    echo '</form></table><div id="tableButtons"><input type="reset" value="Avbryt" id="cancelChoice" onclick="openESCTable()"><input type="submit" value="Velg" id="chooseThis"></div></div></div><br>';
+                    echo '</table><div id="tableButtons"><input type="reset" value="Avbryt" id="cancelChoice" onclick="openESCTable()"><input type="submit" value="Velg" id="chooseThis"></form></div></div></div><br>';
 
                     //KONTROLLBRETTKONTROLLBRETTKONTROLLBRETT
                     $kontrollbrettAdvQuery = 'SELECT * FROM kontrollbrett WHERE KontrollbrettID= ' . $IDval['KontrollbrettID'];
@@ -175,7 +135,7 @@ Fantastic Four
                         $thisKontrollbrett = $row['KontrollbrettID'];
                         echo '<tr><td>' . $row['Navn'] . '</td><td>' . $row['Rotor_min'] . '</td><td>' . $row['Rotor_max'] . '</td><td>' . $row['GPS'] . '</td><td>' . $row['Pris'] . '</td><td><input type="radio" name="kontrollbrettSelected" value="' . $thisKontrollbrett . '"></td>';
                     }
-                    echo '</form></table><div id="tableButtons"><input type="reset" value="Avbryt" id="cancelChoice" onclick="openKontrollbrettTable()"><input type="submit" value="Velg" id="chooseThis"></div></div></div><br>';
+                    echo '</table><div id="tableButtons"><input type="reset" value="Avbryt" id="cancelChoice" onclick="openKontrollbrettTable()"><input type="submit" value="Velg" id="chooseThis"></form></div></div></div><br>';
 
                     //PROPELLPROPELLPROPELL
                     $propellAdvQuery = 'SELECT * FROM propeller WHERE propellID= ' . $IDval['PropellID'];
@@ -197,7 +157,7 @@ Fantastic Four
                         $thisPropell = $row['PropellID'];
                         echo '<tr><td>' . $row['Prop_dia'] . '</td><td>' . $row['Prop_vin'] . '</td><td><input type="radio" name="propellSelected" value="' . $thisPropell . '"></td>';
                     }
-                    echo '</form></table><div id="tableButtons"><input type="reset" value="Avbryt" id="cancelChoice" onclick="openPropellTable()"><input type="submit" value="Velg" id="chooseThis"></div></div></div><br>';
+                    echo '</table><div id="tableButtons"><input type="reset" value="Avbryt" id="cancelChoice" onclick="openPropellTable()"><input type="submit" value="Velg" id="chooseThis"></form></div></div></div><br>';
 
                     //BATTERIBATTERIBATTERI
                     $batteriAdvQuery = "SELECT * FROM batteri WHERE BatteriID=" . $IDval['BatteriID'];
@@ -221,13 +181,13 @@ Fantastic Four
                         $thisBatteri = $row['BatteriID'];
                         echo '<tr><td>' . $row['Celler'] . '</td><td>' . $row['C_max'] . '</td><td>' . $row['mah'] . '</td><td>' . $row['Pris'] . '</td><td><input type="radio" name="batteriSelected" value="' . $thisBatteri . '"></td>';
                     }
-                    echo '</form></table><div id="tableButtons"><input type="reset" value="Avbryt" id="cancelChoice" onclick="openBatteriTable()"><input type="submit" value="Velg" id="chooseThis"></div></div></div><br>';
+                    echo '</table><div id="tableButtons"><input type="reset" value="Avbryt" id="cancelChoice" onclick="openBatteriTable()"><input type="submit" value="Velg" id="chooseThis"></form></div></div></div><br>';
 
                     mysqli_close($con);
                     ?>
+
             </div>  
         </div>
-        <script type="text/javascript" language="javascript"></script>
         <script type="text/javascript" src="banana.js"></script>
     </body>
 </html>
