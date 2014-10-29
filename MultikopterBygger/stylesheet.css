@@ -5,6 +5,11 @@ form {
     /*margin-right: auto;*/
 }
 
+p {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 #banner{
     width: 100%;
     position: fixed;
@@ -35,7 +40,7 @@ form {
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 20px;
-    padding-bottom: 20px;    
+    padding-bottom: 20px;
 }
 
 #dropdown {
@@ -122,6 +127,7 @@ form {
     width: 500px;
     display: inline-block;
     z-index: 0;
+    margin-left: 10px;
 }
 
 #exterminate {
@@ -155,8 +161,8 @@ img.extension{
 #configstats{
     margin-top: 5px;
     display: inline-block;
-
     margin-right: 10px;
+    margin-left: 5px;
 }
 
 #pureStat{
@@ -167,26 +173,64 @@ img.extension{
     color:red;
 }
 
-#mainComponent{
-    font-weight: bold;
-}
-
-#dynamicTable 
-{
+#component{
     border:solid;
     border-width: 1px;
-    border-color: black;
-    display:block;
-    position: relative;
-    width: 200px;
-    text-align: center;
-    background-color: lightgray;
-    margin-top: 10px;
-    cursor:pointer;
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-right: 150px;
+    padding-bottom: 10px;
+    padding-right: 5px;
 }
 
-#dynamicTable:hover{
-    color: #5AE861;
+#mainComponent{
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+#dynamicMotorTable 
+{
+    position: relative;
+    width: 200px;
+    margin-top: 10px;
+    cursor:pointer;
+    margin-left: 5px;
+}
+
+#dynamicESCTable 
+{
+    position: relative;
+    width: 200px;
+    margin-top: 10px;
+    cursor:pointer;
+    margin-left: 5px;
+}
+
+#dynamicKontrollbrettTable 
+{
+    position: relative;
+    width: 200px;
+    margin-top: 10px;
+    cursor:pointer;
+    margin-left: 5px;
+}
+
+#dynamicPropellTable 
+{
+    position: relative;
+    width: 200px;
+    margin-top: 10px;
+    cursor:pointer;
+    margin-left: 5px;
+}
+
+#dynamicBatteriTable 
+{
+    position: relative;
+    width: 200px;
+    margin-top: 10px;
+    cursor:pointer;
+    margin-left: 5px;
 }
 
 li {
@@ -203,10 +247,33 @@ li {
 #buildimage img{
     width:500px;
     position: fixed;
-   
+
 }
 
 #lol {
     position:relative;
     text-align: left;
+}
+
+#chooseThis{
+    width: 220px;
+
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+#cancelChoice{
+
+    width: 100px;
+}
+
+#componentHead{
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-left: 5px;
+}
+
+#tableButtons{
+
+    text-align: center;
 }
