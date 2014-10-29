@@ -277,3 +277,8 @@ li {
 
     text-align: center;
 }
+
+#summary p b {
+    width: 125px;
+    display: inline-block;
+}

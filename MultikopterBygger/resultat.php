@@ -43,16 +43,14 @@ Fantastic Four
                 $result = mysqli_query($con, $Query);
                 $row = mysqli_fetch_array($result);
 
-                echo '<div id="summary">'
-                . '<ul style="list-style-type:none">'
-                . '<li>Her er en oppsummering av oppsettet som har blitt valgt:</li>'
+                echo '<div id="summary"> '
+                . 'Her er en oppsummering av oppsettet som har blitt valgt:'
                 . '<br>'
-                . '<li>Motor: ' . $row['motor'] . '</li>'
-                . '<li>ESC: ' . $row['esc'] . '</li>'
-                . '<li>Kontrollbrett: ' . $row['kontrollbrett'] . '</li>'
-                . '<li>Propell: ' . $row['Prop_dia'] . 'x' . $row['Prop_vin'] . '</li>'
-                . '<li>Batteri: ' . $row['Celler'] . '-Cell ' . $row['mah'] . 'mah ' . $row['C_max'] . 'C ' . '</li>'
-                . '</ul>'
+                . '<p><b>Motor:</b> ' . $row['motor'] . '</p>'
+                . '<p><b>ESC:</b> ' . $row['esc'] . '</p>'
+                . '<p><b>Kontrollbrett:</b> ' . $row['kontrollbrett'] . '</p>'
+                . '<p><b>Propell:</b> ' . $row['Prop_dia'] . 'x' . $row['Prop_vin'] . '</p>'
+                . '<p><b>Batteri:</b> ' . $row['Celler'] . '-Cell ' . $row['mah'] . 'mah ' . $row['C_max'] . 'C </p>'
                 . '</div>'
                 ?>
                 <br><br>

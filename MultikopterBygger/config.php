@@ -182,10 +182,10 @@ Fantastic Four
                         echo '<tr><td>' . $row['Celler'] . '</td><td>' . $row['C_max'] . '</td><td>' . $row['mah'] . '</td><td>' . $row['Pris'] . '</td><td><input type="radio" name="batteriSelected" value="' . $thisBatteri . '"></td>';
                     }
                     echo '</table><div id="tableButtons"><input type="reset" value="Avbryt" id="cancelChoice" onclick="openBatteriTable()"><input type="submit" value="Velg" id="chooseThis"></form></div></div></div><br>';
-
+                    
                     mysqli_close($con);
                     ?>
-
+                <a href="resultat.php">Fullfør</a>
             </div>  
         </div>
         <script type="text/javascript" src="banana.js"></script>
