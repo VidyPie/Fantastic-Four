@@ -44,7 +44,7 @@ Fantastic Four
                             . 'AND kom.KontrollbrettID = kon.KontrollbrettID AND kom.PropellID = p.PropellID AND s.SpesifikasjonID = ' . $specID;
                     $result = mysqli_query($con, $query);
 
-<<<<<<< HEAD
+
                     while ($row = mysqli_fetch_array($result)) {
                         echo ' <div id="left_box"><b>Forslag 1</b> <br><br>';
                         $oID = $row['OppskriftID'];
@@ -57,22 +57,22 @@ Fantastic Four
                         echo '<li>Propell: ' . $row['Prop_dia'] . '"x' . $row['Prop_vin'] . ' propeller</li>';
                         echo '<li>Batteri: ' . $row['Celler'] . 'S ' . $row['mah'] . 'mah ' . $row['C_max'] . 'C' . '</li>';
                         echo '</ul>';
-                        echo' <br> <a id="chbutton" href="http://smp.no">Velg</a><a class="cobutton" href="config.php?c=' . $oID . '">Konfig</a>
-=======
-                while ($row = mysqli_fetch_array($result)) {
-                    echo ' <div id="left_box"><b>Forslag 1</b> <br><br>';
-                    $oID = $row['OppskriftID'];
-                    echo '<img class="copterimg" src="main_styling/fl_hex.jpg" width="500" alt="quad"><br>';
-                    echo $row['Beskrivelse'];
-                    echo '<ul style="list-style-type:none">';
-                    echo '<li>Motor: ' . $row['motor'] . '</li>';
-                    echo '<li>ESC: ' . $row['esc'] . '</li>';
-                    echo '<li>Kontrollbrett: ' . $row['kbrett'] . '</li>';
-                    echo '<li>Propell: ' . $row['Prop_dia'] . '"x' . $row['Prop_vin'] . ' propeller</li>';
-                    echo '<li>Batteri: ' . $row['Celler'] . 'S ' . $row['mah'] . 'mah ' . $row['C_max'] . 'C' . '</li>';
-                    echo '</ul>';
-                    echo' <br> <a id="chbutton" href="resultat.php">Velg</a><a class="cobutton" href="config.php?c=' . $oID . '">Konfig</a>
->>>>>>> 122b8c7213bbc3c3bd1f7a517931cd3e3f972eeb
+                        echo' <br> <a id="chbutton" href="http://smp.no">Velg</a><a class="cobutton" href="config.php?c=' . $oID . '">Konfig</a>';
+                    }
+
+                    while ($row = mysqli_fetch_array($result)) {
+                        echo ' <div id="left_box"><b>Forslag 1</b> <br><br>';
+                        $oID = $row['OppskriftID'];
+                        echo '<img class="copterimg" src="main_styling/fl_hex.jpg" width="500" alt="quad"><br>';
+                        echo $row['Beskrivelse'];
+                        echo '<ul style="list-style-type:none">';
+                        echo '<li>Motor: ' . $row['motor'] . '</li>';
+                        echo '<li>ESC: ' . $row['esc'] . '</li>';
+                        echo '<li>Kontrollbrett: ' . $row['kbrett'] . '</li>';
+                        echo '<li>Propell: ' . $row['Prop_dia'] . '"x' . $row['Prop_vin'] . ' propeller</li>';
+                        echo '<li>Batteri: ' . $row['Celler'] . 'S ' . $row['mah'] . 'mah ' . $row['C_max'] . 'C' . '</li>';
+                        echo '</ul>';
+                        echo' <br> <a id="chbutton" href="resultat.php">Velg</a><a class="cobutton" href="config.php?c=' . $oID . '">Konfig</a>
                     </div>';
                     }
                     echo '</div></div>';
