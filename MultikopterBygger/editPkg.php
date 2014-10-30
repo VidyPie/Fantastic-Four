@@ -1,7 +1,7 @@
 <?php
-include 'checklogin.php';
 include './dbConnect.php';
 include './editPkgFuncParts.php';
+include 'checklogin.php';
 ?>
 <!DOCTYPE html>
 <!--
