@@ -242,11 +242,12 @@ li {
     float:right;
     position: absolute;
     margin-left: 500px;
-    margin-top: 30px;
+    margin-top: 75px;
+
 }
 
 #buildimage img{
-    width:500px;
+    width:700px;
     position: fixed;
 
 }
@@ -282,4 +283,14 @@ li {
 #summary p b {
     width: 125px;
     display: inline-block;
+}
+
+#yoyo{
+    float:right;
+    display: fixed;
+    width:200px;
+    background-color: #E3F1F7;
+    border:solid;
+    border-width: 1px;
+    padding: 10px;
 }

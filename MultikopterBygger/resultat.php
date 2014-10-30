@@ -60,9 +60,9 @@ Fantastic Four
                 <p>
                     Gode steder å bestille deler kan være:
                 <ul style="list-style-type:none">
-                    <li><a href="www.modellers.com">Modellers</a></li>
-                    <li><a href="www.elefun.com">Elefun</a></li>
-                    <li><a href="www.hobbyking.com">Hobbyking</a></li>
+                    <li><a href="http://www.modellers.com">Modellers</a></li>
+                    <li><a href="http://www.elefun.no">Elefun</a></li>
+                    <li><a href="http://www.hobbyking.com">Hobbyking</a></li>
                 </ul>
                 </p>
             </div>
