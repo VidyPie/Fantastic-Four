@@ -53,6 +53,13 @@ Fantastic Four
                 }
 
                 function addmotor() {
+//                    $inputarray = array ('kVInput', 'ampInput', 'prisInput', 'prop_diaInput', 
+//                        'prop_vinInput', 'CE_maxInput', 'navnInput');
+//                    
+//                    foreach ($inputarray as $value) {
+//                        echo '<input min="0" type="number" name="' . $value . '" placeholder="kV"><br>';
+//                    }
+                    
                     echo '
                     Angi verdier som skal legges inn for motoren:<br>
                     <form name="motorAddForm" method="POST">
@@ -69,7 +76,22 @@ Fantastic Four
 
                     if (isset($_POST['submit'])) {
                         $con = $_SESSION['connection'];
-
+                        
+//                        $lastIdQuery = 'SELECT MAX(MotorID) AS lastID FROM motor';
+//                        $lastID = mysqli_fetch_array(mysqli_query($con, $lastIdQuery))['lastID'] + 1;
+//                        
+//                        $Query = 'INSERT INTO `motor`(`MotorID`, `kV`, `Amps`, `Pris`, `Prop_dia`, `Prop_vin`, `CE_MAX`, `CE_MIN`, `Navn`) VALUES (';
+//                        
+//                        foreach ($inputarray as $inValue) {
+//                            if(isset($_POST[$inValue])) {$Query .= $_POST[$inValue];}
+//                            else {$Query .= $lastID;}
+//                            
+//                            if($inValue == 'navnInput') {$Query .= ")";}
+//                            else {$Query .= ",";}
+//                        }
+//                        mysqli_query($con, $Query);
+//                        mysqli_close($con);
+                        
                         $kvInput = $_POST['kVInput'];
                         $ampInput = $_POST['ampInput'];
                         $prisInput = $_POST['prisInput'];
@@ -79,6 +101,7 @@ Fantastic Four
                         $CE_min = $_POST['CE_minInput'];
                         $navn = $_POST['navnInput'];
 
+                            
                         $Query = "SELECT MotorID FROM motor ORDER BY MotorID DESC LIMIT 1";
                         $result = mysqli_query($con, $Query);
                         $row = mysqli_fetch_array($result);
