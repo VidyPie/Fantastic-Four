@@ -294,3 +294,12 @@ li {
     border-width: 1px;
     padding: 10px;
 }
+
+#theChoochooshoe {
+    padding: 10px 10px 10px 10px;
+    border:solid;
+    border-width: 1px;
+    border-color: #666666;
+    heigh: 350px;
+    overflow-y: scroll;
+}

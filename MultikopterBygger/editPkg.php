@@ -29,30 +29,23 @@ Fantastic Four
         </div>
         <div id="wrapper">
             <div id="Content">
-                <form>
-                    <select name="part" onchange="document.location.href = this.value">
-                        <option value="">---Velg delkategori---</option>
-                        <option value="editPkg.php?f=editMotor">Motor</option>
-                        <option value="editPkg.php?f=editESC">ESC</option>
-                        <option value="editPkg.php?f=editBoard">Kontrollbrett</option>
-                        <option value="editPkg.php?f=editProp">Propell</option>
-                        <option value="editPkg.php?f=editBat">Batteri</option>
-                    </select>
-                </form>
-                <br>
-                <?php
-                //Dropdown for å velge hvilken type del som skal redigeres, deretter et vindu med scroppbar der den spesifikke delen velges.
-                //For å redigere pakker, blir det kun det vinduet, med radial buttons elns. kjører form og submitknapp. Good times.
-                if (isset($_POST['part'])) {
-                    $part = $_POST['part'];
-                } else {
-                    $part = '';
-                }
-
-                if (isset($_GET['f'])) {
-                    $_GET['f']();
-                }
-                ?>
+                <div id="theChoochooshoe">
+                    <?php
+                    //shit comes here
+                    $con = $_SESSION['connection'];
+                    
+                    $Query = 'Select * FROM Oppskrift';
+                    $result = mysqli_query($con, $Query);
+                    while ($row = mysqli_fetch_array($result)) {
+                        $OppID = $row['OppskriftID'];
+                        $SpesID = $row['SpesifikasjonID'];
+                        $KompID = $row['KomponenterID'];
+                        $beskr = $row['Beskrivelse'];
+                        echo $OppID . ' ' . $SpesID . ' ' . $KompID . ' ' . $beskr . '<br>';
+                        //legg inn knapp for å delete her, må sikkert legge dritten inn i en form.
+                    }
+                    ?>
+                </div>
             </div>
         </div>
     </body>

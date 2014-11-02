@@ -34,7 +34,7 @@ Fantastic Four
                 }
                 ?>
                 <form name="Login" method="POST">
-                    <input type="text" name="usr" placeholder="username"><br>
+                    <input type="text" name="usr" placeholder="username" autofocus><br>
                     <input type="password" name="passwd" placeholder="Passord"><br>
                     <input type="submit" name="Login">
                 </form>
