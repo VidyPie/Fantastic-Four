@@ -208,3 +208,7 @@ WHERE s.SpesifikasjonID = o.SpesifikasjonID AND o.KomponenterID = kom.Komponente
 AND kom.MotorID = m.MotorID AND kom.BatteriID = b.BatteriID AND kom.ESCID = esc.ESCID
 AND kom.KontrollbrettID = kon.KontrollbrettID AND kom.PropellID = p.PropellID AND s.SpesifikasjonID = param1;
 END;;
+
+DELIMITER ;;
+CREATE PROCEDURE getOppskrift(param2 int)
+BEGIN
