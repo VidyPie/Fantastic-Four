@@ -207,10 +207,17 @@ AND kom.KontrollbrettID = kon.KontrollbrettID AND kom.PropellID = p.PropellID AN
 END;;
 
 DELIMITER ;;
-CREATE PROCEDURE getOppskrift(param2 int)
+CREATE PROCEDURE getOppskrift()
 BEGIN
 SELECT o.Beskrivelse, o.OppskriftID, m.Navn AS motor, b.*, esc.Navn AS esc, kon.Navn AS kbrett, p.*
 FROM oppskrift AS o, komponenter AS kom, motor AS m, batteri AS b, esc, kontrollbrett AS kon, propeller AS p
 WHERE o.KomponenterID = kom.KomponenterID AND kom.MotorID = m.MotorID AND kom.BatteriID = b.BatteriID AND kom.ESCID = esc.ESCID
-AND kom.KontrollbrettID = kon.KontrollbrettID AND kom.PropellID = p.PropellID;
+AND kom.KontrollbrettID = kon.KontrollbrettID AND kom.PropellID = p.PropellID
+ORDER BY o.OppskriftID ASC;
+END;;
+
+DELIMITER ;;
+CREATE PROCEDURE remOppskrift(oppID int)
+BEGIN
+DELETE FROM Oppskrift WHERE OppskriftID = oppID;
 END;;
