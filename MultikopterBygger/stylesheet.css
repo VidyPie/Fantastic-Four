@@ -247,7 +247,7 @@ li {
 }
 
 #buildimage img{
-    width:700px;
+    width:600px;
     position: fixed;
 
 }
@@ -314,3 +314,10 @@ li {
     heigh: 350px;
     overflow-y: scroll;
 }
+
+#finishButton{
+    font-size: 40px;
+    height:120px;
+    width:350px;
+}
+
