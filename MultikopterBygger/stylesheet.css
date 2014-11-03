@@ -285,6 +285,17 @@ li {
     display: inline-block;
 }
 
+#pktDesc {
+    text-align: left;
+    margin-top: 40px;
+    margin-left: 20px;
+}
+
+#pktDesc p b {
+    width: 120px;
+    display: inline-block;
+}
+
 #yoyo{
     float:right;
     display: fixed;

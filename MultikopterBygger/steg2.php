@@ -45,13 +45,13 @@ Fantastic Four
                         $oID = $row['OppskriftID'];
                         echo '<img class="copterimg" src="main_styling/fl_hex.jpg" width="500" alt="quad"><br>';
                         echo $row['Beskrivelse'];
-                        echo '<ul style="list-style-type:none">';
-                        echo '<li>Motor: ' . $row['motor'] . '</li>';
-                        echo '<li>ESC: ' . $row['esc'] . '</li>';
-                        echo '<li>Kontrollbrett: ' . $row['kbrett'] . '</li>';
-                        echo '<li>Propell: ' . $row['Prop_dia'] . '"x' . $row['Prop_vin'] . ' propeller</li>';
-                        echo '<li>Batteri: ' . $row['Celler'] . 'S ' . $row['mah'] . 'mah ' . $row['C_max'] . 'C' . '</li>';
-                        echo '</ul>';
+                        echo '<div id="pktDesc">';
+                        echo '<p><b>Motor:</b> ' . $row['motor'] . '</p>';
+                        echo '<p><b>ESC:</b> ' . $row['esc'] . '</p>';
+                        echo '<p><b>Kontrollbrett:</b> ' . $row['kbrett'] . '</p>';
+                        echo '<p><b>Propell:</b> ' . $row['Prop_dia'] . '"x' . $row['Prop_vin'] . ' propeller</p>';
+                        echo '<p><b>Batteri:</b> ' . $row['Celler'] . 'S ' . $row['mah'] . 'mah ' . $row['C_max'] . 'C' . '</p>';
+                        echo '</div>';
                         echo' <br> <a id="chbutton" href="resultat.php">Velg</a><a class="cobutton" href="config.php?c=' . $oID . '">Konfig</a>
                     </div>';
                     }
