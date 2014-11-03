@@ -186,11 +186,8 @@ DELIMITER ;;
 CREATE TRIGGER CHECK_COMPATIBILITY BEFORE INSERT ON komponenter
 FOR EACH ROW
 BEGIN
-IF (new.MotorID != new.ESCID)
-THEN
 SET @x = (SELECT `Ampere` FROM `esc` WHERE `ESCID` = new.ESCID);
 SET @y =(SELECT `Amps` FROM `motor` WHERE `MotorID` = new.MotorID);
-end if;
 IF (@y < @x)
 THEN        
 SIGNAL SQLSTATE '45000'
