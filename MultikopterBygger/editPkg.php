@@ -34,7 +34,7 @@ Fantastic Four
                     //shit comes here
                     $con = $_SESSION['connection'];
                     
-                    $Query = 'Select * FROM Oppskrift';
+                    $Query = 'CALL getOppskrift';
                     $result = mysqli_query($con, $Query);
                     while ($row = mysqli_fetch_array($result)) {
                         $OppID = $row['OppskriftID'];

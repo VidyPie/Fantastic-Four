@@ -209,3 +209,8 @@ END;;
 DELIMITER ;;
 CREATE PROCEDURE getOppskrift(param2 int)
 BEGIN
+SELECT o.Beskrivelse, o.OppskriftID, m.Navn AS motor, b.*, esc.Navn AS esc, kon.Navn AS kbrett, p.*
+FROM oppskrift AS o, komponenter AS kom, motor AS m, batteri AS b, esc, kontrollbrett AS kon, propeller AS p
+WHERE o.KomponenterID = kom.KomponenterID AND kom.MotorID = m.MotorID AND kom.BatteriID = b.BatteriID AND kom.ESCID = esc.ESCID
+AND kom.KontrollbrettID = kon.KontrollbrettID AND kom.PropellID = p.PropellID;
+END;;
