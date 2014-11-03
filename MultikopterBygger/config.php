@@ -66,7 +66,6 @@ Fantastic Four
                         foreach ($sel_array as $selected) {
                             if (isset($_GET[$selected])) {
                                 $_SESSION[$sel_array_link[$selected]] = $IDval[$sel_array_link[$selected]] = $_GET[$selected];
-                                echo 'Session name: ' . $sel_array_link[$selected];
                             }
                         }
                     }
@@ -75,11 +74,12 @@ Fantastic Four
                     $motorAdvQuery = "SELECT * FROM motor WHERE MotorID=" . $IDval['MotorID'];
                     $motorAdvResult = mysqli_query($con, $motorAdvQuery);
                     $motorRow = mysqli_fetch_array($motorAdvResult);
+                    $motorAmpPull = $motorRow['Amps'];
                     echo '<div id="component">';
                     echo '<div id="componentHead">MOTOR<br></div>';
                     echo '<div id="mainComponent">' . $motorRow['Navn'] . '</div>';
                     echo '<div id="configstats">kV: <div id="pureStat">&nbsp' . $motorRow['kV'] . '&nbsp</div></div>';
-                    echo '<div id="configstats">Amps: <div id="pureStat">&nbsp' . $motorRow['Amps'] . '&nbsp</div></div>';
+                    echo '<div id="configstats">Amps: <div id="pureStat">&nbsp' . $motorAmpPull . '&nbsp</div></div>';
                     echo '<input type="button" id="dynamicMotorTable" onclick="openMotorTable()" style="display:block;" value="BYTT MOTOR">';
                     echo '<div id="motorTable" style="display:none;"><table><br>';
                     echo '<tr><td><b>Navn</td><td><b>kV</td><td><b>Amps</td><td></td></tr>';
@@ -103,7 +103,7 @@ Fantastic Four
                     echo '<input type="button" id="dynamicESCTable" onclick="openESCTable()" style="display:block;" value="BYTT ESC">';
                     echo '<div id="ESCTable" style="display:none;"><table><br>';
                     echo '<tr><td><b>Navn</td><td><b>Ampere</td><td></td></tr>';
-                    $ESCAdvInvQuery = "SELECT * FROM esc WHERE ESCID != " . $IDval['ESCID'];
+                    $ESCAdvInvQuery = "SELECT * FROM esc WHERE ESCID != " . $IDval['ESCID'] . ' AND Ampere >=' . $motorAmpPull;
                     $ESCAdvInv = mysqli_query($con, $ESCAdvInvQuery);
                     echo '<form method="GET">';
                     while ($row = mysqli_fetch_array($ESCAdvInv)) {

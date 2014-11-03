@@ -1,4 +1,4 @@
-create database kopterbygger;
+create database kopterbygger CHARACTER SET utf8 COLLATE utf8_danish_ci;
 	USE kopterbygger;
 
 create table Spesifikasjoner
@@ -99,3 +99,5 @@ create table users
 		password nchar(50) not null,
 		PRIMARY KEY (username)
 	);
+
+	ALTER TABLE oppskrift CONVERT TO CHARACTER SET utf8 COLLATE utf8_danish_ci;
