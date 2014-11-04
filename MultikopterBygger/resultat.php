@@ -58,12 +58,25 @@ Fantastic Four
                     Neste steg? Bestill delene selvfølgelig! <i>Merk at du i tillegg til dette må ha radiostyring, mottaker og batterilader.</i>
                 </p>
                 <p>
-                    Gode steder å bestille deler kan være:
-                <ul style="list-style-type:none">
-                    <li><a href="http://www.modellers.com">Modellers</a></li>
-                    <li><a href="http://www.elefun.no">Elefun</a></li>
-                    <li><a href="http://www.hobbyking.com">Hobbyking</a></li>
-                </ul>
+                    Gode steder å bestille deler kan være: 
+                    <table id="linksTable">
+                        <tr>
+                            <th>Norwegian Modellers</th>
+                            <th>Elefun</th>
+                            <th>Hobbyking</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="http://www.modellers.com"><img src="main_styling/normod.png"></a>
+                            </td>
+                            <td>
+                                <a href="http://www.elefun.no"><img src="main_styling/elefun.png"></a>
+                            </td>
+                            <td>
+                                <a href="http://www.hobbyking.com"><img src="main_styling/hobkin.png"></a>
+                            </td>
+                        </tr>
+                    </table>
                 </p>
             </div>
         </div>
