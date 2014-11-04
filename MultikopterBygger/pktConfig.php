@@ -32,67 +32,41 @@ Fantastic Four
                     <?php
                     $con = $_SESSION['connection'];
 
-                    echo '<div id="dropdown"><p>Velg komponenter for pakke:</p>';
-                    echo '<select name="motordropdown">';
-                    echo '<option value="0">----Velg Motor----</option>';
-                    $query = "SELECT * FROM motor";
-                    $result = mysqli_query($con, $query);
-                    while ($row = mysqli_fetch_array($result)) {
-                        $nameResult = $row['Navn'];
-                        $idResult = $row['MotorID'];
-                        echo '<option value="' . $idResult . '">' . $nameResult . '</option>';
-                    }
-                    echo '</select><br>';
+                    $dropdownarray = array('motordropdown', 'escdropdown', 'propdropdown', 'kontrollbrettdropdown', 'batteridropdown');
+                    $plist = array('motor', 'esc', 'propeller', 'kontrollbrett', 'batteri');
+                    $pIDlist = array('motor' => 'MotorID', 'esc' => 'ESCID', 'kontrollbrett' => 'KontrollbrettID');
+                    $x = 0;
 
-                    echo '<select name="escdropdown">';
-                    echo '<option value="0">----Velg ESC----</option>';
-                    $query = "SELECT * FROM esc";
-                    $result = mysqli_query($con, $query);
-                    while ($row = mysqli_fetch_array($result)) {
-                        $nameResult = $row['Navn'];
-                        $idResult = $row['ESCID'];
-                        echo '<option value="' . $idResult . '">' . $nameResult . '</option>';
+                    echo '<div id="dropdown"><p>Velg komponenter for pakke:</p>' . "\n";
+                    foreach ($dropdownarray as $ddlist) {
+                        echo '<select name="' . $ddlist . '">' . "\n";
+                        echo '<option value="0">----Velg ' . $plist[$x] . '----</option>' . "\n";
+                        $query = "SELECT * FROM " . $plist[$x];
+                        $result = mysqli_query($con, $query);
+                        while ($row = mysqli_fetch_array($result)) {
+                            if ($plist[$x] == 'batteri') {
+                                $mahResult = $row['mah'];
+                                $cResult = $row['C_max'];
+                                $sResult = $row['Celler'];
+                                $idResult = $row['BatteriID'];
+                                echo '<option value="' . $idResult . '">' . $sResult
+                                . 'S ' . $mahResult . 'mah ' . $cResult . 'C' . '</option>' . "\n";
+                            } else if ($plist[$x] == 'propeller') {
+                                $nameResult = $row['Navn'];
+                                $idResult = $row['PropellID'];
+                                $diaResult = $row['Prop_dia'];
+                                $vinResult = $row['Prop_vin'];
+                                echo '<option value="' . $idResult . '">' . $nameResult
+                                . ' ' . $diaResult . '"x' . $vinResult . '</option>' . "\n";
+                            } else {
+                                $nameResult = $row['Navn'];
+                                $idResult = $row[$pIDlist[$plist[$x]]];
+                                echo '<option value="' . $idResult . '">' . $nameResult . '</option>' . "\n";
+                            }
+                        }
+                        echo '</select><br>';
+                        $x++;
                     }
-                    echo '</select><br>';
-
-                    echo '<select name="propdropdown">';
-                    echo '<option value="0">----Velg Propell----</option>';
-                    $query = "SELECT * FROM propeller";
-                    $result = mysqli_query($con, $query);
-                    while ($row = mysqli_fetch_array($result)) {
-                        $nameResult = $row['Navn'];
-                        $idResult = $row['PropellID'];
-                        $diaResult = $row['Prop_dia'];
-                        $vinResult = $row['Prop_vin'];
-                        echo '<option value="' . $idResult . '">' . $nameResult
-                        . ' ' . $diaResult . '"x' . $vinResult . '</option>';
-                    }
-                    echo '</select><br>';
-
-                    echo '<select name="kontrollbrettdropdown">';
-                    echo '<option value="0">----Velg Kontrollbrett----</option>';
-                    $query = "SELECT * FROM kontrollbrett";
-                    $result = mysqli_query($con, $query);
-                    while ($row = mysqli_fetch_array($result)) {
-                        $nameResult = $row['Navn'];
-                        $idResult = $row['KontrollbrettID'];
-                        echo '<option value="' . $idResult . '">' . $nameResult . '</option>';
-                    }
-                    echo '</select><br>';
-
-                    echo '<select name="batteridropdown">';
-                    echo '<option value="0">----Velg Batteri----</option>';
-                    $query = "SELECT * FROM batteri";
-                    $result = mysqli_query($con, $query);
-                    while ($row = mysqli_fetch_array($result)) {
-                        $mahResult = $row['mah'];
-                        $cResult = $row['C_max'];
-                        $sResult = $row['Celler'];
-                        $idResult = $row['BatteriID'];
-                        echo '<option value="' . $idResult . '">' . $sResult
-                        . 'S ' . $mahResult . 'mah ' . $cResult . 'C' . '</option>';
-                    }
-                    echo '</select><br>';
                     ?>
                     <p>Gi en kort beskrivelse av pakken (maks 250 tegn):</p>
                     <textarea required="yes" id="beskr" name="beskrfelt" rows="8"></textarea>
@@ -125,12 +99,8 @@ Fantastic Four
             if (isset($_POST['submit'])) {
                 $con = $_SESSION['connection'];
 
-                $row = mysqli_fetch_array(mysqli_query($con, "SELECT MAX(KomponenterID) AS lastID FROM komponenter"));
-                $partsid = $row['lastID'] + 1;
-
-
-                $kompquery = "INSERT INTO `komponenter` (`KomponenterID`, `BatteriID`, "
-                        . "`KontrollbrettID`, `PropellID`, `MotorID`, `ESCID`) VALUES (" . $partsid . ", ";
+                $kompquery = "INSERT INTO `komponenter` (`BatteriID`, "
+                        . "`KontrollbrettID`, `PropellID`, `MotorID`, `ESCID`) VALUES (";
 
                 $vals = 0;
                 $check_array = array('batteridropdown', 'kontrollbrettdropdown', 'propdropdown', 'motordropdown', 'escdropdown');
@@ -149,24 +119,25 @@ Fantastic Four
                     }
                 }
                 mysqli_query($con, $kompquery);
-
+                
+                $partsid = mysqli_fetch_array(mysqli_query
+                                ($con, "SELECT MAX(KomponenterID) AS id FROM komponenter"))['id'];
+                
                 if (!empty($_POST['specs']) && $vals == 5) {
-                    $row2 = mysqli_fetch_array(mysqli_query($con, "SELECT MAX(OppskriftID) AS lastOID FROM oppskrift"));
-                    $oid = $row2['lastOID'] + 1;
                     foreach ($_POST['specs'] as $spec) {
-                        $query = "INSERT INTO `oppskrift`(`OppskriftID`, `SpesifikasjonID`, "
-                                . "`KomponenterID`, `Beskrivelse`) VALUES (" . $oid . ', ' . $spec
+                        $query = "INSERT INTO `oppskrift`(`SpesifikasjonID`, "
+                                . "`KomponenterID`, `Beskrivelse`) VALUES (" . $spec
                                 . ", " . $partsid . ", '" . $_POST['beskrfelt'] . "');";
-                        $oid++;
                         mysqli_query($con, $query);
                     } if (mysqli_sqlstate($con) == 23000) {
                         echo 'ESC is not compatible with the engine';
                     }
-                    
                 } elseif ($vals > 0) {
                     echo 'Alle verdier må velges';
                 } elseif (empty($_POST['specs'])) {
                     echo 'Velg en eller flere kategorier';
+                } else {
+                    echo 'Pakke lagt til';
                 }
             }
             mysqli_close($con);
