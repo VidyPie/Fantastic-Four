@@ -382,5 +382,20 @@ li {
     margin-top: 10px;
 }
 
+#linksTable img{
+    width: 100%;
+    opacity: 0.8;
+}
+
+#linksTable img:hover{
+    opacity:1;
+}
+
+th{
+    width:300px;
+}
+
+
+
 
 
