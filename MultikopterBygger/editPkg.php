@@ -49,11 +49,10 @@ Fantastic Four
 
                             if (isset($_POST['oppID'])) {
                                 foreach ($_POST['oppID'] as $oppIDarrayNumberYes) {
-                                    $Query = 'DELETE FROM Oppskrift WHERE OppskriftID =' . $oppIDarrayNumberYes;
+                                    $Query = 'DELETE FROM oppskrift WHERE OppskriftID=' . $oppIDarrayNumberYes;
                                     mysqli_query($con, $Query);
                                 }
                             }
-                            
                             $Query = 'CALL getOppskrift()';
                             $result = mysqli_query($con, $Query);
 
@@ -70,15 +69,11 @@ Fantastic Four
                                 //legg inn knapp for å delete her, må sikkert legge dritten inn i en form.
                                 //yes, hele dritten skal inn i en form + skal ha kun en knapp men mange checkbuttons eller hvadetnåheter.
                             }
+                            mysqli_close($con);
                             ?>
                         </table>
                         <input type = "submit" name = "submit" value = "Fullfør">
                     </form>
-                    <?php
-                    $con = $_SESSION['connection'];
-                    echo mysqli_stat($con);
-                    mysqli_close($con);
-                    ?>
                 </div>
             </div>
         </div>

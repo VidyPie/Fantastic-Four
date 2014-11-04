@@ -304,6 +304,24 @@ li {
     overflow-y: scroll;
 }
 
+#content p img {
+    width: 200px;
+}
+
+dl {
+    text-align: left;
+}
+
+dt {
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+dd {
+    width: 500px;
+}
+
 #finishButton{
     font-size: 40px;
     height:120px;
@@ -380,6 +398,7 @@ li {
     font-size:15px;
     padding:8px 90px;
     margin-top: 10px;
+<<<<<<< HEAD
 }
 
 #linksTable img{
@@ -399,3 +418,6 @@ th{
 
 
 
+=======
+}
+>>>>>>> 318190003baf6c9c45c3ffa8f98d36e3fb0a6df5
