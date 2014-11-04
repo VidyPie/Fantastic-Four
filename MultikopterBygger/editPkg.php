@@ -29,7 +29,7 @@ Fantastic Four
         </div>
         <div id="wrapper">
             <div id="Content">
-                <div id="theChoochooshoe">
+                <div id=" ">
                     <form name="pkgRem" method="POST">
                         <table border="1">
                             <tr>
@@ -51,7 +51,7 @@ Fantastic Four
 
                             while ($row = mysqli_fetch_array($result)) {
                                 echo '<tr>';
-                                echo '<td><input type="checkbox" value"' . $row['OppskriftID'] . '"></td>';
+                                echo '<td><input type="checkbox" name="oppID[]" value="' . $row['OppskriftID'] . '"></td>';
                                 echo '<td>' . $row['OppskriftID'] . '</td>';
                                 echo '<td>' . $row['Beskrivelse'] . '</td>';
                                 echo '<td>' . $row['motor'] . '</td>';
@@ -62,14 +62,20 @@ Fantastic Four
                                 //legg inn knapp for å delete her, må sikkert legge dritten inn i en form.
                                 //yes, hele dritten skal inn i en form + skal ha kun en knapp men mange checkbuttons eller hvadetnåheter.
                             }
-                            echo '<input type = "submit" name = "submit" value = "">'; //mmmmmmjaaaaafuq......
                             ?>
                         </table>
+                        <input type = "submit" name = "submit" value = "Fullfør">
                     </form>
                     <?php
-                    if (isset($_POST['submit'])) {
-                        echo $_POST['submit'];
+                    $con = $_SESSION['connection'];
+                    if (isset($_POST['oppID'])) {
+                        foreach ($_POST['oppID'] as $oppIDarrayNumberYes) {
+                            $Query = 'DELETE FROM Oppskrift WHERE OppskriftID =' . $oppIDarrayNumberYes;
+                            mysqli_query($con, $Query);
+                            echo mysqli_sqlstate($con);
+                        }
                     }
+                    mysqli_close($con);
                     ?>
                 </div>
             </div>
