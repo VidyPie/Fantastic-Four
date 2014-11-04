@@ -1,8 +1,6 @@
 form {
     position:relative;
     text-align: left;
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
 }
 
 p {
@@ -73,11 +71,9 @@ p {
 #startButton{
     height: 200px;
     width:300px;
-    //background-color: green;
 }
 
 #left_box{
-    //margin-top: 20px;
     margin-bottom: 5px;
     display: inline-block;
     border: solid;
@@ -87,9 +83,7 @@ p {
     height: 620px;
     padding-top: 10px;
     padding-bottom: 20px;
-    //float:left;
-    vertical-align: top;
-    
+    vertical-align: top; 
 }
 
 #left_box img{
@@ -111,7 +105,6 @@ p {
 #pktDesc div{
     position: relative;
     margin-left: -20px;
-    //margin-top: 30px;
     vertical-align: bottom;
 }
 
@@ -126,6 +119,7 @@ p {
     background-color: #d6fccf;
     border:solid;
     border-width: 1px;
+
 }
 #configMagic{
     width: 500px;
@@ -140,6 +134,8 @@ img.banner{
     height:80px;
     width:auto;
     top:0;
+    border-bottom: solid;
+    border-color: #8c8c8c;
 }
 
 img.extension{
@@ -147,6 +143,8 @@ img.extension{
     max-height: 80px;
     top:0;
     z-index:0;
+    border-bottom: solid;
+    border-color: #8c8c8c;
 }
 
 .abutton {
@@ -242,29 +240,20 @@ li {
     position: absolute;
     margin-left: 500px;
     margin-top: 75px;
-
 }
 
 #buildimage img{
     width:600px;
     position: fixed;
-
-}
-
-#lol {
-    position:relative;
-    text-align: left;
 }
 
 #chooseThis{
     width: 220px;
-
     margin-left: 5px;
     margin-bottom: 5px;
 }
 
 #cancelChoice{
-
     width: 100px;
 }
 
@@ -275,17 +264,14 @@ li {
 }
 
 #tableButtons{
-
     text-align: center;
 }
 
 #summary p b {
-    //width: 125px;
     display: inline-block;
 }
 
-
-#yoyo{
+#infoBox{
     float:right;
     display: fixed;
     width:200px;
@@ -322,10 +308,17 @@ dd {
     width: 500px;
 }
 
-#finishButton{
-    font-size: 40px;
-    height:120px;
-    width:350px;
+#linksTable img{
+    width: 100%;
+    opacity: 0.8;
+}
+
+#linksTable img:hover{
+    opacity:1;
+}
+
+th{
+    width:300px;
 }
 
 #divButton a {
@@ -379,7 +372,6 @@ dd {
 .chButton {
     font-size:15px;
     padding:8px 84px;
-    //margin-left: -4px;
     margin-top: 3px;
 }
 .coButton {
@@ -398,26 +390,4 @@ dd {
     font-size:15px;
     padding:8px 90px;
     margin-top: 10px;
-<<<<<<< HEAD
 }
-
-#linksTable img{
-    width: 100%;
-    opacity: 0.8;
-}
-
-#linksTable img:hover{
-    opacity:1;
-}
-
-th{
-    width:300px;
-}
-
-
-
-
-
-=======
-}
->>>>>>> 318190003baf6c9c45c3ffa8f98d36e3fb0a6df5
