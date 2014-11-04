@@ -314,3 +314,21 @@ li {
     heigh: 500px;
     overflow-y: scroll;
 }
+
+#content p img {
+    width: 200px;
+}
+
+dl {
+    text-align: left;
+}
+
+dt {
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+dd {
+    width: 500px;
+}
