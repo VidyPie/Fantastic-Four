@@ -26,7 +26,7 @@ Fantastic Four
                 <h2>Administrasjon</h2>
                 <a class="abutton" href="addParts.php?f=">Legg til deler</a><br>
                 <a class="abutton" href="pktConfig.php">Sette sammen pakker</a><br>
-                <a class="abutton" href="editPkg.php">Redigere pakker og deler</a>
+                <a class="abutton" href="editPkg.php">Fjerne pakker fra basen</a>
             </div>
         </div>
     </body>
