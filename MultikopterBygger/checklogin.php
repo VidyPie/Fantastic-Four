@@ -5,3 +5,6 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == FALSE) {
     $_SESSION['loggedin'] = FALSE;
     header('Location: login.php?r=timeout');
 }
+ else {
+    $_SESSION['timeout'] = time();
+}
