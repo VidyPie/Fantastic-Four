@@ -125,7 +125,6 @@ VALUES
 
 INSERT INTO `komponenter`
 (
-	`KomponenterID`, 
 	`BatteriID`, 
 	`KontrollbrettID`, 
 	`PropellID`, 
@@ -134,53 +133,52 @@ INSERT INTO `komponenter`
 )
 
 VALUES 
-(1,1,1,1,1,1),
-(2,5,2,1,2,2),
-(3,3,2,2,3,3),
-(4,9,2,1,4,4),
-(5,12,3,2,5,5),
-(6,11,3,1,6,6),
-(7,8,1,2,7,7),
-(8,7,1,1,6,6),
-(9,7,3,2,5,7),
-(10,2,2,1,4,6),
-(11,2,3,2,3,5),
-(12,8,2,1,2,4),
-(13,6,1,2,1,3),
-(14,9,1,1,1,2),
-(15,10,3,2,3,1),
-(16,1,3,1,4,1),
-(17,5,2,2,5,3),
-(18,4,2,1,6,3);
+(1,1,1,1,1),
+(5,2,1,2,2),
+(3,2,2,3,3),
+(9,2,1,4,4),
+(12,3,2,5,5),
+(11,3,1,6,6),
+(8,1,2,7,7),
+(7,1,1,6,6),
+(7,3,2,5,7),
+(2,2,1,4,6),
+(2,3,2,3,5),
+(8,2,1,2,4),
+(6,1,2,1,3),
+(9,1,1,1,2),
+(10,3,2,3,1),
+(1,3,1,4,1),
+(5,2,2,5,3),
+(4,2,1,6,3);
 
 
 INSERT INTO `oppskrift`
 (
-	`OppskriftID`, 
 	`SpesifikasjonID`, 
 	`KomponenterID`, 
 	`Beskrivelse`
 ) 
 
 VALUES 
-(1,1,1,'Dette er en god modell for nybegynnere '),
-(2,2,2,'Passer bedre for avanserte brukere '),
-(3,3,3,'Passer for små barn '),
-(4,4,4,'Egnet for husmødre '),
-(5,5,5,'Gode akrobatiske egenskaper '),
-(6,6,6,'Lett å modifisere '),
-(7,7,7,'Kjapp å lære '),
-(8,8,8,'Egnes godt i undervisning '),
-(9,9,9,'Ulovlig i EU '),
-(10,10,10,'Brukes av NASA '),
-(11,11,11,'Passer den eldre garden '),
-(12,12,12,'Veldig lang rekkevidde '),
-(13,13,13,'Egnes godt for videoopptak '),
-(14,14,14,'Perfekt for å spionere på naboen '),
-(15,15,15,'Leverer alltid '),
-(16,16,16,'Made in North Korea '),
-(17,17,17,'Vanskelig å kontrollere '),
-(18,18,18,'Anbefales ikke ');
+(1,1,'Dette er en god modell for nybegynnere '),
+(2,2,'Passer bedre for avanserte brukere '),
+(3,3,'Passer for små barn '),
+(4,4,'Egnet for husmødre '),
+(5,5,'Gode akrobatiske egenskaper '),
+(6,6,'Lett å modifisere '),
+(7,7,'Kjapp å lære '),
+(8,8,'Egnes godt i undervisning '),
+(9,9,'Ulovlig i EU '),
+(10,10,'Brukes av NASA '),
+(11,11,'Passer den eldre garden '),
+(12,12,'Veldig lang rekkevidde '),
+(13,13,'Egnes godt for videoopptak '),
+(14,14,'Perfekt for å spionere på naboen '),
+(15,15,'Leverer alltid '),
+(16,16,'Made in North Korea '),
+(17,17,'Vanskelig å kontrollere '),
+(18,18,'Anbefales ikke ');
 
 DELIMITER ;;
 CREATE TRIGGER CHECK_COMPATIBILITY BEFORE INSERT ON komponenter
@@ -207,5 +205,17 @@ AND kom.KontrollbrettID = kon.KontrollbrettID AND kom.PropellID = p.PropellID AN
 END;;
 
 DELIMITER ;;
-CREATE PROCEDURE getOppskrift(param2 int)
+CREATE PROCEDURE getOppskrift()
 BEGIN
+SELECT o.Beskrivelse, o.OppskriftID, m.Navn AS motor, b.*, esc.Navn AS esc, kon.Navn AS kbrett, p.*
+FROM oppskrift AS o, komponenter AS kom, motor AS m, batteri AS b, esc, kontrollbrett AS kon, propeller AS p
+WHERE o.KomponenterID = kom.KomponenterID AND kom.MotorID = m.MotorID AND kom.BatteriID = b.BatteriID AND kom.ESCID = esc.ESCID
+AND kom.KontrollbrettID = kon.KontrollbrettID AND kom.PropellID = p.PropellID
+ORDER BY o.OppskriftID ASC;
+END;;
+
+DELIMITER ;;
+CREATE PROCEDURE remOppskrift(oppID int)
+BEGIN
+DELETE FROM Oppskrift WHERE OppskriftID = oppID;
+END;;

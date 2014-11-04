@@ -68,7 +68,7 @@ create table Kontrollbrett
 
 create table Komponenter
 	(
-		KomponenterID int not null,
+		KomponenterID int not null AUTO_INCREMENT,
 		BatteriID int not null,
 		KontrollbrettID int not null,
 		PropellID int not null,
@@ -84,7 +84,7 @@ create table Komponenter
 
 create table Oppskrift
 	(
-		OppskriftID int not null, 
+		OppskriftID int not null AUTO_INCREMENT,
 		SpesifikasjonID int not null,
 		KomponenterID int not null,
 		Beskrivelse nchar(250),
