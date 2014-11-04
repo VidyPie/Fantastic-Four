@@ -72,7 +72,7 @@ Fantastic Four
                 }
                 //if usrname not in db exit()
                 else {
-                    echo 'Det kreves brukernavn og passord for å kunne administrere basen.';
+                    echo '<br>Det kreves brukernavn og passord for å kunne administrere basen.';
                 }
                 ?>
             </div>

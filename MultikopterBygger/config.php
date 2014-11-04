@@ -181,9 +181,8 @@ Fantastic Four
                     
                     mysqli_close($con);
                     ?>
-                    
-                <a href="resultat.php"><button id="finishButton" type="button">FULLFØR</button></a>
-            </div>  
+                <div id="divButton"><a class="finButton" href="resultat.php">FULLFØR</a></div>
+                </div>  
             <div id="yoyo">fjudswaehfgudews ghyuewrhgfuewg ewgu9ew hguewr gewu9g ewhug ewug ewug ewrguew guerw guewi gweug egw egu we gewug ewgewug weug ewug </div>
         </div>
         <script type="text/javascript" src="banana.js"></script>
