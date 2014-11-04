@@ -39,23 +39,26 @@ Fantastic Four
                     $specID = $srow['SpesifikasjonID'];
                     $query = 'CALL getPacket(' . $specID . ')';
                     $result = mysqli_query($con, $query);
+                    $forslagNr=1;
 
                     while ($row = mysqli_fetch_array($result)) {
-                        echo ' <div id="left_box"><b>Forslag 1</b> <br><br>';
+                        echo ' <div id="left_box"><b>Forslag ' . $forslagNr . '</b><br><br>';
                         $oID = $row['OppskriftID'];
-                        echo '<img class="copterimg" src="main_styling/fl_hex.jpg" width="500" alt="quad"><br>';
-                        echo $row['Beskrivelse'];
-                        echo '<div id="pktDesc">';
+                        $forslagNr = $forslagNr + 1;
+                        echo '<img class="copterimg" src="main_styling/fl_hex.jpg" width="500" alt="quad"><br><br>';
+                        $desc = $row['Beskrivelse'];
+                        echo '<div id="desc">' . $desc . '</div>';
+                        echo '<div id="pktDesc"><br>';
+
                         echo '<p><b>Motor:</b> ' . $row['motor'] . '</p>';
                         echo '<p><b>ESC:</b> ' . $row['esc'] . '</p>';
                         echo '<p><b>Kontrollbrett:</b> ' . $row['kbrett'] . '</p>';
                         echo '<p><b>Propell:</b> ' . $row['Prop_dia'] . '"x' . $row['Prop_vin'] . ' propeller</p>';
                         echo '<p><b>Batteri:</b> ' . $row['Celler'] . 'S ' . $row['mah'] . 'mah ' . $row['C_max'] . 'C' . '</p>';
-                        echo '</div>';
-                        echo' <br> <a id="chbutton" href="resultat.php">Velg</a><a class="cobutton" href="config.php?c=' . $oID . '">Konfig</a>
-                    </div>';
+                        
+                        echo' <br><div id="divButton"><a class="chButton" href="resultat.php">Velg</a>&nbsp;<a class="coButton" href="config.php?c=' . $oID . '">Konfigurer</a></div></div></div>';
                     }
-                    echo '</div></div>';
+                    echo '<div id="divButton"><a class="angreButton" href="skjema.html">Angre</a></div></div></div>';
                 } else {
                     header('Location: skjema.html');
                 }

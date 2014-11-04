@@ -1,7 +1,7 @@
 <?php
 include './dbConnect.php';
 include './editPkgFuncParts.php';
-//include 'checklogin.php';
+include 'checklogin.php';
 ?>
 <!DOCTYPE html>
 <!--
@@ -29,7 +29,8 @@ Fantastic Four
         </div>
         <div id="wrapper">
             <div id="Content">
-                <div id=" ">
+                <div id="theChoochooshoe">
+                    <a href="administrasjon.php">Tilbake</a>
                     <form name="pkgRem" method="POST">
                         <table border="1">
                             <tr>
@@ -52,7 +53,6 @@ Fantastic Four
                                     mysqli_query($con, $Query);
                                 }
                             }
-
                             $Query = 'CALL getOppskrift()';
                             $result = mysqli_query($con, $Query);
 
@@ -65,7 +65,7 @@ Fantastic Four
                                 echo '<td>' . $row['esc'] . '</td>';
                                 echo '<td>' . $row['kbrett'] . '</td>';
                                 echo '<td>' . $row['Prop_dia'] . 'x' . $row['Prop_vin'] . '</td>';
-                                echo '<td>' . $row['Celler'] . ' Cell ' . $row['mah'] . ' mah ' . $row['C_max'] . 'C</td>';
+                                echo '<td>' . $row['Celler'] . 'Cell ' . $row['mah'] . 'mah ' . $row['C_max'] . 'C</td>';
                                 //legg inn knapp for å delete her, må sikkert legge dritten inn i en form.
                                 //yes, hele dritten skal inn i en form + skal ha kun en knapp men mange checkbuttons eller hvadetnåheter.
                             }
