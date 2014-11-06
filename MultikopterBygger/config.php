@@ -74,7 +74,11 @@ Fantastic Four
                     $motorAdvQuery = "SELECT * FROM motor WHERE MotorID=" . $IDval['MotorID'];
                     $motorAdvResult = mysqli_query($con, $motorAdvQuery);
                     $motorRow = mysqli_fetch_array($motorAdvResult);
+                    $ESCAdvQuery = 'SELECT * FROM esc WHERE ESCID= ' . $IDval['ESCID'];
+                    $ESCAdvResult = mysqli_query($con, $ESCAdvQuery);
+                    $ESCRow = mysqli_fetch_array($ESCAdvResult);
                     $motorAmpPull = $motorRow['Amps'];
+                    $escAmpPull = $ESCRow['Ampere'];
                     echo '<div id="component">';
                     echo '<div id="componentHead">MOTOR<br></div>';
                     echo '<div id="mainComponent">' . $motorRow['Navn'] . '</div>';
@@ -83,7 +87,7 @@ Fantastic Four
                     echo '<input type="button" id="dynamicMotorTable" onclick="openMotorTable()" style="display:block;" value="BYTT MOTOR">';
                     echo '<div id="motorTable" style="display:none;"><table><br>';
                     echo '<tr><td><b>Navn</td><td><b>kV</td><td><b>Amps</td><td></td></tr>';
-                    $motorAdvInvQuery = "SELECT * FROM motor WHERE MotorID != " . $IDval['MotorID'];
+                    $motorAdvInvQuery = "SELECT * FROM motor WHERE MotorID != " . $IDval['MotorID'] . ' AND Amps <=' . $escAmpPull;
                     $motorAdvInv = mysqli_query($con, $motorAdvInvQuery);
                     echo '<form method="GET">';
                     while ($row = mysqli_fetch_array($motorAdvInv)) {
@@ -93,9 +97,7 @@ Fantastic Four
                     echo '</form></table><div id="tableButtons"><input type="reset" value="Avbryt" id="cancelChoice" onclick="openMotorTable()"><input type="submit" value="Velg" id="chooseThis"></div></div></div><br>';
 
                     //ESCESCESC
-                    $ESCAdvQuery = 'SELECT * FROM esc WHERE ESCID= ' . $IDval['ESCID'];
-                    $ESCAdvResult = mysqli_query($con, $ESCAdvQuery);
-                    $ESCRow = mysqli_fetch_array($ESCAdvResult);
+                    
                     echo '<div id="component">';
                     echo '<div id="componentHead">ESC<br></div>';
                     echo '<div id="mainComponent">' . $ESCRow['Navn'] . '</div>';
