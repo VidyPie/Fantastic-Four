@@ -274,6 +274,7 @@ li {
 
 #summary p b {
     display: inline-block;
+    width: 120px;
 }
 
 #infoBox{
