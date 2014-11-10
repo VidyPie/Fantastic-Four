@@ -29,29 +29,28 @@ Fantastic Four
             <div id="leftContent">
                 <?php
                 $con = $_SESSION['connection'];
-
+                
                 $motorID = $_SESSION['MotorID'];
                 $propellID = $_SESSION['PropellID'];
                 $batteriID = $_SESSION['BatteriID'];
                 $kontrollbrettID = $_SESSION['KontrollbrettID'];
                 $ESCID = $_SESSION['ESCID'];
-
+                
                 $Query = 'SELECT b.*, p.*, e.Navn AS esc, m.Navn AS motor, k.Navn AS kontrollbrett '
                         . 'FROM ESC AS e, Batteri AS b, Motor AS m, Propeller AS p, Kontrollbrett AS k '
                         . 'WHERE e.ESCID = ' . $ESCID . ' AND b.BatteriID = ' . $batteriID . ' AND m.MotorID = ' . $motorID
                         . ' AND p.PropellID = ' . $propellID . ' AND k.KontrollbrettID = ' . $kontrollbrettID;
                 $result = mysqli_query($con, $Query);
                 $row = mysqli_fetch_array($result);
-
                 echo '<div id="summary"> '
                 . 'Her er en oppsummering av oppsettet som har blitt valgt:'
                 . '<br>'
                 . '<p><b>Motor:</b> ' . $row['motor'] . '</p>'
-                . '<p><b>ESC:</b> ' . $row['esc'] . '</p>'
+                . '<p><b>ESC:</b> ' . $row ['esc'] . '</p>'
                 . '<p><b>Kontrollbrett:</b> ' . $row['kontrollbrett'] . '</p>'
                 . '<p><b>Propell:</b> ' . $row['Prop_dia'] . 'x' . $row['Prop_vin'] . '</p>'
-                . '<p><b>Batteri:</b> ' . $row['Celler'] . '-Cell ' . $row['mah'] . 'mah ' . $row['C_max'] . 'C </p>'
-                . '</div>'
+                . '<p><b>Batteri:</b> ' . $row['Celler'] . '-Cell ' . $row ['mah'] . 'mah ' . $row['C_max'] . 'C </p>'
+                . '</div>';
                 ?>
                 <br><br>
                 <p>
@@ -59,24 +58,24 @@ Fantastic Four
                 </p>
                 <p>
                     Gode steder å bestille deler kan være: 
-                    <table id="linksTable">
-                        <tr>
-                            <th>Norwegian Modellers</th>
-                            <th>Elefun</th>
-                            <th>Hobbyking</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="http://www.modellers.com"><img src="main_styling/normod.png"></a>
-                            </td>
-                            <td>
-                                <a href="http://www.elefun.no"><img src="main_styling/elefun.png"></a>
-                            </td>
-                            <td>
-                                <a href="http://www.hobbyking.com"><img src="main_styling/hobkin.png"></a>
-                            </td>
-                        </tr>
-                    </table>
+                <table id="linksTable">
+                    <tr>
+                        <th>Norwegian Modellers</th>
+                        <th>Elefun</th>
+                        <th>Hobbyking</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="http://www.modellers.com"><img src="main_styling/normod.png"></a>
+                        </td>
+                        <td>
+                            <a href="http://www.elefun.no"><img src="main_styling/elefun.png"></a>
+                        </td>
+                        <td>
+                            <a href="http://www.hobbyking.com"><img src="main_styling/hobkin.png"></a>
+                        </td>
+                    </tr>
+                </table>
                 </p>
             </div>
         </div>

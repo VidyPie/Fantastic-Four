@@ -56,7 +56,8 @@ Fantastic Four
                         echo '<p><b>Propell:</b> ' . $row['Prop_dia'] . '"x' . $row['Prop_vin'] . ' propeller</p>';
                         echo '<p><b>Batteri:</b> ' . $row['Celler'] . 'S ' . $row['mah'] . 'mah ' . $row['C_max'] . 'C' . '</p>';
                         
-                        echo' <br><div id="divButton"><a class="chButton" href="resultat.php">Velg</a>&nbsp;<a class="coButton" href="config.php?c=' . $oID . '">Konfigurer</a></div></div></div>';
+                        echo' <br><div id="divButton"><a class="chButton" href="powatodappl.php?c=' . $oID . '">Velg</a>&nbsp; '
+                        . '<a class="coButton" href="config.php?c=' . $oID . '">Konfigurer</a></div></div></div>';
                     }
                     echo '<div id="divButton"><a class="angreButton" href="skjema.html">Angre</a></div></div></div>';
                 } else {
