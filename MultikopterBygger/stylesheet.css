@@ -398,6 +398,14 @@ dd {
     margin-top: 10px;
 }
 
+.helpButton{
+    font-size:15px;
+    padding:8px 150px;
+    margin-top: 10px;
+    margin-left: 10px;
+
+}
+
 #linksTable img{
     width: 100%;
     opacity: 0.8;
@@ -405,4 +413,3 @@ dd {
 
 #linksTable img:hover{
     opacity:1;
-}
