@@ -88,9 +88,9 @@ Fantastic Four
                     echo '<div id="motorTable" style="display:none;"><table><br>';
                     echo '<tr><td><b>Navn</td><td><b>kV</td><td><b>Amps</td><td></td></tr>';
                     $motorAdvInvQuery = "SELECT * FROM motor WHERE MotorID != " . $IDval['MotorID'] . ' AND Amps <=' . $escAmpPull;
-                    $motorAdvInv = mysqli_query($con, $motorAdvInvQuery);
+                    $motorAdvInv = mysqli_query($con, $motorAdvInvQuery);                  
                     echo '<form method="GET">';
-                    while ($row = mysqli_fetch_array($motorAdvInv)) {
+                    while ($row = mysqli_fetch_array($motorAdvInv)) {           
                         $thisMotor = $row['MotorID'];
                         echo '<tr><td>' . $row['Navn'] . '</td><td>' . $row['kV'] . '</td><td>' . $row['Amps'] . '</td><td><input type="radio" name="motorSelected" value="' . $thisMotor . '"></td>';
                     }
@@ -185,7 +185,7 @@ Fantastic Four
                     ?>
                 <div id="divButton"><a class="finButton" href="resultat.php">FULLFØR</a></div>
                 </div>  
-            <div id="infoBox">fjudswaehfgudews ghyuewrhgfuewg ewgu9ew hguewr gewu9g ewhug ewug ewug ewrguew guerw guewi gweug egw egu we gewug ewgewug weug ewug </div>
+            <div id="divButton"><a class="helpButton" href="whatis.html" target="_blank">HJELP</a></div>
         </div>
         <script type="text/javascript" src="banana.js"></script>
     </body>

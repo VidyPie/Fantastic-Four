@@ -323,7 +323,7 @@ dd {
     opacity:1;
 }
 
-th{
+#linksTable th{
     width:300px;
 }
 
@@ -398,6 +398,14 @@ th{
     margin-top: 10px;
 }
 
+.helpButton{
+    font-size:15px;
+    padding:8px 150px;
+    margin-top: 10px;
+    margin-left: 10px;
+
+}
+
 #linksTable img{
     width: 100%;
     opacity: 0.8;
@@ -407,6 +415,3 @@ th{
     opacity:1;
 }
 
-th{
-    width:300px;
-}
