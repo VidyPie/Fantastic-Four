@@ -323,7 +323,7 @@ dd {
     opacity:1;
 }
 
-th{
+#linksTable th{
     width:300px;
 }
 
@@ -405,8 +405,4 @@ th{
 
 #linksTable img:hover{
     opacity:1;
-}
-
-th{
-    width:300px;
 }
