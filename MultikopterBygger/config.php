@@ -185,11 +185,9 @@ Fantastic Four
                     ?>
                 <div id="divButton"><a class="finButton" href="resultat.php">FULLFØR</a></div>
                 </div>  
-<<<<<<< HEAD
+
             <div id="divButton"><a class="helpButton" href="whatis.html" target="_blank">HJELP</a></div>
-=======
-            <!--<div id="infoBox">fjudswaehfgudews ghyuewrhgfuewg ewgu9ew hguewr gewu9g ewhug ewug ewug ewrguew guerw guewi gweug egw egu we gewug ewgewug weug ewug </div>-->
->>>>>>> 777215272fa259556557595b75943607d75f2e59
+
         </div>
         <script type="text/javascript" src="banana.js"></script>
     </body>
