@@ -27,6 +27,9 @@ Fantastic Four
                 <a class="abutton" href="addParts.php?f=">Legg til deler</a><br>
                 <a class="abutton" href="pktConfig.php">Sette sammen pakker</a><br>
                 <a class="abutton" href="editPkg.php">Fjerne pakker fra basen</a>
+                <form name="logout" method="POST">
+                    <input type="submit" name="logout" value="Logg ut">
+                </form>
             </div>
         </div>
     </body>

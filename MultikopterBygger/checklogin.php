@@ -8,3 +8,8 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == FALSE) {
  else {
     $_SESSION['timeout'] = time();
 }
+
+if(isset($_POST['logout'])) {
+    session_unset('loggedin');
+    header('Location: login.php');
+}
