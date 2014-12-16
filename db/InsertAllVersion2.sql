@@ -163,21 +163,21 @@ INSERT INTO `oppskrift`
 VALUES 
 (1,1,'Dette er en god modell for nybegynnere '),
 (2,2,'Passer bedre for avanserte brukere '),
-(3,3,'Passer for små barn '),
-(4,4,'Egnet for husmødre '),
+(3,3,'Passer for smÃ¥ barn '),
+(4,4,'Egnet for husmÃ¸dre '),
 (5,5,'Gode akrobatiske egenskaper '),
-(6,6,'Lett å modifisere '),
-(7,7,'Kjapp å lære '),
+(6,6,'Lett Ã¥ modifisere '),
+(7,7,'Kjapp Ã¥ lÃ¦re '),
 (8,8,'Egnes godt i undervisning '),
 (9,9,'Ulovlig i EU '),
 (10,10,'Brukes av NASA '),
 (11,11,'Passer den eldre garden '),
 (12,12,'Veldig lang rekkevidde '),
 (13,13,'Egnes godt for videoopptak '),
-(14,14,'Perfekt for å spionere på naboen '),
+(14,14,'Perfekt for Ã¥ spionere pÃ¥ naboen '),
 (15,15,'Leverer alltid '),
 (16,16,'Made in North Korea '),
-(17,17,'Vanskelig å kontrollere '),
+(17,17,'Vanskelig Ã¥ kontrollere '),
 (18,18,'Anbefales ikke ');
 
 DELIMITER ;;
@@ -186,13 +186,12 @@ FOR EACH ROW
 BEGIN
 SET @x = (SELECT `Ampere` FROM `esc` WHERE `ESCID` = new.ESCID);
 SET @y =(SELECT `Amps` FROM `motor` WHERE `MotorID` = new.MotorID);
-IF (@y < @x)
+IF (@y > @x)
 THEN        
 SIGNAL SQLSTATE '45000'
   SET MESSAGE_TEXT = ' Motoren er ikke kompitabel med ESC, vennnligst prov igjen';
   end if;
-  end;
-  ;;
+END;;
 
 DELIMITER ;;
 CREATE PROCEDURE getPacket(param1 int)

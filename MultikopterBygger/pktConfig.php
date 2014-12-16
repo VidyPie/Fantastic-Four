@@ -119,25 +119,30 @@ Fantastic Four
                     }
                 }
                 mysqli_query($con, $kompquery);
+
+                //echo mysqli_sqlstate($con);
                 
-                $partsid = mysqli_fetch_array(mysqli_query
-                                ($con, "SELECT MAX(KomponenterID) AS id FROM komponenter"))['id'];
-                
-                if (!empty($_POST['specs']) && $vals == 5) {
-                    foreach ($_POST['specs'] as $spec) {
-                        $query = "INSERT INTO `oppskrift`(`SpesifikasjonID`, "
-                                . "`KomponenterID`, `Beskrivelse`) VALUES (" . $spec
-                                . ", " . $partsid . ", '" . $_POST['beskrfelt'] . "');";
-                        mysqli_query($con, $query);
-                    } if (mysqli_sqlstate($con) == 23000) {
-                        echo 'ESC is not compatible with the engine';
-                    }
-                } elseif ($vals > 0) {
-                    echo 'Alle verdier må velges';
-                } elseif (empty($_POST['specs'])) {
-                    echo 'Velg en eller flere kategorier';
+                if (mysqli_sqlstate($con) == 45000) {
+                    echo 'ESC is not compatible with the engine';
                 } else {
-                    echo 'Pakke lagt til';
+
+                    $partsid = mysqli_fetch_array(mysqli_query
+                                            ($con, "SELECT MAX(KomponenterID) AS id FROM komponenter"))['id'];
+
+                    if (!empty($_POST['specs']) && $vals == 5) {
+                        foreach ($_POST['specs'] as $spec) {
+                            $query = "INSERT INTO `oppskrift`(`SpesifikasjonID`, "
+                                    . "`KomponenterID`, `Beskrivelse`) VALUES (" . $spec
+                                    . ", " . $partsid . ", '" . $_POST['beskrfelt'] . "');";
+                            mysqli_query($con, $query);
+                        }
+                    } elseif ($vals > 0) {
+                        echo 'Alle verdier må velges';
+                    } elseif (empty($_POST['specs'])) {
+                        echo 'Velg en eller flere kategorier';
+                    } else {
+                        echo 'Pakke lagt til';
+                    }
                 }
             }
             mysqli_close($con);
