@@ -292,7 +292,7 @@ li {
     border:solid;
     border-width: 1px;
     border-color: #666666;
-    heigh: 500px;
+    height: 500px;
     overflow-y: scroll;
 }
 
@@ -336,7 +336,7 @@ dd {
     background:-webkit-linear-gradient(top, #ffffff 5%, #e8e8e8 100%);
     background:-o-linear-gradient(top, #ffffff 5%, #e8e8e8 100%);
     background:-ms-linear-gradient(top, #ffffff 5%, #e8e8e8 100%);
-    background:linear-gradient(to bottom, #ffffff 5%, #e8e8e8 100%);
+    background: linear-gradient(to bottom, #ffffff 5%, #e8e8e8 100%);
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e8e8e8',GradientType=0);
     background-color:#ffffff;
     border:2px solid #dcdcdc;
@@ -413,3 +413,4 @@ dd {
 
 #linksTable img:hover{
     opacity:1;
+}
